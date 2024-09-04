@@ -50,7 +50,8 @@ import YaminLayout from '@/components/layout/yamin-layout'
 import { CatLoader, NoLoader } from '@/hooks/use-loader/components'
 
 import NextTopLoader from 'nextjs-toploader'
-
+// 共用吐司訊息樣式
+import CustomToaster from '@/components/CustomToaster'
 export default function MyApp({ Component, pageProps }) {
   // 導入bootstrap的JS函式庫
   useEffect(() => {
@@ -71,7 +72,8 @@ export default function MyApp({ Component, pageProps }) {
             <YaminCourseCartProvider localStorageKey="courseCart">
               <YaminCartProvider>
                 {getLayout(<Component {...pageProps} />)}
-              </YaminCartProvider>
+                <CustomToaster />
+                </YaminCartProvider>
             </YaminCourseCartProvider>
           </CartProvider>
         </LoaderProvider>

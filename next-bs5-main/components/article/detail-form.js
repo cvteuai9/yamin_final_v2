@@ -197,8 +197,8 @@ export default function DetailForm() {
                       </p>
                       <IoEyeSharp color="#ffffffa0" />
                       <p className="p2 mb-0 me-4 ms-2">{article.views}</p>
-                      <FaRegComment color="#ffffffa0" />
-                      <p className="p2 mb-0 me-4 ms-2">10</p>
+                      {/* <FaRegComment color="#ffffffa0" />
+                      <p className="p2 mb-0 me-4 ms-2">10</p> */}
                     </div>
                     <div className="addbookmarks d-flex align-items-center">
                       {article.fav ? (
@@ -240,7 +240,7 @@ export default function DetailForm() {
                 <p>{article.content}</p>
               </div>
               {recommend.length > 0 && (
-                <div className="recom-tea mt-3 p-3 bd-b1">
+                <div className="recom-tea mt-3 p-3">
                   <h5 className="p-3">推薦好茶</h5>
                   <div className="recom-tea_group mt-3 mb-5">
                     {recommend.map((v) => (
@@ -262,7 +262,7 @@ export default function DetailForm() {
                   </div>
                 </div>
               )}
-              <div className="comment mt-3 p-3">
+              {/* <div className="comment mt-3 p-3">
                 <h5 className="p-3">留言</h5>
                 <div className="comment-block mt-3 mb-5">
                   <div className="comment-item d-flex">
@@ -311,7 +311,7 @@ export default function DetailForm() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             {/*----------------- 右邊 -----------------------*/}
             <div className="col-lg-3 article_info ">

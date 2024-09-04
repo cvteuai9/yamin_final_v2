@@ -815,7 +815,7 @@ export default function Detail() {
             </Link>
           </div>
         </div>
-        <Toaster />
+        {/* <Toaster /> */}
       </div>
     </>
   )
