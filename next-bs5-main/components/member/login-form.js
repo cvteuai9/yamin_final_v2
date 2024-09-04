@@ -11,7 +11,7 @@ import { useAuth, initUserData } from '@/hooks/my-use-auth'
 import useFirebase from '@/hooks/use-firebase'
 import { useRouter } from 'next/router'
 import { login, googleLogin, parseJwt, getUserById } from '@/services/my-user'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 
 // import GoogleLogo from '@/components/icons/google-logo'
 
@@ -119,7 +119,7 @@ export default function LoginForm() {
       }
     } catch (error) {
       // console.error(error)
-      alert('使用者帳號密碼錯誤')
+      toast.error('使用者帳號密碼錯誤')
     }
   }
 
@@ -186,7 +186,7 @@ export default function LoginForm() {
 
     handleLogin()
     // 最後檢查完全沒問題才送到伺服器(ajax/fetch)
-    alert('送到伺服器去')
+    // alert('送到伺服器去')
   }
   return (
     <main className={styles.loginPage}>
@@ -217,7 +217,7 @@ export default function LoginForm() {
                 name="email"
                 value={user.email}
                 onChange={handleFieldChange}
-                placeholder="請輸入你的電子郵件"
+                placeholder="請輸入電子郵件"
               />
               {errors.email && <span className={styles.error}>{errors.email}</span>}
             </div>
@@ -230,7 +230,7 @@ export default function LoginForm() {
                   name="password"
                   value={user.password}
                   onChange={handleFieldChange}
-                  placeholder="請輸入你的密碼"
+                  placeholder="請輸入密碼"
                 />
                 <button 
                   type="button" 
@@ -252,7 +252,7 @@ export default function LoginForm() {
           </div>
         </div>
       </div>
-      <Toaster />
+      {/* <Toaster /> */}
     </main>
   
 

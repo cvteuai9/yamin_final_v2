@@ -85,15 +85,15 @@ export default function RegisterForm() {
     const response = await register(user)
 
     if (response.status === 201) {
-      alert('註冊成功')
+      toast.success('註冊成功')
       // 你可以在這裡處理註冊成功後的邏輯，例如導航到登入頁面
     }
 
     if (response.data.status === 'error') {
-      alert(response.data.message)
+      toast.error(response.data.message)
       return
     } else {
-      console.log(user);
+      // console.log(user)
       const res = await login(user)
       if (res.data.status === 'success') {
         // 從JWT存取令牌中解析出會員資料
@@ -192,8 +192,7 @@ export default function RegisterForm() {
         minSymbols: 0,
       })
     ) {
-      newErrors.password =
-        '密碼需為8到12個字元，必須包含大小寫英文字母和數字'
+      newErrors.password = '密碼需為8到12個字元，必須包含大小寫英文字母和數字'
     }
     if (user.password.length > 12) {
       newErrors.password = '密碼至多12個字元'
@@ -243,7 +242,12 @@ export default function RegisterForm() {
         <div className={styles.formSection}>
           <div className={styles.formContainer}>
             <div className={styles.logoContainer}>
-              <Image src="/images/main-title/signup.svg" alt="register" width={200} height={100} />
+              <Image
+                src="/images/main-title/signup.svg"
+                alt="register"
+                width={200}
+                height={100}
+              />
             </div>
             <button
               className={styles.googleButton}
@@ -257,36 +261,40 @@ export default function RegisterForm() {
             </div>
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.inputGroup}>
-              <label htmlFor="name">姓名</label>
-              <input
+                <label htmlFor="name">姓名</label>
+                <input
                   type="text"
-                  id='name'
+                  id="name"
                   name="user_name"
-                  placeholder="姓名"
+                  placeholder="請輸入姓名"
                   value={user.user_name}
                   onChange={handleFieldChange}
                 />
-                {errors.user_name && <span className={styles.error}>{errors.user_name}</span>}
+                {errors.user_name && (
+                  <span className={styles.error}>{errors.user_name}</span>
+                )}
               </div>
               <div className={styles.inputGroup}>
-              <label htmlFor="email">電子郵件</label>
-              <input
+                <label htmlFor="email">電子郵件</label>
+                <input
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="電子郵件"
+                  placeholder="請輸入電子郵件"
                   value={user.email}
                   onChange={handleFieldChange}
                 />
-                {errors.email && <span className={styles.error}>{errors.email}</span>}
+                {errors.email && (
+                  <span className={styles.error}>{errors.email}</span>
+                )}
               </div>
               <div className={styles.inputGroup}>
-              <label htmlFor="password">密碼</label>
+                <label htmlFor="password">密碼</label>
                 <div className={styles.passwordInput}>
-              <input
+                  <input
                     type={showPassword ? 'text' : 'password'}
                     name="password"
-                    id='password'
+                    id="password"
                     placeholder="8到12個字元，須包含大小寫英文字母和數字"
                     value={user.password}
                     onChange={handleFieldChange}
@@ -296,19 +304,21 @@ export default function RegisterForm() {
                     onClick={() => setShowPassword(!showPassword)}
                     className={styles.eyeIcon}
                   >
-                    {showPassword ? <RiEyeLine />:<RiEyeOffLine /> }
+                    {showPassword ? <RiEyeLine /> : <RiEyeOffLine />}
                   </button>
                 </div>
-                {errors.password && <span className={styles.error}>{errors.password}</span>}
+                {errors.password && (
+                  <span className={styles.error}>{errors.password}</span>
+                )}
               </div>
               <div className={styles.inputGroup}>
-              <label htmlFor="confirmPassword">確認密碼</label>
-              <div className={styles.passwordInput}>
+                <label htmlFor="confirmPassword">確認密碼</label>
+                <div className={styles.passwordInput}>
                   <input
                     type={showConfirmPassword ? 'text' : 'password'}
-                    id='confirmPassword'
+                    id="confirmPassword"
                     name="confirmPassword"
-                    placeholder="確認密碼"
+                    placeholder="請再一次輸入密碼"
                     value={user.confirmPassword}
                     onChange={handleFieldChange}
                   />
@@ -317,19 +327,25 @@ export default function RegisterForm() {
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className={styles.eyeIcon}
                   >
-                    {showConfirmPassword ? <RiEyeLine />:<RiEyeOffLine />}
+                    {showConfirmPassword ? <RiEyeLine /> : <RiEyeOffLine />}
                   </button>
                 </div>
-                {errors.confirmPassword && <span className={styles.error}>{errors.confirmPassword}</span>}
+                {errors.confirmPassword && (
+                  <span className={styles.error}>{errors.confirmPassword}</span>
+                )}
               </div>
-              <button type="submit" className={styles.submitButton}>註冊</button>
+              <button type="submit" className={styles.submitButton}>
+                註冊
+              </button>
             </form>
             <div className={styles.links}>
-              <p>已經有會員帳號？ <Link href="/member/login">會員登入</Link></p>
+              <p>
+                已經有會員帳號？ <Link href="/member/login">會員登入</Link>
+              </p>
             </div>
           </div>
         </div>
-        <Toaster />
+        {/* <Toaster /> */}
       </main>
     </>
   )

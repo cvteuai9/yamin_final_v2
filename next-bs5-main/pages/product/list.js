@@ -16,13 +16,26 @@ export default function List1() {
   const notify = (productName) => {
     toast.success(
       <>
-        <p>
+        <p className="mx-3">
           {productName + '已成功加入購物車!'}
           <br />
-          <Link href="/cart/cartOne">前往購物車</Link>
+          <div className="mt-3">
+            <Link style={{ color: 'white' }} href="/cart/cartOne">
+              前往購物車
+            </Link>
+          </div>
         </p>
       </>
     )
+    // toast.success(
+    //   <>
+    //     <p>
+    //       {productName + '已成功加入購物車!'}
+    //       <br />
+    //       <Link href="/cart/cartOne">前往購物車</Link>
+    //     </p>
+    //   </>
+    // )
   }
 
   const { showLoader, hideLoader, loading, delay } = useLoader() // 頁面載入等候畫面
@@ -685,7 +698,7 @@ export default function List1() {
         </div>
       </div>
       {/* main-content---END--- */}
-      <Toaster />
+      {/* <Toaster /> */}
     </>
   )
 }
