@@ -112,7 +112,18 @@ export default function CardOne() {
     // setSelectedId
   }
   function handleSubmit() {
-    router.push('http://localhost:3000/cart/cartTwoTest')
+    console.log(courseCart.items.length)
+    if (items.length === 0 && courseCart.items.length === 0) {
+      Swal.fire({
+        icon: 'error',
+        title: '錯誤!',
+        text: '您沒有購買任何東西',
+      })
+    }
+    if (items.length !== 0 || courseCart.items.length !== 0) {
+      router.push('http://localhost:3000/cart/cartTwoTest')
+    }
+    // router.push('http://localhost:3000/cart/cartTwoTest')
   }
   // console.log('課程資訊')
   return (
