@@ -1,0 +1,843 @@
+:root {
+  --white50: #ffffff50;
+  --hover03: rgba(128, 128, 128, 0.3);
+}
+
+.goldenf {
+  color: #D8B783;
+}
+.whitef {
+  color: var(--white);
+}
+.whitef50 {
+  color: var(--white50);
+}
+.grayf {
+  color: var(--bg-text-color);
+}
+.container {
+  max-width: 1440px;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+/* input::placeholder {
+  font-size: 1.4rem;
+  @media screen and (max-width: 576px) {
+    font-size: 1.4rem;
+  }
+} */
+/* profile-btn */
+.btn-profile {
+  white-space: nowrap;
+  width: fit-content;
+  height: auto;
+  background: var(--primary);
+  color: #D8B783;
+  border: var(--primary2) 1px solid;
+  padding: 0;
+  gap: 20px;
+  align-self: stretch;
+  .profile-label {
+    margin: 0;
+    cursor: pointer;
+    padding: 14px 24px;
+    width: 100%;
+    height: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+/* 共用btn樣式 */
+.btn1 {
+  white-space: nowrap;
+  width: fit-content;
+
+  height: 7px;
+  background: var(--primary);
+  color: var(--primary2);
+  border: var(--primary2) 1px solid;
+  cursor: pointer;
+  display: flex;
+  padding: 14px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  align-self: stretch;
+}
+.btn2 {
+  /* 金色底按鈕樣式 */
+  white-space: nowrap;
+  width: fit-content;
+
+  height: 7px;
+  /* width: 150px; */
+  background: var(--primary2);
+  color: var(--white);
+  border: var(--primary2) 1px solid;
+  cursor: pointer;
+
+  display: flex;
+  padding: 14px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.btn1:hover {
+  background-color: var(--hover03);
+  transition: 0.3s;
+  /* 當滑鼠移過時改變背景顏色 */
+}
+.btn2:hover {
+  background-color: var(--button-hover-color);
+  transition: 0.3s;
+  /* 當滑鼠移過時改變背景顏色 */
+}
+.btn-profile:hover {
+  background-color: var(--hover03);
+  transition: 0.3s;
+  /* 當滑鼠移過時改變背景顏色 */
+}
+hr {
+  color: var(--white50);
+}
+/* 所有課程、商品nav */
+.favorite-nav {
+  display: flex;
+  height: auto;
+  justify-content: center;
+  margin: 0;
+  border-bottom: 1px solid var(--white50);
+  position: relative;
+
+  & .searchnavs {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    text-align: center;
+
+    & .searchnav {
+      padding: 0px 20px 10px 20px;
+      border-bottom: 3px solid transparent;
+    }
+    & .searchnav:hover {
+      transition: 0.3s;
+      padding: 0px 20px 10px 20px;
+
+      border-bottom: 3px solid var(--primary2);
+    }
+  }
+}
+& .searchitem {
+  display: flex;
+  padding: 10px 5px 0 5px;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  bottom: 0;
+  right: 0; /* 距离父元素左边20像素 */
+  padding: 5px;
+  &:hover {
+    background-color: var(--hover03);
+    transition: 0.3s;
+  }
+}
+/* 所有課程、商品nav */
+/* 頁碼 */
+.pageitem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary2);
+  & > ul {
+    color: var(--primary2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+
+    & > li {
+      padding: 5px 10px 5px 10px;
+
+      border: 2px solid transparent;
+
+      & img {
+        object-fit: cover;
+        padding: 0px;
+        margin: 0;
+        height: 20px;
+        width: auto;
+      }
+
+      &:hover {
+        border: 2px solid var(--primary2);
+
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+/* input::placeholder {
+  color: var(--primary2);
+} */
+.inputtext {
+  all: unset;
+  color: var(--white);
+  width: 334px;
+  height: 22px;
+  padding: 5px 0 5px 5px;
+  border: 1px solid var(--primary2);
+}
+
+.titlenav {
+  width: 100vw;
+  /* height: auto; */
+  display: inline;
+  justify-content: center;
+  text-align: center;
+  /* margin-top: 70px;
+  margin-bottom: 20px; */
+  /* @media (max-width: 770px) {
+    margin: 0px;
+  } */
+  /* ===julia 08-30 test標題img固定位置 ↓
+  position: sticky;
+  top: 70px;
+  background-color: var(--primary); 
+  z-index: 100; */
+}
+/* ===julia 08-30 test標題img固定位置 ↓*/
+.couponchoose {
+  @media screen and (max-width: 576px) {
+    font-size: 1.4rem;
+  }
+}
+/* =================================== */
+input::placeholder,
+.inputtext::placeholder,
+.inputradio::placeholder {
+  color: #D8B783;
+  font-size: 1.6rem; /*25.6px;   */
+  @media screen and (max-width: 576px) {
+    font-size: 1.4rem; /* 22.4px */
+  }
+}
+input[type=text], input[type=number], input[type=date], textarea{
+  color: #D8B783;
+}
+
+/* changeps */
+/* =================================== */
+.changeps-pic {
+  display: flex;
+  height: 150px;
+}
+.changeps-picleft {
+  display: block;
+  width: 530px;
+  height: auto;
+}
+.changeps-picright {
+  width: 100px;
+  height: 100px;
+}
+
+.changeps-inputtext {
+  margin: 12px 0px;
+  height: 50px;
+  width: 100%;
+  padding: 1.2rem;
+  color: var(--bg-text-color);
+  background-color: var(--primary);
+  border: var(--primary2) solid 1px;
+  font-size: 1.6rem;
+  /* 懸停指示 */
+  caret-color: var(--bg-text-color);
+  /* 讓文字從1rem後開始(首行縮排) */
+  text-indent: 0.2rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+.changeps-inputradio {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  display: flex;
+}
+.changeps-btns {
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+  & .changepassword,
+  .checked {
+    margin: 0 15px;
+  }
+}
+.changeps-inputgroup {
+  position: relative;
+  width: 100%;
+  font-family: 'B2Hana-Regular', sans-serif;
+  font-weight: 100;
+  input {
+    padding: 12px;
+    margin-bottom: 12px;
+    &::placeholder {
+      color: rgb(178, 149, 100, 0.8);
+    }
+  }
+  .icon {
+    font-size: 1.8rem;
+    color: var(--primary2);
+    padding: 0px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    /*自己本身高度往上調50%*/
+  }
+}
+.left-nav-line {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ======視窗更改============================= */
+
+.left-nav,
+.left-nav-line > img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .left-nav,
+  .left-nav-line > img {
+    /* display: none; */
+  }
+}
+
+/* =================================== */
+/* 資訊內文 */
+.order-ards {
+  display: flex;
+  /* justify-content: center; */
+}
+.order-pcard {
+  display: flex;
+  width: 960px;
+  height: 230px;
+  padding: 0 20px 0 20px;
+  border: #b29564 1px solid;
+}
+.order-imgbox {
+  width: 241px;
+  height: 230px;
+  display: inline;
+  text-align: center;
+  & img {
+    width: 244px;
+    height: 180px;
+    margin: 10px 0;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
+.order-cardtext {
+  padding: 20px;
+  line-height: 20px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  & > p > span {
+    color: black;
+
+    height: auto;
+    width: auto;
+    background-color: var(--primary2);
+    padding: 3px 5px;
+  }
+}
+.order-bottomtext {
+  color: var(--primary2);
+  display: inline;
+  position: absolute;
+  text-align: end;
+  bottom: 0px;
+  right: 0px;
+  & > p {
+    color: var(--primary2);
+  }
+}
+
+.order-cinput {
+  display: flex;
+  align-items: center;
+  /* vertical-align: middle; */
+  & > p {
+    margin: 0;
+  }
+  & > input {
+    margin: 0 20px 0 20px;
+  }
+}
+.order-searchbtn {
+  padding: 14px 24px;
+}
+.order-ordernav {
+  overflow: hidden;
+  max-height: 0;
+  /* ↑下拉式選單 */
+  display: flex;
+  padding: 0;
+  list-style: none;
+  /* text-align: center; */
+  & h1 {
+    justify-content: space-between;
+    display: flex;
+    /* ↑下拉式選單 */
+
+    .icon {
+      margin-top: 4px;
+      transition: all 0.5s;
+      transform-origin: center center;
+      height: 100%;
+    }
+    box-sizing: border-box;
+    /* ↑下拉式選單 */
+  }
+  & li {
+    background-color: var(--hover03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 0;
+    width: 160px;
+    height: 45px;
+    border-bottom: 3px transparent solid;
+
+    &:hover {
+      border-bottom: 3px var(--primary2) solid;
+    }
+  }
+}
+/* order-info */
+/* =================================== */
+/* 資訊內文 */
+.orderinfo-cards {
+  display: flex;
+  margin: 0;
+}
+
+.orderinfo-pcard {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  height: auto;
+  padding: 0 20px 0 20px;
+  border: #b29564 1px solid;
+
+  & > .orderinfo-info {
+    width: 730px;
+    height: auto;
+    color: var(--white50);
+
+    /* padding: 
+      20px 0; */
+  }
+}
+
+.orderinfo-cardtext {
+  padding: 20px;
+  line-height: 20px;
+
+  & > p > span {
+    color: black;
+    height: auto;
+    width: auto;
+    background-color: var(--primary2);
+    padding: 3px 5px;
+  }
+}
+.orderinfo-bottomtext {
+  width: 100%;
+  height: auto;
+  border-top: 1px solid var(--primary2);
+  border-bottom: 1px solid var(--primary2);
+  color: var(--primary2);
+}
+
+.orderinfo-cinput {
+  display: flex;
+  align-items: center;
+  /* vertical-align: middle; */
+  & > p {
+    margin: 0;
+  }
+  & > input {
+    margin: 0 20px 0 20px;
+  }
+}
+.orderinfo-searchbtn {
+  padding: 14px 24px;
+}
+.orderinfo-ordernav {
+  display: flex;
+  padding: 0;
+  list-style: none;
+
+  /* text-align: center; */
+  & li {
+    background-color: var(--hover03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 0;
+    width: 160px;
+    height: 45px;
+    border-bottom: 3px transparent solid;
+
+    &:hover {
+      border-bottom: 3px var(--primary2) solid;
+    }
+  }
+}
+.orderinfo {
+  width: 700px;
+
+  display: flex;
+  white-space: nowrap;
+  text-align: center;
+  align-items: center;
+  & > img {
+    width: 100px;
+    height: 93px;
+    padding: 11px 0px;
+  }
+  & > p {
+    margin: 0px auto;
+  }
+}
+/* ordered */
+/* =================================== */
+/* 資訊內文 */
+.ordered-cards {
+  display: flex;
+  /* justify-content: center; */
+}
+.ordered-pcard {
+  display: flex;
+  width: 800px;
+  height: 230px;
+  padding: 0 20px 0 20px;
+  border: #b29564 1px solid;
+}
+.ordered-imgbox {
+  width: 241px;
+  height: 230px;
+  display: inline;
+  text-align: center;
+  & img {
+    width: 244px;
+    height: 180px;
+    margin: 10px 0;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
+.ordered-cardtext {
+  padding: 20px;
+  line-height: 20px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  & > p > span {
+    color: black;
+
+    height: auto;
+    width: auto;
+    background-color: var(--primary2);
+    padding: 3px 5px;
+  }
+}
+.ordered-bottomtext {
+  color: var(--primary2);
+  display: inline;
+  position: absolute;
+  text-align: end;
+  bottom: 0px;
+  right: 0px;
+  & > p {
+    color: var(--primary2);
+  }
+}
+
+.ordered-cinput {
+  display: flex;
+  align-items: center;
+  /* vertical-align: middle; */
+  & > p {
+    margin: 0;
+  }
+  & > input {
+    margin: 0 20px 0 20px;
+  }
+}
+.ordered-searchbtn {
+  padding: 14px 24px;
+}
+.ordered-ordernav {
+  display: flex;
+  padding: 0;
+  list-style: none;
+  /* text-align: center; */
+  & li {
+    background-color: var(--hover03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 0;
+    width: 160px;
+    height: 45px;
+    border-bottom: 3px transparent solid;
+
+    &:hover {
+      border-bottom: 3px var(--primary2) solid;
+    }
+  }
+}
+/* profile */
+/* =================================== */
+.profile-form {
+  width: 100%;
+  input {
+    padding: 12px;
+  }
+  .profile-inputtext {
+    font-size: 1.6rem;
+    font-family: 'B2Hana-Regular', sans-serif;
+    font-weight: 100;
+  }
+}
+.profile-pic {
+  display: flex;
+  margin-top: 30px;
+  height: 150px;
+}
+.profile-picleft {
+  p{
+    color: #D8B783;
+  }
+  .pc-text {
+    margin-top: 30px;
+  }
+  display: block;
+  width: 50%;
+  height: auto;
+  line-height: 22px;
+}
+/* @media screen(min-width: 900px) {
+    .profile-picleft {
+      display: flex;
+    }
+  } */
+.profile-picright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  /* height: 150px; */
+}
+
+/* .profile-inputtext::placeholder,
+.profile-inputradio::placeholder {
+  color: var(--primary2);
+} */
+.profile-inputtext {
+  all: unset;
+  color: var(--white);
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--primary2);
+  box-sizing: border-box;
+}
+.profile-inputradio {
+  padding: 0;
+  margin: 0 10px 0 0;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+.profile-btns {
+  width: 100%;
+  display: flex;
+  padding-top: 32px;
+  justify-content: center;
+  .profile-changepassword,
+  .profile-checked {
+    margin: 0 15px;
+    text-decoration: none; /* 移除底線 */
+    /* color: inherit; */
+  }
+}
+
+.coupon-inputtext {
+  display: flex;
+  all: unset;
+
+  color: var(--white);
+  height: 15px;
+  margin: 0 20px 0 20px;
+  padding: 0 0 0 10px;
+  border: 1px solid var(--primary2);
+}
+.coupon-inputradio {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  display: flex;
+}
+.coupon-btns {
+  display: flex;
+  padding-top: 32px;
+  margin: 0 0 0 10px;
+}
+.coupon-cinput {
+  height: 50px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.coupon-cptable {
+  color: var(--white);
+  border-collapse: collapse;
+  text-align: center;
+}
+/* ====julia08-22新增--篩選下拉式選單 */
+.coupon-cpth,
+.coupon-cptd {
+  width: 100px;
+  margin: 0;
+  padding: 5px 10px;
+  text-align: center;
+}
+.coupon-cpth {
+  border-bottom: 1px var(--white) solid;
+}
+.coupon-cpth1 {
+  width: 270px;
+}
+.tabchooes {
+  position: relative;
+  white-space: nowrap;
+  width: auto;
+  /* ====julia08-22新增 */
+  .choosebtn {
+    position: absolute;
+    background-color: var(--primary);
+    /* white-space: nowrap; */
+    left: 570px;
+    top: -35px;
+    @media (max-width: 770px) {
+      left: 459px;
+      top: -35px;
+    }
+
+    /* 修改 */
+    /* @media screen and (max-width: 900px) {
+      left: 550px;
+      top: -40px;
+    } */
+  }
+}
+.coupon-p-14 {
+  text-align: start;
+  white-space: nowrap;
+}
+/* ====julia08-26新增--優惠券使用說明視窗 */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  border-bottom: 1px solid #724d4d;
+}
+
+.modal-footer {
+  border-top: 1px solid #724d4d;
+}
+.modal-body {
+  max-height: 400px;
+  overflow-y: auto;
+}
+/* ====julia08-26新增--優惠券使用說明視窗
+/* ==========08-30 微調 優惠券領取視窗  */
+.floating-coupon-container {
+  position: fixed;
+  right: 5vw;
+  top: 250px;
+  margin-bottom: 1rem;
+  z-index: 1000; /* 確保它在其他元素之上 */
+}
+/* ============ */
+.floating-coupon-button {
+  width: 5rem;
+  height: 15rem;
+  /* background: linear-gradient(to right, #b29564, #d4b690); */
+  background-color: #7d2226;
+  border: none;
+  /* border-radius: 0.5rem; */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  /* color: white; */
+  /* font-weight: bold; */
+  /* font-size: 0.875rem; */
+  display: flex;
+  align-items: center;
+  writing-mode: vertical-rl;
+  justify-content: center;
+  transition: all 0.3s ease;
+  animation: bounce 2s infinite;
+}
+
+.floating-coupon-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  background: var(--error-color);
+}
+
+.floating-coupon-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(178, 149, 100, 0.5);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

@@ -1,0 +1,27 @@
+.container {
+  a,
+  input,
+  label,
+  .btn,
+  nav {
+    font-family: 'B2Hana-Regular', sans-serif;
+    font-weight: 100;
+    color: var(--bg-text-color);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  .p {
+    color: var(--bg-text-color);
+  }
+}

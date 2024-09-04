@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "article_id": null,
+    "product_id": 235,
+    "course_id": null
+  },
+  {
+    "id": 2,
+    "user_id": 1,
+    "article_id": null,
+    "product_id": 205,
+    "course_id": null
+  },
+  {
+    "id": 3,
+    "user_id": 1,
+    "article_id": null,
+    "product_id": 192,
+    "course_id": null
+  },
+  {
+    "id": 4,
+    "user_id": 1,
+    "article_id": null,
+    "product_id": 120,
+    "course_id": null
+  },
+  {
+    "id": 5,
+    "user_id": 1,
+    "article_id": null,
+    "product_id": null,
+    "course_id": 1
+  },
+  {
+    "id": 6,
+    "user_id": 1,
+    "article_id": 1,
+    "product_id": null,
+    "course_id": null
+  },
+  {
+    "id": 7,
+    "user_id": 1,
+    "article_id": null,
+    "product_id": 24,
+    "course_id": null
+  }
+]

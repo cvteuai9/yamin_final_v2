@@ -1,0 +1,646 @@
+// 忘記密碼
+.ForgetPS {
+  margin-top: 70px;
+}
+// changeps
+.changeps {
+  font-family: 'B2Hana-Regular', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--bg-text-color);
+
+  .changeps-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    .error {
+      font-size: 1.6rem;
+      color: #ff4d4f;
+    }
+    .inputarea {
+      position: relative;
+      width: 900px;
+      .icon {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #b29564;
+        cursor: pointer;
+        font-size: 2rem;
+        display: flex; // 使用 flex 來更好地居中圖標
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    input {
+      margin: 12px 0px 12px 0px;
+      height: 50px;
+      width: 900px;
+      padding: 1.2rem;
+      color: var(--bg-text-color);
+      background-color: var(--background);
+      border: var(--primary2) solid 1px;
+      font-size: 1.6rem;
+      /* 懸停指示 */
+      caret-color: var(--bg-text-color);
+      /* 讓文字從1rem後開始(首行縮排) */
+      text-indent: 0.2rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    input::placeholder {
+      color: var(--primary2);
+    }
+
+    label {
+      font-size: 1.6rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.main-title {
+  width: 200px;
+  height: auto;
+}
+
+@media (max-width: 992px) {
+  .main-title {
+    width: 170px;
+  }
+}
+
+.loginsignin,
+.forgetps {
+  background-color: #003e52;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* 為了字體平滑設計 */
+  //  -webkit-font-smoothing: antialiased;
+}
+
+// .googlelogo {
+//   width: 20px;
+//   height: 20px;
+//   margin-right: 8px;
+// }
+
+.signinsec1 {
+  p {
+    color: var(--bg-text-color);
+  }
+  .gfast {
+    width: 500px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: none;
+    text-decoration: none;
+
+    p {
+      color: #000;
+    }
+
+    &:hover {
+      transition: 0.5s;
+      background-color: hsl(0, 0%, 90%);
+    }
+  }
+
+  .btn-no-radius {
+    border-radius: 0;
+  }
+}
+
+.signinsec2 {
+  width: 570px;
+  > p {
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+  }
+  font-family: 'B2Hana-Regular', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--bg-text-color);
+
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    .error {
+      font-size: 1.6rem;
+      color: #ff4d4f;
+    }
+    .inputarea {
+      position: relative;
+      .icon {
+        padding: 0px;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        /*自己本身高度往上調50%*/
+      }
+    }
+
+    input {
+      margin: 12px 0px 12px 0px;
+      height: 50px;
+      width: 100%;
+      padding: 1.2rem;
+      color: var(--bg-text-color);
+      background-color: var(--background);
+      border: var(--primary2) solid 1px;
+      font-size: 1.6rem;
+      /* 懸停指示 */
+      caret-color: var(--bg-text-color);
+      /* 讓文字從1rem後開始(首行縮排) */
+      text-indent: 0.2rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    input::placeholder {
+      color: var(--primary2);
+    }
+
+    label {
+      font-size: 1.6rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn-in {
+      width: 250px;
+      background-color: var(--primary2);
+      font-size: 1.6rem;
+      border: none;
+      font-family: 'B2Hana-Regular', sans-serif;
+      padding: 1.2rem;
+      color: var(--bg-text-color);
+    }
+
+    .btn-in:hover {
+      background-color: var(--button-hover-color);
+    }
+  }
+
+  .form-footer {
+    font-size: 1.6rem;
+
+    a {
+      color: rgb(178, 149, 100);
+      font-family: 'B2Hana-Regular', sans-serif;
+      font-size: 1.6rem;
+
+      &:hover {
+        color: var(--button-hover-color);
+      }
+    }
+  }
+}
+//
+.forgetpssec {
+  width: 570px;
+  > p {
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+  }
+  font-family: 'B2Hana-Regular', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--bg-text-color);
+
+  .fp-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    .error {
+      font-size: 1.6rem;
+      color: #ff4d4f;
+    }
+    .inputarea {
+      position: relative;
+      .icon {
+        padding: 0px;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        /*自己本身高度往上調50%*/
+      }
+    }
+
+    input {
+      margin: 12px 0px 12px 0px;
+      height: 50px;
+      width: 100%;
+      padding: 1.2rem;
+      color: var(--bg-text-color);
+      background-color: var(--background);
+      border: var(--primary2) solid 1px;
+      font-size: 1.6rem;
+      /* 懸停指示 */
+      caret-color: var(--bg-text-color);
+      /* 讓文字從1rem後開始(首行縮排) */
+      text-indent: 0.2rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      margin: 12px 0px 12px 0px;
+      // height: 50px;
+      width: 25%;
+      padding: 12px;
+      color: var(--bg-text-color);
+      background-color: var(--background);
+      border: var(--primary2) solid 1px;
+      font-size: 1.6rem;
+      background-color: var(--primary2);
+      border-radius: 0%;
+      &:hover {
+        background-color: var(--primary-deep);
+      }
+    }
+
+    input::placeholder {
+      color: var(--primary2);
+    }
+
+    label {
+      font-size: 1.6rem;
+      display: flex;
+      flex-direction: column;
+    }
+    // 忘記密碼按鈕
+    .btn-in {
+      width: 150px;
+      background-color: var(--primary2);
+      font-size: 1.6rem;
+      border: none;
+      font-family: 'B2Hana-Regular', sans-serif;
+      padding: 1.2rem;
+      color: var(--bg-text-color);
+    }
+
+    .btn-in:hover {
+      background-color: var(--button-hover-color);
+    }
+  }
+
+  .form-footer {
+    font-size: 1.6rem;
+
+    a {
+      color: rgb(178, 149, 100);
+      font-family: 'B2Hana-Regular', sans-serif;
+      font-size: 1.6rem;
+
+      &:hover {
+        color: var(--primary-light);
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .loginsignin {
+    .orline {
+      width: 100%;
+    }
+  }
+
+  .signinsec1 {
+    .gfast {
+      width: 330px;
+    }
+  }
+
+  .signinsec2 {
+    width: 100%;
+    form {
+      input {
+        width: 100%;
+      }
+    }
+  }
+  .forgetpssec {
+    width: 100%;
+    .fp-form {
+      input {
+        width: 100%;
+      }
+      button {
+        padding: 0px;
+        color: var(--bg-text-color);
+        background-color: var(--background);
+        border: var(--primary2) solid 1px;
+        font-size: 1.4rem;
+        background-color: var(--primary2);
+        border-radius: 0%;
+      }
+    }
+  }
+}
+
+// LoginForm.module.scss
+
+.loginPage,
+.registerPage {
+  display: flex;
+  font-family: 'B2Hana-Regular', sans-serif;
+  background-color: #003e52;
+}
+
+.imageSectionLog {
+  flex: 0 0 40%;
+  background-image: url('/images/article/articlelist/black-tea.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 62, 82, 0.7),
+      rgba(0, 62, 82, 0)
+    );
+    mix-blend-mode: multiply;
+  }
+}
+.imageSectionReg {
+  flex: 0 0 40%;
+  background-image: url('/images/article/articlelist/black-tea2.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 62, 82, 0.7),
+      rgba(0, 62, 82, 0)
+    );
+    mix-blend-mode: multiply;
+  }
+}
+
+.formSection {
+  flex: 0 0 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #003e52;
+  // padding: 40px;
+}
+
+.formContainer {
+  // background-color: rgba(255, 255, 255, 0.9);
+  // border-radius: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 450px;
+  // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.logoContainer {
+  text-align: center;
+  margin-bottom: 30px;
+
+  img {
+    width: 200px;
+    height: auto;
+  }
+}
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  width: 100%;
+  padding: 12px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #b29564;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #f5f5f5f3;
+  }
+
+  .googleIcon {
+    margin-right: 10px;
+    font-size: 24px;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #b29564;
+  margin: 30px 0;
+  font-size: 1.6rem;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #b29564;
+  }
+
+  span {
+    padding: 0 15px;
+  }
+}
+
+.form {
+  .inputGroup {
+    margin-bottom: 25px;
+
+    label {
+      display: block;
+      color: var(--bg-text-color);
+      margin-bottom: 8px;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #D8B783;
+      background-color: #003e52;
+      color: #D8B783;
+      font-size: 16px;
+      margin-bottom: 5px;
+
+      &::placeholder {
+        color: var(--primary2);
+      }
+      &:focus {
+        outline: none;
+        border: 1px solid #ffe9b1;
+        transition: border 0.2s ease;
+      }
+    }
+  }
+
+  .passwordInput {
+    position: relative;
+
+    .eyeIcon {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #b29564;
+      cursor: pointer;
+      font-size: 2rem;
+      display: flex; // 使用 flex 來更好地居中圖標
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 12px;
+    background-color: #b29564;
+    color: #fff;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken(#b29564, 10%);
+    }
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+
+  a {
+    color: #D8B783;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+
+    &:hover {
+      color: var(--primary-light);
+    }
+  }
+  p {
+    color: var(--bg-text-color);
+  }
+}
+
+.error {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+// 響應式設計
+@media (max-width: 992px) {
+  .loginPage {
+    flex-direction: column;
+  }
+
+  .imageSection,
+  .formSection {
+    flex: 0 0 100%;
+  }
+
+  .imageSection {
+    height: 200px;
+  }
+
+  .formSection {
+    // padding: 20px;
+  }
+
+  .formContainer {
+    padding: 10px;
+  }
+
+  .googleButton,
+  .submitButton {
+    font-size: 16px;
+  }
+
+  .divider {
+    font-size: 16px;
+  }
+
+  .form {
+    .inputGroup {
+      label {
+        font-size: 16px;
+      }
+
+      input {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+/* 顏色系統 */
+:root {
+  --primary: #003E52; 
+  --primary2: #B29564;
+  --primary-deep: #003445;
+  --primary-light: #ffe9b1;
+  --background: #003E52;
+  --background-dark: #333333;
+  --form-bg-dark: #e1ded8;
+  --text-color: #333333;
+  --text-hover-color: #B29564;
+  --bg-text-color: #faf7f0;
+  --white: #ffffff;
+  --error-color: #CA3D43;
+}
+@font-face {
+  font-family: "B2Hana-Regular";
+  src: url(https://cdn.jsdelivr.net/gh/max32002/max-hana@1.1/webfont/B2Hana-Regular-Lite.woff2) format("woff2")
+  , url(https://cdn.jsdelivr.net/gh/max32002/max-hana@1.1/webfont/B2Hana-Regular-Lite.woff) format("woff");
+}
+@font-face {
+  font-family: "B2Hana-Medium";
+  src: url(https://cdn.jsdelivr.net/gh/max32002/max-hana@1.1/webfont/B2Hana-Medium.woff2) format("woff2")
+  , url(https://cdn.jsdelivr.net/gh/max32002/max-hana@1.1/webfont/B2Hana-Medium.woff) format("woff");
+}
+/* 字體系統 */
+html {
+  font-family: "B2Hana-Regular", sans-serif; 
+  /* 我們使用的字體 */
+  font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.p {
+  font-family: "B2Hana-Regular", sans-serif;
+  font-weight: 100;
+  /* margin: 0; */
+}
+
+h1,
+.h1 {
+  font-size: 3.6rem;
+
+  @media screen and (max-width: 576px) {
+    font-size: 2.6rem;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 3.2rem;
+  @media screen and (max-width: 576px) {
+    font-size: 2.4rem;
+  }
+}
+
+h3,
+.h3 {
+  font-size: 2.6rem;
+  @media screen and (max-width: 576px) {
+    font-size: 2rem;
+  }
+}
+
+h4,
+.h4 {
+  font-size: 2.4rem;
+  @media screen and (max-width: 576px) {
+    font-size: 1.8rem;
+  }
+}
+
+h5,
+.h5 {
+  font-size: 2rem;
+  @media screen and (max-width: 576px) {
+    font-size: 2rem;
+  }
+}
+
+
+p,
+.p {
+  font-size: 1.6rem;
+  @media screen and (max-width: 576px) {
+    font-size: 1.4rem;
+  }
+}
+
+p2,
+.p2 {
+  font-size: 1.4rem;
+  @media screen and (max-width: 576px) {
+    font-size: 1.4rem;
+  }
+}
+/* 沒意外p2用不太到 */

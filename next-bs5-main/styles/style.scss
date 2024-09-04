@@ -1,0 +1,159 @@
+.shane-body {
+  background-color: #003e52;
+}
+
+.shane-ratio1-img {
+  animation: moveUpOpacity 3s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes moveUpOpacity {
+  from {
+    transform: translateY(100%);
+    /* 從下方開始 */
+    opacity: 0;
+    /* 透明度從 0 開始 */
+  }
+  to {
+    transform: translateY(0);
+    /* 移動到原始位置 */
+    opacity: 0.8;
+    /* 透明度變為 1 */
+  }
+}
+
+/* 這邊是商品 */
+.shane-wood {
+  height: 1px;
+  width: 30px;
+  background-color: #b29564;
+  margin: 0px 2vw;
+}
+
+.shane-store {
+  color: #b29564;
+}
+
+.shane-store1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.shane-product-name {
+  h5 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 150px;
+  }
+}
+
+.shane-store-picture {
+  img {
+    width: 100%;
+    aspect-ratio: 9/10;
+    /* 額外確保圖片縮放時會有最好的效果 */
+    object-fit: cover;
+    padding: 20px;
+  }
+}
+.shane-star {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shane-star2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.star3 {
+  width: 8px;
+  height: 8px;
+}
+.shane-p {
+  p {
+    color: #b29564;
+  }
+}
+
+.shane-activity {
+  h5 {
+    color: rgb(255, 255, 255);
+  }
+}
+
+.shane-detail {
+  margin-top: 10vh;
+
+  h5 {
+    color: #b29564;
+  }
+}
+
+.shane-union {
+  z-index: 1;
+  margin-top: 15vh;
+  padding-left: 10vw;
+
+  .shane-union2 {
+    position: relative;
+    right: 10vw;
+    bottom: 15vh;
+  }
+
+  h5 {
+    color: #ffffff;
+  }
+}
+
+.shane-article img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* 額外確保圖片縮放時會有最好的效果 */
+  object-fit: cover;
+  padding: 0 15px;
+}
+
+.shane-article {
+  h2 {
+    color: #b29564;
+  }
+}
+
+.shane-article2 {
+  padding-top: 3vh;
+  color: #b29564;
+}
+
+@media (max-width: 992px) {
+  .shane-activity1 {
+    display: none;
+  }
+
+  .shane-article {
+    text-align: center;
+  }
+
+  .shane-article_morepage {
+    text-align: center;
+  }
+
+  .shane-star2 {
+    padding: 0 2vw;
+  }
+  .shane-artitlce-disappear-992 {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .shane-star2 {
+    padding: 0 12vw;
+  }
+
+  .shane-ratio1-img {
+    width: 80px;
+  }
+}

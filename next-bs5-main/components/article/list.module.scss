@@ -1,0 +1,206 @@
+.article-list {
+  h4,
+  a {
+    color: var(--form-bg-dark);
+    font-family: 'B2Hana-Regular', sans-serif;
+    font-weight: 100;
+  }
+  .typetitle_group {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      border-bottom: none;
+      font-weight: 100;
+      padding: 0.5rem;
+      margin: 1rem 3rem;
+      font-size: 2rem;
+      color: var(--form-bg-dark);
+
+      &:hover {
+        color: var(--text-hover-color);
+      }
+    }
+
+    .btn {
+      text-decoration: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .typetitle_group {
+      a {
+        font-size: 1.6rem;
+        padding: 0;
+        margin: 1rem 1.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 390px) {
+    .typetitle_group {
+      display: none;
+    }
+  }
+
+  .articlecard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--primary2);
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #ffffff0d;
+    }
+
+    .arrow-animation {
+      width: 50px;
+      position: relative;
+      clip-path: inset(0 0 0 50%);
+      opacity: 1;
+      transform: translateX(-50%);
+      transition: transform 0.3s ease-in-out 0s, clip-path 0.3s ease-in-out 0s;
+    }
+
+    &:hover .arrow-animation {
+      clip-path: inset(0 0 0 0);
+      transform: translateX(0%);
+    }
+
+    .articlecard-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center center;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1200px) {
+      .articlecard-img {
+        width: auto;
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .articlecard-img {
+        width: auto;
+        height: 350px;
+      }
+    }
+
+    .articlec-body {
+      display: flex;
+      flex-direction: column;
+
+      .timeandnum {
+        display: flex;
+        align-items: center;
+
+        i,
+        p {
+          color: var(--timenadnum-color);
+        }
+        .icon {
+          font-size: 1.4rem;
+        }
+      }
+
+      .arttitle {
+        color: var(--primary2);
+        height: 48px;
+      }
+
+      .arttitle,
+      .arttext {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+      }
+
+      .arttext {
+        color: var(--form-bg-dark);
+      }
+    }
+  }
+  .articlelist {
+    .articleLink {
+      text-decoration: none;
+    }
+  }
+  .articlepagearea {
+    margin: 40px 0px;
+    display: flex;
+    flex-direction: column; // 如果需要上下排列
+    align-items: center;
+    .starpage-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .articlepage {
+      width: 100%;
+      display: flex;
+      font-size: 2rem;
+      justify-content: center;
+      padding: 0;
+      > img {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .articlepagenume {
+        margin: 3px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+          color: var(--primary2);
+          background-color: transparent;
+          margin: 5px;
+          width: 3.6rem; // 設定寬度與字體大小相同
+          height: 3.6rem; // 設定高度與寬度相同
+          align-items: center;
+          padding: 0;
+          border: none;
+          font-family: 'B2Hana-Regular', sans-serif;
+          font-weight: 100;
+          &:hover {
+            border-radius: 50%;
+            background-color: #003445;
+            border: 1px solid var(--primary2);
+          }
+        }
+        .active {
+          color: var(--primary2);
+          background-color: transparent;
+          margin: 5px;
+          width: 3.6rem; // 設定寬度與字體大小相同
+          height: 3.6rem; // 設定高度與寬度相同
+          align-items: center;
+          padding: 0;
+          border-radius: 50%;
+          background-color: #003445;
+          border: 1px solid var(--primary2);
+        }
+      }
+    }
+  }
+}
+.headerImg {
+  width: 100%;
+  img {
+    width: 100%;
+    height: 50%;
+  }
+}

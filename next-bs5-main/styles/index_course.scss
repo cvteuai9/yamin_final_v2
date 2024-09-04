@@ -1,0 +1,84 @@
+/* 確保容器在寬度上有一個最大值 */
+.shane_test_container {
+  position: relative;
+  display: flex;
+  height: 80vh; /* 使用視窗高度，讓容器充滿整個視窗高度 */
+  max-width: 50vw; /* 設定最大寬度 */
+  margin: 0 auto; /* 水平居中對齊容器 */
+}
+
+/* 調整 wrapper 的寬度和高度 */
+.shane_test_wrapper {
+  width: 100%; /* 使用相對單位，這樣在不同尺寸下可以適應 */
+  height: 100%; /* 使用相對單位 */
+  max-width: 1200px; /* 設定最大寬度，確保內容不會過大 */
+  max-height: 675px; /* 根據 16:9 比例計算的最大高度 */
+  position: relative; /* 確保課程名稱能相對定位 */
+}
+
+/* 調整頁面的樣式 */
+.shane_test_page {
+  position: absolute;
+  aspect-ratio: 16 / 9; /* 保持 16:9 比例 */
+  will-change: transform;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* 確保寬度和高度都是 100% */
+  height: 100%; /* 確保寬度和高度都是 100% */
+}
+
+.shane_test_page > div {
+  touch-action: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5),
+              0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);
+}
+
+/* 課程名稱的樣式 */
+.course-title {
+  margin-top: 10px;
+  width: 200px;
+  position: absolute;
+  top: 10px; /* 距離頂部的距離 */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white; /* 白色字體 */ /* 半透明黑色背景 */
+  padding: 10px 20px; /* 內距 */
+  border-radius: 8px; /* 圓角 */
+  font-size: 2em; /* 調整字體大小 */
+  z-index: 10; /* 確保名稱顯示在圖片上方 */
+}
+/* 調整 course-info 的樣式 */
+.course-info {
+  position: absolute;
+  top: 100px; /* 距離頂部的距離 */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white; /* 白色字體 */
+  background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+  padding: 10px 20px; /* 內距 */
+  border-radius: 8px; /* 圓角 */
+  z-index: 10; /* 確保名稱顯示在圖片上方 */
+  text-align: center; /* 文字居中 */
+}
+
+/* 調整課程描述的樣式 */
+.course-description {
+  margin-top: 80px; /* 調整名稱與描述之間的間距 */
+  height: 90px;
+  font-size: 1.2em; /* 調整字體大小 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 2px;
+}
+@media (max-width: 992px){
+  .shane_test_container {
+    height: 80vh; /* 使用視窗高度，讓容器充滿整個視窗高度 */
+    max-width: 80vw; /* 設定最大寬度 */
+  }
+}

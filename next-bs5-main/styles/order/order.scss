@@ -1,0 +1,217 @@
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--primary);
+}
+
+.mb-6 {
+  margin-bottom: 60px;
+}
+
+.order {
+  max-width: 1440px;
+  background-color: var(--primary);
+}
+.orderColH3 {
+  color: var(--primary2);
+}
+.orderTitle {
+  /* padding-left: 20px;
+    padding-right: 20px; */
+}
+.orderTitleMd {
+  display: none;
+}
+.orderlistRow {
+  color: white;
+  background-color: hsla(0, 0%, 100%, 0.116);
+  /* padding: 20px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.orderListBtn {
+  /* border-radius: 50%; */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font: inherit;
+  color: white;
+}
+.orderListBtn:hover {
+  color: var(--primary2);
+}
+.userTitle {
+  padding-bottom: 21px;
+  border-bottom: 2px solid var(--primary2);
+}
+.orderState {
+  color: white;
+  background-color: hsla(0, 0%, 100%, 0.116);
+  /* padding: 20px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.orderBack {
+  display: block;
+  font-size: 2.4rem;
+  color: var(--primary2);
+}
+.orderBack i {
+  font-size: 2.4rem;
+  color: var(--primary2);
+  transition: 0.5s;
+}
+.orderBack i:hover {
+  opacity: 0.6;
+}
+.orderStateMargin {
+  margin-bottom: 34px;
+}
+.cartlistBor .orderCartImg {
+  height: 140px;
+}
+.orderProductH2 {
+  color: var(--primary2);
+}
+.orderProductBtn {
+  background-color: hsla(0, 0%, 100%, 0.116);
+  border: none;
+  color: white;
+  padding-left: 10px;
+  padding-top: 10px;
+  border-radius: 50%;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.orderProductBtn:hover {
+  background-color: var(--primary2);
+  border: none;
+}
+.orderProductBtnDone {
+  background-color: hsla(0, 0%, 100%, 0.116);
+  color: var(--primary);
+  border: none;
+  padding-left: 10px;
+  padding-top: 10px;
+  border-radius: 50%;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.orderDetailBox {
+  color: white;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--primary2);
+  border-top: 2px solid var(--primary2);
+}
+.orderDetailBoxPtb {
+  padding-left: 140px;
+  padding-right: 100px;
+}
+.orderDetailBoxMl {
+  margin-right: 40px;
+}
+.orderDetailLastBoxMl {
+  margin-right: 78px;
+}
+.orderDetailRow {
+  color: white;
+  padding-top: 41px;
+  padding-bottom: 21px;
+  border-bottom: 2px solid var(--primary2);
+  border-top: 2px solid var(--primary2);
+}
+.orderDetailCol {
+  padding-left: 151px;
+}
+.orderPeName {
+  padding-right: 4rem;
+}
+.orderPeEmail {
+  padding-right: 1.9rem;
+}
+.orderPay {
+  margin-right: 200px;
+}
+.orderListCol {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.InOrderSubTotal {
+  padding-left: 0;
+  padding-right: 0;
+}
+.modalBtnSend {
+  color: white;
+
+  border: none;
+  background-color: var(--primary2);
+  padding: 6px;
+}
+.modalBtnSend:hover {
+  transition: 0.5s;
+  /* background-color: white; */
+  color: var(--primary);
+  /* border:2px solid var(--primary2); */
+}
+/* rwd start */
+@media (max-width: 790px) {
+  .LiaoUserTitleMd {
+    display: none;
+  }
+  .orderColLeft {
+    display: none;
+  }
+  .orderColRight {
+    width: 100%;
+  }
+  .orderColRight h5 {
+    font-size: 1.4rem;
+  }
+  .orderTitleMd {
+    display: block;
+  }
+  .orderStateCol {
+    width: 100%;
+  }
+  .orderState h3 {
+    font-size: 1.4rem;
+  }
+  .orderState h5 {
+    font-size: 1.2rem;
+  }
+  .orderStateImg img {
+    height: 40px;
+    width: 42px;
+  }
+  .orderStateTextMargin {
+    margin-bottom: 1.1rem;
+  }
+  .orderDetailCol {
+    padding-left: 0;
+  }
+  .orderDetailList h5 {
+    font-size: 1.4rem;
+  }
+  .orderDetailBoxMl {
+    margin-left: 16px;
+  }
+  .orderDetailBoxMl {
+    margin-right: 0;
+  }
+  .orderDetailBoxMlList {
+    padding-right: 4rem;
+  }
+  .orderDetailBoxMlList {
+    padding-right: 1rem;
+  }
+  .orderPay {
+    margin-right: 100px;
+  }
+}

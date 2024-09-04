@@ -1,0 +1,46 @@
+.profile-content {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0px auto;
+  .profile-content-left {
+    padding: 0px 0px 0px 50px;
+    // ====09-02 ju新增
+    @media (max-width: 768px) {
+      padding: 0px;
+    }
+  }
+  .profile-content-right {
+    padding: 0px 50px 0px 20px;
+  }
+}
+.profile-content .row {
+  width: 100%;
+}
+.profile-form {
+  padding-right: 50px;
+  .error {
+    font-size: 1.6rem;
+    color: #ff4d4f;
+  }
+}
+.profile-form {
+  /* 隱藏瀏覽器自帶的圖示 */
+  input[type='date']::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+  input[type='email'] {
+    border: none;
+    background-color: #ffffff39;
+  }
+}
+@media (max-width: 992px) {
+  .profile-form {
+    padding-right: 10px;
+  }
+  .profile-content {
+    .profile-content-right {
+      padding: 0px 20px 0px 20px;
+    }
+  }
+}

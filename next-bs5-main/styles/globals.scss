@@ -1,0 +1,207 @@
+// 檔案位置: styles/global.scss
+// 變數覆蓋用 (Variable overrides)
+// 全站配色 colors
+// $primary: #023047;
+// $secondary: rgba(41, 41, 40, 0.5);
+// $success: #7eb4e6;
+// $danger: #ff4136;
+// ===========專題↓
+:root {
+  --primary: #003e52;
+  --primary2: #b29564;
+  --primary-deep: #003445;
+  --primary-light: #ffe9b1;
+  --background: #003e52;
+  --background-dark: #333333;
+  --form-bg-dark: #e1ded8;
+  --text-color: #333333;
+  --text-hover-color: #b29564;
+  --bg-text-color: #faf7f0;
+  --white: #ffffff;
+  --error-color: #ca3d43;
+  //自行新增
+  --white50: #ffffff50;
+  --hover03: rgba(128, 128, 128, 0.3);
+}
+
+// ===========專題↑
+
+// 按鈕圓角邊 button radius
+$border-radius: 0.2em;
+$border-radius-sm: 0.2em;
+$border-radius-lg: 0.2em;
+
+// 固定card高度
+// https://getbootstrap.com/docs/5.3/components/card/#grid-cards
+$card-height: 100%;
+
+// ↑↑↑  變數覆蓋(Variable overrides) 要寫在這行"上面"  ↑↑↑
+// 這裡導入所有 bootstrap 樣式
+// 最後營運階段(實務)可以用部份導入來進行最佳化
+// 參考: https://getbootstrap.com/docs/5.3/customize/sass/#importing
+@import '~bootstrap/scss/bootstrap';
+// ↓↓↓  其它客製樣式要寫在這行的"下面" ↓↓↓
+
+// bs5內建圖示字體
+// 如果有使用其它圖示字體可以註解不使用
+@import '~bootstrap-icons/font/bootstrap-icons';
+
+// google Noto Sans TC 字體
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500&display=swap';
+
+// fixed for __next root div
+#__next {
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+}
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+body {
+  font-family: 'Noto Sans TC Regular', Helvetica, Arial, 'PingFang TC',
+    '苹方-繁', 'Heiti TC', '黑體-繁', 'Microsoft JhengHei', '微軟正黑體',
+    // Cross-platform generic font family (default user interface font)
+    system-ui,
+    // Safari for macOS and iOS (San Francisco)
+    -apple-system,
+    // Windows
+    'Segoe UI',
+    // Android
+    Roboto,
+    // Basic web fallback
+    'Helvetica Neue',
+    Arial,
+    // Linux
+    'Noto Sans',
+    'Liberation Sans',
+    // Sans serif fallback
+    sans-serif,
+    // Emoji fonts
+    'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.form-member {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+// below is test only
+/* 顏色系統 */
+:root {
+  --primary: #003E52; 
+  --primary2: #B29564;
+  --primary-deep: #003445;
+  --primary-light: #ffe9b1;
+  --background: #003E52;
+  --background-dark: #333333;
+  --form-bg-dark: #e1ded8;
+  --text-color: #333333;
+  --text-hover-color: #B29564;
+  --bg-text-color: #faf7f0;
+  --white: #ffffff;
+  --error-color: #CA3D43;
+  --button-hover-color: #AA8342;
+  --timenadnum-color: #ffffffa0;
+}
+@font-face {
+  font-family: "B2Hana-Regular";
+  src: url(https://cdn.jsdelivr.net/gh/max32002/max-hana@1.1/webfont/B2Hana-Regular-Lite.woff2) format("woff2")
+  , url(https://cdn.jsdelivr.net/gh/max32002/max-hana@1.1/webfont/B2Hana-Regular-Lite.woff) format("woff");
+}
+@font-face {
+  font-family: "B2Hana-Medium";
+  src: url(https://cdn.jsdelivr.net/gh/max32002/max-hana@1.1/webfont/B2Hana-Medium.woff2) format("woff2")
+  , url(https://cdn.jsdelivr.net/gh/max32002/max-hana@1.1/webfont/B2Hana-Medium.woff) format("woff");
+}
+/* 字體系統 */
+html {
+  font-family: "B2Hana-Regular", sans-serif; 
+  /* 我們使用的字體 */
+  font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.p {
+  font-family: "B2Hana-Regular", sans-serif;
+  font-weight: 100;
+  /* margin: 0; */
+}
+
+h1,
+.h1 {
+  font-size: 3.6rem; /* 36px */
+
+  @media screen and (max-width: 576px) {
+    font-size: 2.6rem;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 3.2rem; /* 32px */
+  @media screen and (max-width: 576px) {
+    font-size: 2.4rem;
+  }
+}
+
+h3,
+.h3 {
+  font-size: 2.6rem; /* 26px */
+  @media screen and (max-width: 576px) {
+    font-size: 2rem;
+  }
+}
+
+h4,
+.h4 {
+  font-size: 2.4rem; /* 24px */
+  @media screen and (max-width: 576px) {
+    font-size: 1.8rem;
+  }
+}
+
+h5,
+.h5 {
+  font-size: 2rem; /* 20px */
+  @media screen and (max-width: 576px) {
+    font-size: 2rem;
+  }
+}
+
+
+p,
+.p {
+  font-size: 1.6rem; /* 16px */
+  @media screen and (max-width: 576px) {
+    font-size: 1.4rem;
+  }
+}
+
+p2,
+.p2 {
+  font-size: 1.4rem;
+  @media screen and (max-width: 576px) {
+    font-size: 1.4rem;
+  }
+}
+/* 沒意外p2用不太到 */
+
+body{
+  background-color: var(--background);
+}

@@ -1,0 +1,133 @@
+/* ===julia 08-30 test ↓*/
+.sidebar {
+  height: 100vh; /* 使用視窗高度 */
+  position: sticky;
+  top: 100px;
+  // overflow-y: auto;
+  /* 如果內容超出，允許滾動 */
+}
+/* =================================== */
+
+.left-nav {
+  font-size: 20px;
+  background-color: var(--primary);
+  color: var(--primary2);
+  width: 300px;
+  height: 310px;
+  & ul {
+    border: var(--primary2) 1px solid;
+    margin: 0px;
+    padding: 0px 20px 50px 20px;
+    @media (max-width: 768px) {
+      border: 1px transparent;
+      padding: 0px;
+    }
+    & li {
+      margin-top: 20px;
+      padding-bottom: 18px;
+      border-bottom: #b29564 1px solid;
+      @media (max-width: 768px) {
+        border: 1px transparent;
+        margin-top: 0px;
+        padding-bottom: 0px;
+      }
+      list-style: none;
+      & a {
+        padding-left: 15px;
+        text-decoration: none; /* 移除底線 */
+        color: inherit; /* 繼承父層的字體顏色 */
+      }
+      & :hover {
+        border-left: var(--primary2) 5px solid;
+        padding-left: 10px;
+      }
+      .fromProfile,
+      .fromOrder,
+      .fromCupon,
+      .fromFavorite {
+        border-left: var(--primary2) 5px solid;
+        padding-left: 10px;
+      }
+    }
+  }
+  .line {
+    padding: 22px;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+  }
+}
+// ======0902test
+/* Leftnav 的 CSS 文件 */
+
+.left-nav.sidebar {
+  // width: 100%;
+  height: auto;
+}
+
+.left-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+// .left-nav li {
+//   margin-bottom: 10px;
+// }
+
+.left-nav a {
+  text-decoration: none;
+  color: inherit; /* 使用默認文字顏色 */
+  display: block;
+  // padding: 5px 0;
+}
+
+.left-nav-line {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .left-nav{
+    width: 100%;
+  }
+  .left-nav.sidebar {
+    
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    // padding: 10px 0;
+  }
+
+  .left-nav.sidebar::-webkit-scrollbar {
+    display: none; /* 隱藏滾動條 */
+  }
+
+  .left-nav ul {
+    flex-direction: row;
+  }
+
+  .left-nav li {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+  .left-nav-line > img {
+    display: none;
+  }
+
+  // .left-nav li:last-child {
+  //   margin-right: 15px; /* 確保最後一個項目也有右邊距，便於滾動到底 */
+  // }
+
+  .left-nav a {
+    padding: 5px 10px;
+    /* 可以添加一些視覺效果，如背景色或邊框 */
+    background-color: #f0f0f0;
+    // border-radius: 5px;
+  }
+
+  // .left-nav-line {
+  //   display: none; /* 在移動版隱藏裝飾線 */
+  // }
+}

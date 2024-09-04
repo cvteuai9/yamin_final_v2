@@ -1,0 +1,186 @@
+.course_background_body {
+  background-color: #003e52;
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 1400px;
+}
+.course_background_overflow{
+  overflow: auto;
+  text-decoration: none;
+}
+
+.course_background_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  overflow: hidden;
+  overflow: auto;
+  th,
+  td {
+    padding: 12px 15px;
+    border: 1px solid #b29564;
+    text-align: center;
+    color: #fff;
+    align-items: center;
+  }
+
+  th {
+    font-weight: bold;
+  }
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: #003e52;
+  color: #b29564;
+  border: 1px solid #b29564;
+  margin-right: 10px;
+  text-decoration: none;
+}
+.course_background_new{
+  margin-right: 10px;
+}
+.course_background_edit {
+  margin-right: 10px;
+}
+
+.course_background_submit {
+  margin-right: 10px;
+}
+
+.course_background_cancel {
+  margin-right: 10px;
+}
+
+.course_background_delete {
+  margin-right: 10px;
+}
+
+.course_background_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  z-index: 9999999999999;
+}
+
+.course_background_modal_content {
+  background-color: #003e52;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  color: #b29564;
+  border: 2px solid #b29564;
+  position: relative;
+  overflow-y: auto; // 當內容超出時顯示垂直滾動條
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #b29564;
+    font-size: 24px;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+input[type='text'],
+input[type='number'],
+input[type='date'],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #b29564;
+  color: #b29564;
+  background-color: #003e52;
+}
+
+.course_background_form-section {
+  margin-bottom: 20px;
+}
+
+.course_background_image-preview {
+  display: flex;
+  flex-wrap: nowrap; // 防止換行，保持橫向排版
+  gap: 10px;
+  overflow-x: auto; // 允許水平滾動
+  z-index: 1;
+  img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #b29564;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+  }
+}
+.course_background_image-upload-item{
+
+}
+.course_background_flex-row {
+  display: flex;
+  gap: 20px;
+
+  .form-item {
+    flex: 1;
+  }
+}
+.course_background_page {
+  justify-content: center;
+  display: flex;
+}
+.course_background_number {
+  font-size: 12px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .course_background_modal_content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  input[type='text'],
+  input[type='number'],
+  input[type='date'],
+  textarea,
+  select {
+    font-size: 14px;
+  }
+
+  .course_background_image-preview img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .course_background_flex-row {
+    flex-direction: column;
+  }
+
+  .container {
+    min-width: 100%; // 在小螢幕上調整容器寬度
+    overflow: auto;
+  }
+}

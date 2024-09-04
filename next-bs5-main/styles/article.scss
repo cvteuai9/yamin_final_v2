@@ -1,0 +1,417 @@
+// 老師註冊表單
+.teacher-register {
+  input {
+    color: #000;
+  }
+}
+.test-profileform {
+  color: white;
+}
+// 測試index
+.testlogin {
+  color: var(--bg-text-color);
+}
+// 商品細節全域
+.articledetail {
+  h5,
+  p {
+    color: var(--bg-text-color);
+  }
+  font-family: 'B2Hana-Regular', sans-serif;
+  font-weight: 100;
+}
+
+/* ------商品細節頁右邊detail------ */
+
+.article_info {
+  opacity: 1;
+}
+
+@media (max-width: 992px) {
+  .article_info {
+    opacity: 0;
+  }
+}
+
+/* .article_info {
+  background-color: rgba(255, 255, 255, 0.05);
+} */
+.bgc-right {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.article_right_title {
+  color: var(--form-bg-dark);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--primary2);
+}
+
+.section-heading {
+  color: var(--form-bg-dark);
+  /* color: var(--primary2); */
+}
+
+.articles_group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+
+  a {
+    cursor: pointer;
+    color: var(--form-bg-dark);
+    /* color: var(--timenadnum-color); */
+    font-size: 1.6rem;
+    padding: 1rem;
+
+    &:hover {
+      color: var(--text-hover-color);
+    }
+  }
+
+  .btn {
+    text-decoration: none;
+  }
+}
+
+.article_search_block {
+  position: relative;
+  display: inline-block;
+  padding: 20px 18px;
+  width: 100%;
+  z-index: 1;
+
+  input {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--primary2);
+    color: #fff;
+    background-color: var(--background);
+    background-color: rgba(255, 255, 255, 0.02);
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    z-index: 1;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:placeholder {
+      color: var(--primary2);
+      margin-left: 1rem;
+    }
+  }
+
+  .icon {
+    padding: 0px;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    /*距離上層50%,但會太下面所以*/
+    transform: translateY(-50%);
+    /*自己本身高度往上調50%*/
+    color: var(--primary2);
+    background: none;
+    border: none;
+  }
+}
+
+.hot_article,
+.new_article {
+  .article_title {
+    text-decoration: none;
+    color: var(--bg-text-color);
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  .hot_article_group,
+  .new_article_group {
+    .timeandnum {
+      display: flex;
+      align-items: center;
+
+      p {
+        color: var(--timenadnum-color);
+      }
+    }
+
+    padding: 20px;
+
+    a:hover {
+      color: var(--text-hover-color);
+    }
+  }
+}
+
+/* --------------商品細節頁detail左邊--------------- */
+
+.article-left {
+  .mobile {
+    display: flex;
+    align-items: center;
+  }
+
+  .timeandnum {
+    font-size: 1.6rem;
+    color: var(--bg-text-color);
+
+    /* padding: 0.5rem 1rem; */
+    i,
+    p {
+      color: var(--timenadnum-color);
+    }
+  }
+
+  .article-text {
+    p {
+      color: var(--bg-text-color);
+    }
+  }
+
+  .addbookmarks {
+    cursor: pointer;
+    border: 1px solid var(--primary2);
+    height: 33px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: var(--button-hover-color);
+
+      .icon,
+      p {
+        color: #faf7f0 !important;
+      }
+    }
+
+    .icon,
+    p {
+      font-size: 1.6rem;
+      color: var(--primary2);
+    }
+    button {
+      border: none;
+    }
+  }
+
+  .bd-b1 {
+    border-bottom: 1px solid var(--primary2);
+  }
+
+  .article-text {
+    font-size: 2rem;
+    line-height: 3.6rem;
+    p {
+      white-space: pre-line;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .article-left {
+    .mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .addbookmarks {
+        margin: 0 0 20px 10px;
+        /* width: 35%; */
+      }
+    }
+  }
+}
+
+.article-left {
+  /* ------------------推薦好茶recommend------------------- */
+
+  .recom-tea_group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* minmax函數每列的最小寬度為200px。
+    1fr: 每列的最大寬度為1個 fr (fraction)，表示這列會根據剩餘的可用空間來擴展。 */
+    gap: 16px;
+  }
+
+  .recom-tea-item {
+    width: 100%;
+
+    border: 1px solid var(--primary2);
+    background-color: #aa8442;
+    /*here*/
+    background-color: var(--background);
+    /*here*/
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .recom-tea-img {
+      width: 100%;
+      height: 220px;
+      background-size: 100%;
+      /* 不能用 */
+      /* background-size: cover; */
+      background-position: center;
+      transition: background-size 0.5s;
+      background-repeat: no-repeat;
+      border-bottom: 1px solid var(--primary2);
+    }
+
+    &:hover {
+      background-color: #ffffff1e;
+      filter: brightness(105%);
+      /* border: 1px solid var(--primary-light); */
+      cursor: pointer;
+    }
+
+    /* img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: background-size 0.5s ease;
+    } */
+
+    .recom-tea-text {
+      .title {
+        color: var(--form-bg-dark);
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        min-height: 48px;
+      }
+
+      .price {
+        p {
+          color: var(--primary2);
+          /* color: var(--primary); */
+          /* color: var(--form-bg-dark); */
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .article-left {
+    .recom-tea_group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .recom-tea-item {
+      .recom-tea-img {
+        width: 100%;
+        height: 160px;
+        background-size: cover;
+      }
+    }
+  }
+}
+
+.article-left {
+  .recom-tea-item:hover .recom-tea-img {
+    background-size: 110%;
+  }
+}
+
+.article-left {
+  /* ------------------留言------------------- */
+  .comment-block {
+    .comment-item {
+      display: flex;
+
+      /* align-items: center; */
+      img {
+        width: 45px;
+        height: 45px;
+      }
+
+      .time {
+        color: var(--timenadnum-color);
+        text-wrap: nowrap;
+      }
+
+      .com-text,
+      .input-com-text {
+        width: auto;
+        min-height: 70px;
+        border: 1px solid var(--primary2);
+        flex-grow: 1;
+      }
+
+      .input-com-text {
+        display: flex;
+        flex-direction: column;
+
+        textarea {
+          width: 100%;
+          color: var(--bg-text-color);
+          min-height: 70px;
+          resize: none;
+          border: none;
+          background-color: var(--background);
+          border-radius: 0%;
+          font-size: 1.6rem;
+          caret-color: var(--bg-text-color);
+          text-indent: 0.2rem;
+
+          &:focus {
+            outline: none;
+          }
+
+          &:placeholder {
+            color: var(--primary2);
+            margin-left: 1rem;
+          }
+        }
+
+        .btn-com-text {
+          font-size: 1.4rem;
+
+          .cancle,
+          .submit {
+            color: var(--bg-text-color);
+            border: none;
+            padding: 5px 5px;
+            border: 1px solid transparent;
+          }
+
+          .cancle {
+            background-color: var(--background);
+
+            &:hover {
+              border: 1px solid var(--primary2);
+            }
+          }
+
+          .submit {
+            color: var(--bg-text-color);
+            background-color: var(--text-hover-color);
+
+            &:hover {
+              background-color: var(--button-hover-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .article-left {
+    .comment-block {
+      .comment-item {
+        flex-direction: column;
+        .com-text,
+        .input-com-text {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}
+
+

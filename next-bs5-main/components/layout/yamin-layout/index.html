@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="Normalize.css">
+    <link rel="stylesheet" href="public.css">
+    <link rel="stylesheet" href="styleHeader.css">
+    <title>header</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" id="logo">
+                <img src="images/logo橫向.png" alt="" height="70" width="140" class="logo">
+            </div>
+            <ul class="links">
+                <li>
+                    <div class="svg_header">
+                        <a href="#"><p>首頁</p></a>
+                        <img src="images/外框.png" alt="" class="svg1">
+                    </div>
+                </li>
+                <li>
+                    <div class="svg_store">
+                        <img src="images/外框.png" alt="" class="svg2">
+                        <a href="#"><p>商品</p></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="svg_class">
+                        <img src="images/外框.png" alt="" class="svg3">
+                        <a href="#"><p>課程</p></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="svg_article">
+                        <img src="images/外框.png" alt="" class="svg4">
+                        <a href="#"><p>文章</p></a>
+                    </div>
+                </li>
+            </ul>
+            <div class="btn">
+                <div class="search">
+                    <input type="search" id="search" name="" class="search"
+                        style="background-color: #003E52; border: 2px solid #B29564; height: 25px; width: 100px; border-radius: 100px;" />
+                </div>
+                <div class="love_btn">
+                    <img src="images/愛心.png" alt="" height="25" width="30">
+                </div>
+                <div class="action_btn">
+                    <img src="images/購物車.png" alt="" height="25" width="30">
+                </div>
+                <div class="circle">
+                </div>
+            </div>
+            <div class="toggle_btn">
+                <div class="search_flex">
+                    <input type="search" id="search2" name="" class="search2"
+                        style="background-color: #003E52; border: 2px solid #B29564; height: 20px; width: 100px; border-radius: 100px;" />
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown_menu">
+            <div class="logo2" id="logo2">
+                <img src="images/LOGO 直向.png" alt="" height="200" width="125">
+            </div>
+            <li><a href="首頁">首頁</a></li>
+            <li><a href="商品">商品</a></li>
+            <li><a href="課程">課程</a></li>
+            <li><a href="文章">文章</a></li>
+            <li><a href="文章">喜歡的商品</a></li>
+            <li><a href="文章">個人資料</a></li>
+        </div>
+    </div>
+    </header>
+    <div class="star">
+        <img src="/images/star.png" alt="" width="16" height="16">
+        <img src="/images/Vector 25.png" alt="" width="100%" height="1.5px" style="margin: 0 -2px;">
+        <img src="/images/star.png" alt="" width="16" height="16">
+    </div>
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+        const navbar = document.querySelector('.navbar')
+
+        const search2 = document.querySelector('.search2')
+        const logo = document.getElementById('logo') // 獲取 LOGO 元素
+        const logo2 = document.getElementById('logo2') // 獲取 LOGO 元素
+
+        toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            search2.classList.toggle('disappear')
+            const disappear = search2.classList.contains('disappear')
+
+            navbar.classList.toggle('disappear2')
+            const disappear2 = navbar.classList.contains('disappear2')
+
+            // 控制 LOGO 的顯示與否
+            // 
+            if (isOpen) {
+                logo.style.display = 'none'
+            } else {
+                logo.style.display = ''
+            }
+
+            toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+        }
+
+        // 添加事件監聽器，阻止事件冒泡
+        const searchInput1 = document.getElementById('search')
+        const searchInput2 = document.getElementById('search2')
+
+        searchInput1.onclick = function (event) {
+            event.stopPropagation()
+        }
+
+        searchInput2.onclick = function (event) {
+            event.stopPropagation()
+        }
+
+        // window.onresize = function () {
+        //     if (window.innerWidth > 992) {
+        //         logo.style.display = '';
+        //     } else if (window.innerWidth < 992) {
+        //         logo.style.display = 'none';
+        //     }
+        // }
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 992) {
+                dropDownMenu.classList.remove("open");
+                search2.classList.remove("disappear");
+                navbar.classList.remove("disappear2");
+                logo.style.display = '';
+                toggleBtnIcon.classList = "fa-solid fa-bars";
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,482 @@
+[
+  {
+    "id": 1,
+    "course_id": 1,
+    "paths_id": 1
+  },
+  {
+    "id": 2,
+    "course_id": 1,
+    "paths_id": 2
+  },
+  {
+    "id": 3,
+    "course_id": 1,
+    "paths_id": 3
+  },
+  {
+    "id": 4,
+    "course_id": 2,
+    "paths_id": 4
+  },
+  {
+    "id": 5,
+    "course_id": 2,
+    "paths_id": 5
+  },
+  {
+    "id": 6,
+    "course_id": 2,
+    "paths_id": 6
+  },
+  {
+    "id": 7,
+    "course_id": 3,
+    "paths_id": 7
+  },
+  {
+    "id": 8,
+    "course_id": 3,
+    "paths_id": 8
+  },
+  {
+    "id": 9,
+    "course_id": 3,
+    "paths_id": 9
+  },
+  {
+    "id": 10,
+    "course_id": 4,
+    "paths_id": 10
+  },
+  {
+    "id": 11,
+    "course_id": 4,
+    "paths_id": 11
+  },
+  {
+    "id": 12,
+    "course_id": 4,
+    "paths_id": 12
+  },
+  {
+    "id": 13,
+    "course_id": 5,
+    "paths_id": 13
+  },
+  {
+    "id": 14,
+    "course_id": 5,
+    "paths_id": 14
+  },
+  {
+    "id": 15,
+    "course_id": 5,
+    "paths_id": 15
+  },
+  {
+    "id": 16,
+    "course_id": 6,
+    "paths_id": 16
+  },
+  {
+    "id": 17,
+    "course_id": 6,
+    "paths_id": 17
+  },
+  {
+    "id": 18,
+    "course_id": 6,
+    "paths_id": 18
+  },
+  {
+    "id": 19,
+    "course_id": 7,
+    "paths_id": 19
+  },
+  {
+    "id": 20,
+    "course_id": 7,
+    "paths_id": 20
+  },
+  {
+    "id": 21,
+    "course_id": 7,
+    "paths_id": 21
+  },
+  {
+    "id": 22,
+    "course_id": 8,
+    "paths_id": 22
+  },
+  {
+    "id": 23,
+    "course_id": 8,
+    "paths_id": 23
+  },
+  {
+    "id": 24,
+    "course_id": 8,
+    "paths_id": 24
+  },
+  {
+    "id": 25,
+    "course_id": 9,
+    "paths_id": 25
+  },
+  {
+    "id": 26,
+    "course_id": 9,
+    "paths_id": 26
+  },
+  {
+    "id": 27,
+    "course_id": 9,
+    "paths_id": 27
+  },
+  {
+    "id": 28,
+    "course_id": 10,
+    "paths_id": 28
+  },
+  {
+    "id": 29,
+    "course_id": 10,
+    "paths_id": 29
+  },
+  {
+    "id": 30,
+    "course_id": 10,
+    "paths_id": 30
+  },
+  {
+    "id": 31,
+    "course_id": 11,
+    "paths_id": 31
+  },
+  {
+    "id": 32,
+    "course_id": 11,
+    "paths_id": 32
+  },
+  {
+    "id": 33,
+    "course_id": 11,
+    "paths_id": 33
+  },
+  {
+    "id": 34,
+    "course_id": 12,
+    "paths_id": 34
+  },
+  {
+    "id": 35,
+    "course_id": 12,
+    "paths_id": 35
+  },
+  {
+    "id": 36,
+    "course_id": 12,
+    "paths_id": 36
+  },
+  {
+    "id": 37,
+    "course_id": 13,
+    "paths_id": 37
+  },
+  {
+    "id": 38,
+    "course_id": 13,
+    "paths_id": 38
+  },
+  {
+    "id": 39,
+    "course_id": 13,
+    "paths_id": 39
+  },
+  {
+    "id": 40,
+    "course_id": 14,
+    "paths_id": 40
+  },
+  {
+    "id": 41,
+    "course_id": 14,
+    "paths_id": 41
+  },
+  {
+    "id": 42,
+    "course_id": 14,
+    "paths_id": 42
+  },
+  {
+    "id": 43,
+    "course_id": 15,
+    "paths_id": 43
+  },
+  {
+    "id": 44,
+    "course_id": 15,
+    "paths_id": 44
+  },
+  {
+    "id": 45,
+    "course_id": 15,
+    "paths_id": 45
+  },
+  {
+    "id": 46,
+    "course_id": 16,
+    "paths_id": 46
+  },
+  {
+    "id": 47,
+    "course_id": 16,
+    "paths_id": 47
+  },
+  {
+    "id": 48,
+    "course_id": 16,
+    "paths_id": 48
+  },
+  {
+    "id": 49,
+    "course_id": 17,
+    "paths_id": 49
+  },
+  {
+    "id": 50,
+    "course_id": 17,
+    "paths_id": 50
+  },
+  {
+    "id": 51,
+    "course_id": 17,
+    "paths_id": 51
+  },
+  {
+    "id": 52,
+    "course_id": 18,
+    "paths_id": 52
+  },
+  {
+    "id": 53,
+    "course_id": 18,
+    "paths_id": 53
+  },
+  {
+    "id": 54,
+    "course_id": 18,
+    "paths_id": 54
+  },
+  {
+    "id": 55,
+    "course_id": 19,
+    "paths_id": 55
+  },
+  {
+    "id": 56,
+    "course_id": 19,
+    "paths_id": 56
+  },
+  {
+    "id": 57,
+    "course_id": 19,
+    "paths_id": 57
+  },
+  {
+    "id": 58,
+    "course_id": 20,
+    "paths_id": 58
+  },
+  {
+    "id": 59,
+    "course_id": 20,
+    "paths_id": 59
+  },
+  {
+    "id": 60,
+    "course_id": 20,
+    "paths_id": 60
+  },
+  {
+    "id": 61,
+    "course_id": 21,
+    "paths_id": 61
+  },
+  {
+    "id": 62,
+    "course_id": 21,
+    "paths_id": 62
+  },
+  {
+    "id": 63,
+    "course_id": 21,
+    "paths_id": 63
+  },
+  {
+    "id": 64,
+    "course_id": 22,
+    "paths_id": 64
+  },
+  {
+    "id": 65,
+    "course_id": 22,
+    "paths_id": 65
+  },
+  {
+    "id": 66,
+    "course_id": 22,
+    "paths_id": 66
+  },
+  {
+    "id": 67,
+    "course_id": 23,
+    "paths_id": 67
+  },
+  {
+    "id": 68,
+    "course_id": 23,
+    "paths_id": 68
+  },
+  {
+    "id": 69,
+    "course_id": 23,
+    "paths_id": 69
+  },
+  {
+    "id": 70,
+    "course_id": 24,
+    "paths_id": 70
+  },
+  {
+    "id": 71,
+    "course_id": 24,
+    "paths_id": 71
+  },
+  {
+    "id": 72,
+    "course_id": 24,
+    "paths_id": 72
+  },
+  {
+    "id": 73,
+    "course_id": 25,
+    "paths_id": 73
+  },
+  {
+    "id": 74,
+    "course_id": 25,
+    "paths_id": 74
+  },
+  {
+    "id": 75,
+    "course_id": 25,
+    "paths_id": 75
+  },
+  {
+    "id": 76,
+    "course_id": 26,
+    "paths_id": 76
+  },
+  {
+    "id": 77,
+    "course_id": 26,
+    "paths_id": 77
+  },
+  {
+    "id": 78,
+    "course_id": 26,
+    "paths_id": 78
+  },
+  {
+    "id": 79,
+    "course_id": 27,
+    "paths_id": 79
+  },
+  {
+    "id": 80,
+    "course_id": 27,
+    "paths_id": 80
+  },
+  {
+    "id": 81,
+    "course_id": 27,
+    "paths_id": 81
+  },
+  {
+    "id": 82,
+    "course_id": 28,
+    "paths_id": 82
+  },
+  {
+    "id": 83,
+    "course_id": 28,
+    "paths_id": 83
+  },
+  {
+    "id": 84,
+    "course_id": 28,
+    "paths_id": 84
+  },
+  {
+    "id": 85,
+    "course_id": 29,
+    "paths_id": 85
+  },
+  {
+    "id": 86,
+    "course_id": 29,
+    "paths_id": 86
+  },
+  {
+    "id": 87,
+    "course_id": 29,
+    "paths_id": 87
+  },
+  {
+    "id": 88,
+    "course_id": 30,
+    "paths_id": 88
+  },
+  {
+    "id": 89,
+    "course_id": 30,
+    "paths_id": 89
+  },
+  {
+    "id": 90,
+    "course_id": 30,
+    "paths_id": 90
+  },
+  {
+    "id": 91,
+    "course_id": 31,
+    "paths_id": 91
+  },
+  {
+    "id": 92,
+    "course_id": 31,
+    "paths_id": 92
+  },
+  {
+    "id": 93,
+    "course_id": 31,
+    "paths_id": 93
+  },
+  {
+    "id": 94,
+    "course_id": 32,
+    "paths_id": 94
+  },
+  {
+    "id": 95,
+    "course_id": 32,
+    "paths_id": 95
+  },
+  {
+    "id": 96,
+    "course_id": 32,
+    "paths_id": 96
+  }
+]

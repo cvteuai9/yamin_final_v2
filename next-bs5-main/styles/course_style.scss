@@ -1,0 +1,234 @@
+.shane-body-up{
+  background-color: #003e52;
+  margin-top: 6vw;
+}
+
+.shane-course-wood {
+  height: 1px;
+  width: 30px;
+  background-color: #b29564;
+  margin: 0px 2vw;
+}
+
+.shane-course-store {
+  color: #b29564;
+}
+
+.shane-course-star {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shane-course-activity img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* 額外確保圖片縮放時會有最好的效果 */
+  object-fit: cover;
+}
+
+.shane-course-class-all {
+  padding: 0 3vw;
+  background: none;
+  border: none;
+}
+
+.shane-course-class-all:hover {
+  transform: scale(1.1);
+}
+
+.shane-course-class-all img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* 額外確保圖片縮放時會有最好的效果 */
+  object-fit: contain;
+  min-width: 50px;
+}
+
+.shane-course-class-all h5 {
+  color: #b29564;
+}
+
+.shane-course-scroll-container {
+  display: flex;
+  overflow-x: none;
+
+  /* white-space: nowrap; */
+  h6 {
+    color: #b29564;
+  }
+}
+
+.shane-course-breadcrumb h5 {
+  color: #b29564;
+}
+
+.shane-course-card {
+  background-color: var(--primary);
+  border: none;
+  text-decoration: none;
+  a:link {
+    text-decoration: none;
+  }
+}
+
+.shane-course-activity_left img {
+  aspect-ratio: 16/9;
+  /* 也可以換成任何你想要的寬度 */
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.shane-course-card-body {
+  border: #b29564 1px solid;
+  width: 100%;
+  height: auto;
+  text-decoration: none;
+  h3 {
+    color: #ffffff;
+  }
+
+  .card-text {
+    color: #b29564;
+    padding-top: 10px;
+  }
+
+  p {
+    color: #ffffff;
+  }
+
+  .btn {
+    color: #ffffff;
+    background-color: #b29564;
+  }
+  .btn.like-btn {
+    background-color: #ffffff00;
+    border: none;
+  }
+  .btn.like-btn:hover {
+    transform: scale(1.1);
+  }
+  .description {
+    overflow: clip;
+    height: 6vh;
+    width: auto;
+    padding-right: 10px;
+  }
+}
+
+/* 基本樣式 */
+.shane-dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 0px;
+}
+
+.shane-dropdown-toggle {
+  padding: 1vh 1.5vw;
+  display: flex;
+  cursor: pointer;
+  background-color: #003e52;
+  color: #b29564;
+  border: 2px solid;
+  font-weight: bold;
+}
+
+.shane-dropdown-toggle::after {
+  content: '\25BC';
+  /* ▼ 符號 */
+  margin-left: 1vw;
+  margin-top: 0.3vw;
+  transition: transform 0.3s ease;
+}
+
+.shane-dropdown-menu {
+  position: absolute;
+  top: 55px;
+  padding: 0;
+  width: 100%;
+  background-color: #003e52;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid #b29564;
+  list-style-type: none;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  max-height: 100px;
+  /* 限制下拉選單的最大高度 */
+  overflow: auto;
+  /* 當內容超過最大高度時，顯示滾動條 */
+}
+
+/* 點擊下拉選單顯示 */
+.shane-dropdown:focus-within .shane-dropdown-menu {
+  opacity: 1;
+  transform: scaleY(1);
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.shane-dropdown:focus-within .shane-dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+/* 選單項目的樣式 */
+.shane-dropdown-menu li {
+  padding-left: 0.5vw;
+}
+
+.shane-dropdown-menu li {
+  .btn1 {
+    text-decoration: none;
+    color: #b29564;
+    background: none;
+    border: none;
+    z-index: 1;
+  }
+}
+
+.shane-dropdown-flex {
+  display: flex;
+}
+
+.course-shane-number {
+  p {
+    color: #b29564;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .shane-course-class-all {
+    margin-right: 0 25vw;
+  }
+
+  .shane-course-scroll-container {
+    overflow-x: scroll;
+    /* white-space: nowrap; */
+  }
+
+  .shane-course-activity_left {
+    padding-bottom: 3vw;
+  }
+
+  .shane-dropdown-menu {
+    top: 30px;
+  }
+
+  .shane-dropdown {
+    padding: 0;
+  }
+  .shane-course-card-body {
+    .description {
+      width: auto;
+      height: 7vh;
+    }
+  }
+  .shane-body-up{
+    margin-top: 13vw;
+  }
+}

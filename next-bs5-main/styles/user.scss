@@ -1,0 +1,175 @@
+// test忘記密碼
+.test-test-teacher {
+  > p {
+    color: var(--bg-text-color);
+  }
+  >label{
+    color: var(--bg-text-color);
+    font-size: 2rem;
+  }
+}
+
+//user頭像
+.header-right{
+  display: flex;
+  justify-content: flex-end;
+   // 移除可能的右側 margin
+   > * {
+    margin-right: 0;
+  }
+  
+  // 為最後一個元素添加右側間距
+  > *:last-child {
+    margin-right: 1rem;
+  }
+}
+.header-userimg{
+  padding: 0.5rem 2rem;
+}
+.header-personimgdiv {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  .header-personimg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    // border: 1px solid var(--primary2);
+  }
+}
+.header-personimgdiv-inside {
+  height: 50px;
+  width: 50px;
+}
+
+// 點擊user頭像menu
+.header-dropdownMenu {
+  font-family: 'B2Hana-Regular', sans-serif;
+  font-size: 1.6rem;
+  width: 300px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  transform: translateY(10px);
+  background-color: var(--primary-deep);
+  // border: 1px solid var(--primary2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  padding: 10px;
+
+  ul {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.6rem;
+    //未登入狀態時的登入註冊按鈕
+    .header-login {
+      border: none;
+      width: 100%;
+      color: var(--primary2);
+      padding: 10px 25px;
+      cursor: pointer;
+      text-wrap: nowrap;
+      // display: flex;
+      // justify-content: center;
+      &:hover {
+        background-color: var(--primary2);
+      }
+      .user-link-login {
+        .icon{
+          font-size: 1.8rem;
+        }
+        // padding: 7px;
+        width: 100%;
+        // border: 1px solid var(--primary2);
+        // background-color: var(--primary2);
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        a {
+          font-size: 1.8rem;
+          display: block;
+          width: 100%;
+          color: var(--bg-text-color);
+        }
+        // &:hover {
+        //   background-color: var(--primary);
+        // }
+      }
+    }
+    .header-register {
+      width: 100%;
+      padding: 10px 25px;
+      display: flex;
+      border: none;
+      // justify-content: center;
+      &:hover {
+        background-color: var(--primary2);
+      }
+      .user-link-register {
+        width: 100%;
+        // background-color: var(--primary2);
+        // padding: 7px;
+        text-align: center;
+        // width: 220px;
+        // border: 1px solid var(--primary2);
+        a {
+          font-size: 1.8rem;
+          color: var(--bg-text-color);
+          display: block;
+          width: 100%;
+        }
+        // &:hover {
+        //   background-color: var(--primary);
+        // }
+      }
+    }
+    .header-border{
+      border-bottom: 1px solid var(--primary2);
+    }
+    //登入成功後使用者圖像及使用者姓名
+    .header-userdiv {
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--primary2);
+    }
+    .header-dropdownMenu-li {
+      color: var(--bg-text-color);
+      padding: 15px 0px 10px 15px;
+    }
+    li {
+      width: 100%;
+      color: var(--primary2);
+      padding: 10px 25px;
+      cursor: pointer;
+      text-wrap: nowrap;
+      .user-link {
+        font-size: 1.8rem;
+      }
+      .icon {
+        font-size: 1.8rem;
+      }
+      a {
+        display: block;
+        width: 100%;
+      }
+      &:hover {
+        background-color: var(--primary);
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .header-dropdownMenu {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 60px;
+    position: fixed;
+  }
+}

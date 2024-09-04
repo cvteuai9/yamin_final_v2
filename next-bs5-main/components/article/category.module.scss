@@ -1,0 +1,278 @@
+.article-category {
+  h3,
+  p {
+    color: var(--bg-text-color);
+  }
+
+  .grid-item {
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+
+    h3 {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-in-out forwards;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      width: 100%;
+      /* 使圖片寬度符合格子的寬度 */
+      height: 100%;
+      /* 使圖片高度符合格子的高度 */
+      object-fit: cover;
+      /* 保持圖片的比例並裁切超出部分 */
+      transition: filter 0.3s;
+    }
+
+    .category-section {
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      position: relative;
+      box-shadow: 1px 1px 5px rgba(178, 149, 100, 0.157),
+        -1px -1px 5px rgba(178, 149, 100, 0.157);
+    }
+
+    .category-scribe {
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 80%;
+      height: 80%;
+      background-color: rgba(255, 255, 255, 0.085);
+      transition: opacity 0.5s ease;
+
+      h5 {
+        opacity: 0;
+        margin-top: 3rem;
+        margin-left: 10px;
+        /* 30px */
+        color: var(--primary2);
+        padding: 1.6rem;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        transition: opacity 0.5s;
+        transition: transform 0.5s;
+      }
+
+      p {
+        opacity: 0;
+        padding: 1.6rem;
+        margin-right: 10px;
+        height: 100px;
+        transition: opacity 0.5s;
+        transition: transform 0.5s;
+      }
+
+      button {
+        opacity: 0;
+        font-size: 1.6rem;
+        padding: 5px 44px;
+        background-color: var(--primary2);
+        border: none;
+        color: var(--bg-text-color);
+        transition: opacity 0.5s;
+
+        &:hover {
+          background-color: var(--button-hover-color);
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .category-section:hover img {
+    /* background-color: #000; */
+    filter: brightness(45%);
+  }
+
+  .category-section:hover .category-scribe {
+    opacity: 1;
+  }
+
+  .category-section:hover .category-scribe h5 {
+    transform: translateX(-5px);
+    opacity: 1;
+  }
+
+  .category-section:hover .category-scribe p {
+    transform: translateX(5px);
+    opacity: 1;
+  }
+
+  .category-section:hover .category-scribe button {
+    /* transform: scaleX(1); */
+    opacity: 1;
+  }
+
+  @media (max-width: 1200px) {
+    .grid-item {
+      .category-scribe {
+        h5 {
+          margin-top: 1.6rem;
+          margin-left: 10px;
+          padding: 1rem;
+        }
+
+        p {
+          padding: 1rem;
+          margin-right: 10px;
+          height: 80px;
+        }
+
+        button {
+          padding: 5px 44px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .grid-item {
+      .category-scribe {
+        h5 {
+          font-size: 1.6rem;
+          margin-top: 1.4rem;
+          margin-left: 10px;
+          padding: -0px;
+        }
+
+        p {
+          font-size: 1.4rem;
+          padding: 1rem 1rem 0rem 1rem;
+          margin-right: 10px;
+          height: auto;
+        }
+
+        button {
+          font-size: 1.4rem;
+          padding: 5px 44px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .grid-item {
+      .category-scribe {
+        h5 {
+          margin-top: 2rem;
+          margin-left: 10px;
+          padding: 1.6rem;
+        }
+
+        p {
+          padding: 1.6rem;
+          margin-right: 10px;
+          height: 80px;
+        }
+
+        button {
+          padding: 5px 44px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .category-section img {
+      filter: brightness(55%);
+    }
+
+    .category-scribe {
+      /* 初始隱藏 */
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 3s ease-in-out;
+    }
+
+    .category-scribe h5,
+    .category-scribe p,
+    .category-scribe button {
+      opacity: 0;
+      transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+      /* 將多個過渡效果合併 */
+      transform: translateX(0);
+      /* 添加初始的 transform 值 */
+    }
+
+    .category-scribe.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* 將過渡效果的樣式合併到父元素 .category-scribe.visible 中，然後讓子元素繼承父元素的 visibility 屬性。 */
+    .category-scribe.visible h5 {
+      transform: translateX(-5px);
+      opacity: 1;
+    }
+
+    .category-scribe.visible p {
+      transform: translateX(5px);
+      opacity: 1;
+    }
+
+    .category-scribe.visible button {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .grid-item {
+      .category-scribe {
+        h5 {
+          font-size: 1.8rem;
+          margin-top: 2rem;
+          margin-left: 10px;
+          padding: 1rem;
+        }
+
+        p {
+          padding: 1.2rem;
+          margin-right: 10px;
+          height: 80px;
+        }
+
+        button {
+          font-size: 1.2rem;
+          padding: 5px 44px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 445px) {
+    .grid-item {
+      .category-scribe {
+        h5 {
+          font-size: 1.6rem;
+          margin-top: 1.4rem;
+          margin-left: 10px;
+          padding: 0.5rem;
+        }
+
+        p {
+          padding: 0.5rem;
+          margin-right: 10px;
+          height: 80px;
+        }
+
+        button {
+          font-size: 1.4rem;
+          padding: 5px 44px;
+        }
+      }
+    }
+  }
+}

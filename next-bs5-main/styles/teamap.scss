@@ -1,0 +1,159 @@
+.teaMap {
+  .teaMapTitle {
+    color: var(--primary2);
+  }
+  .typeRadio {
+    .typeRadioLabel {
+      position: relative;
+      width: 23rem;
+      height: 10rem;
+      color: var(--primary2);
+      border: 0.1rem solid var(--primary2);
+      .houseRadioBackgroundDiv,
+      .factoryRadioBackgroundDiv {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+      }
+      .factoryRadioBackgroundDiv {
+        background: url('/images/teamap/teaFactory.jpg') center/cover no-repeat;
+      }
+      .houseRadioBackgroundDiv {
+        background: url('/images/teamap/teaHouse.jpg') center/cover no-repeat;
+      }
+      p {
+        position: absolute;
+        font-size: 4rem;
+        top: 2rem;
+        left: 33%;
+      }
+    }
+    .typeRadioLabel.active {
+      .houseRadioBackgroundDiv,
+      .factoryRadioBackgroundDiv {
+        opacity: 0.6;
+      }
+      p {
+        color: var(--primary-light);
+      }
+    }
+  }
+  .filterGroup {
+    select {
+      color: var(--white);
+      background-color: #003e52;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      font-size: 2rem;
+    }
+  }
+  .cardArea {
+    width: auto;
+    height: calc(100svh - 20rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #003445;
+    .storeCard {
+      width: 46rem;
+      padding: 0 1rem;
+      background-color: #003e52;
+      color: #b29564;
+      border: 0.1rem solid #b29564;
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.1);
+      }
+      .img {
+        width: 18rem;
+        height: 15.1rem;
+        padding: 1rem 0;
+        overflow: hidden;
+        > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      select {
+        appearance: none;
+        color: #b29564;
+        background-color: #003e52;
+        padding: 0 0.5rem;
+        border-radius: 0.5rem;
+        font-size: 2rem;
+      }
+      .cardInfo {
+        width: 25.8rem;
+        padding: 1rem 0 0 0.5rem;
+        .starArea .starLight {
+          color: #b29564;
+        }
+      }
+    }
+  }
+
+  .cardArea::-webkit-scrollbar {
+    width: 0.6rem;
+    height: 0.8rem;
+    background-color: #003e52;
+  }
+  .cardArea::-webkit-scrollbar-thumb {
+    background-color: #b29564;
+    height: 10rem;
+    border-radius: 1rem;
+  }
+  .googleMap {
+    width: calc(100% - 48rem);
+    .searchRangeOption {
+      select {
+        color: var(--white);
+        background-color: #003e52;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        font-size: 2rem;
+      }
+    }
+    .googleMapArea {
+      width: 100%;
+      height: calc(100vh - 10rem);
+      .gm-style-iw-chr {
+        button span {
+          position: absolute;
+          display: flex;
+          top: 0;
+          right: 0;
+          margin: 0 !important;
+        }
+        .gm-style-iw-ch {
+          padding-top: 10px;
+          max-width: 25.2rem;
+          word-break: break-all;
+        }
+      }
+      .gm-style-iw-d {
+        max-width: 30rem;
+      }
+      .infoWindowImg {
+        width: 100%;
+        height: 20rem;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .infoWindowText {
+        width: 100%;
+        word-break: break-all;
+      }
+      p,
+      a {
+        font-size: 1.4rem;
+        font-weight: bold;
+      }
+      /* .gm-style-iw.gm-style-iw-c {
+      } */
+    }
+  }
+}
