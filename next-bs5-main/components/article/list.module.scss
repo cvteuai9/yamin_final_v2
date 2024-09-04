@@ -1,7 +1,7 @@
 .article-list {
   h4,
   a {
-    color: var(--form-bg-dark);
+    color: #D8B783;
     font-family: 'B2Hana-Regular', sans-serif;
     font-weight: 100;
   }
@@ -28,7 +28,11 @@
 
     .btn {
       text-decoration: none;
+      &.hasSelected{
+        color: #D8B783;
+      }
     }
+    
   }
 
   @media (max-width: 768px) {
@@ -82,14 +86,12 @@
 
     @media (max-width: 1200px) {
       .articlecard-img {
-        width: auto;
         height: 250px;
       }
     }
 
     @media (max-width: 768px) {
       .articlecard-img {
-        width: auto;
         height: 350px;
       }
     }
