@@ -860,7 +860,7 @@ export default function CartTwo() {
         <h2 className="text-center mb-5">付款資訊</h2>
         {/* 信用卡 */}
 
-        <div className="cartSubTotalBor mb-5 h5">
+        <div className="cartSubTotalBorr mb-5 h5">
           <div className="cartGoBuyAllOption m-4">
             <div className="cartGoBuyOption mb-5">
               <input
@@ -882,18 +882,14 @@ export default function CartTwo() {
                 className="cartBuyInput cartBuy-linepay"
                 onChange={handleLinePayChange}
               />
-              <label htmlFor="">linepay</label>
-            </div>
-            <div className="cartGoBuyOption mb-5">
-              <input
-                type="radio"
-                id="cartBuy-green"
-                name="payState"
-                value="ecpay"
-                className="cartBuyInput cartBuy-green"
-                onChange={handleGreenPayChange}
-              />
-              <label htmlFor="">綠界金流</label>
+
+              <label htmlFor="">
+                <img
+                  src="/images/cart/Line-Pay-Logo.png"
+                  alt=""
+                  style={{ width: '101px' }}
+                />
+              </label>
             </div>
           </div>
 
