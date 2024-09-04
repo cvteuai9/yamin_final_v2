@@ -69,23 +69,23 @@ export default function Yaming() {
   const courseData = [
     {
       title: '茶文化與歷史課程',
-      video: 'images/video/1325074-uhd_3840_2160_24fps.mp4',
+      video: 'images/video/video1.mp4',
     },
     {
       title: '茶葉鑑定品茶課程',
-      video: 'images/video/4489678-uhd_3840_2160_25fps.mp4',
+      video: 'images/video/video2.mp4',
     },
     {
       title: '茶葉製作與加工課程',
-      video: 'images/video/6540522-uhd_3840_2160_25fps.mp4',
+      video: 'images/video/video3.mp4',
     },
     {
       title: '茶藝表演與茶道課程',
-      video: 'images/video/1324936-uhd_3840_2160_24fps.mp4',
+      video: 'images/video/video4.mp4',
     },
     {
       title: '茶葉證照與經營課程',
-      video: '/images/video/12165164_3840_2160_24fps.mp4',
+      video: '/images/video/video5.mp4',
     },
   ]
 
