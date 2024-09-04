@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "茶的風味鑑賞學：識茶、品茶、泡茶，探索茶的世界",
+    "name": "茶的風味鑑賞學",
     "category_id": 1,
     "start_time": "2024/10/20",
     "end_time": "2024/11/20",
@@ -33,7 +33,7 @@
   },
   {
     "id": 3,
-    "name": "終身受用的茶學問-茶的香味之旅",
+    "name": "終身受用的茶學問",
     "category_id": 1,
     "start_time": "2025/01/13",
     "end_time": "2025/08/21",
@@ -49,7 +49,7 @@
   },
   {
     "id": 4,
-    "name": "品茶道美學 漫遊竹田",
+    "name": "品茶道美學",
     "category_id": 1,
     "start_time": "2025/07/22",
     "end_time": "2025/08/23",
@@ -113,7 +113,7 @@
   },
   {
     "id": 8,
-    "name": "TAGs台灣茶分類分級活動",
+    "name": "台灣茶分類分級活動",
     "category_id": 2,
     "start_time": "2024/10/12",
     "end_time": "2025/01/27",
@@ -353,7 +353,7 @@
   },
   {
     "id": 23,
-    "name": "茶調酒風味一級 Tea Cocktail L1",
+    "name": "茶調酒風味一級",
     "category_id": 5,
     "start_time": "2024/10/02",
     "end_time": "2024/10/11",
@@ -369,7 +369,7 @@
   },
   {
     "id": 24,
-    "name": "茶葉品評一級 Tea Tasting L1",
+    "name": "茶葉品評一級",
     "category_id": 5,
     "start_time": "2024/10/03",
     "end_time": "2024/12/12",
@@ -385,7 +385,7 @@
   },
   {
     "id": 25,
-    "name": "茶葉品評二級 Tea Tasting L2",
+    "name": "茶葉品評二級",
     "category_id": 5,
     "start_time": "2025/03/04",
     "end_time": "2025/04/13",
@@ -465,7 +465,7 @@
   },
   {
     "id": 30,
-    "name": "茶飲調製一級 Tea Bartender L1",
+    "name": "茶飲調製三級",
     "category_id": 5,
     "start_time": "2024/10/09",
     "end_time": "2024/12/18",

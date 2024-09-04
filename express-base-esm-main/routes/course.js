@@ -14,7 +14,8 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(
       null,
-      'C:\\Users\\user\\Documents\\yamin\\next-bs5-main\\public\\images\\yaming\\tea_class_picture'
+      // 'C:\\Users\\user\\Documents\\yamin\\next-bs5-main\\public\\images\\yaming\\tea_class_picture'
+      'C:\\Users\\Student\\Documents\\yamin_final_v2\\next-bs5-main\\public\\images\\yaming\\tea_class_picture'
     ) // 確保此目錄存在
   },
   filename: function (req, file, cb) {

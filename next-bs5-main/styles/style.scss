@@ -47,7 +47,13 @@
     width: 150px;
   }
 }
-
+.shane_index_p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 限制顯示行數 */
+  -webkit-box-orient: vertical;
+  color: #b29564;
+}
 .shane-store-picture {
   img {
     width: 100%;
@@ -61,6 +67,11 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+}
+.shane-optionButton {
+  border: none;
+  outline: none;
+  margin-top: 3vh;
 }
 
 .shane-star2 {
@@ -95,8 +106,9 @@
 .shane-union {
   z-index: 1;
   margin-top: 15vh;
-  padding-left: 10vw;
-
+  img {
+    width: 37.5vw;
+  }
   .shane-union2 {
     position: relative;
     right: 10vw;
@@ -118,6 +130,9 @@
 
 .shane-article {
   h2 {
+    color: #b29564;
+  }
+  p {
     color: #b29564;
   }
 }
@@ -155,5 +170,8 @@
 
   .shane-ratio1-img {
     width: 80px;
+  }
+  .shane-article2 {
+    display: none;
   }
 }

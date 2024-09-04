@@ -2,9 +2,10 @@
 .shane_test_container {
   position: relative;
   display: flex;
-  height: 80vh; /* 使用視窗高度，讓容器充滿整個視窗高度 */
+  height: 75vh; /* 使用視窗高度，讓容器充滿整個視窗高度 */
   max-width: 50vw; /* 設定最大寬度 */
   margin: 0 auto; /* 水平居中對齊容器 */
+  overflow: hidden;
 }
 
 /* 調整 wrapper 的寬度和高度 */
@@ -69,7 +70,7 @@
 
 /* 調整課程描述的樣式 */
 .course-description {
-  margin-top: 80px; /* 調整名稱與描述之間的間距 */
+  margin-top: 60px; /* 調整名稱與描述之間的間距 */
   height: 90px;
   font-size: 1.2em; /* 調整字體大小 */
   overflow: hidden;
