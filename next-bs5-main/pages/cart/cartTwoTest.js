@@ -257,151 +257,161 @@ export default function CartTwo() {
     event.preventDefault()
 
     // formRef.current.submit()
-    if (validateForm()) {
-      PostformData.append('username', formData.username)
-      PostformData.append('email', formData.email)
-      PostformData.append('phone', formData.phone)
-      PostformData.append('delivery', formData.delivery)
-      if (formData.delivery === '超商取貨') {
-        console.log('超商地址')
-        PostformData.append('address', store711.storeaddress)
-      }
-      if (formData.delivery === '宅配取貨') {
-        console.log('一般地址')
-        PostformData.append('address', formData.address)
-      }
-
-      PostformData.append('note', formData.note)
-      PostformData.append('payState', formData.payState)
-      PostformData.append('cardnumber', formData.cardnumber)
-      PostformData.append('cardholder', formData.cardholder)
-      PostformData.append('cardexpiry', formData.cardexpiry)
-      PostformData.append('cvc', formData.cvc)
-      PostformData.append('amount', formData.amount)
-      PostformData.append('totalPrice', formData.totalPrice)
-      PostformData.append('userId', formData.userId)
-      PostformData.append('cartItem', cart)
-      PostformData.append('selectedCouponId', formData.selectedCouponId)
-      PostformData.append('selectedValue', formData.selectedValue)
-      items.forEach((item) => {
-        console.log('我現在要看的', item)
-        PostformData.append(
-          `items[${item.id}][product_name]`,
-          item.product_name
-        )
-
-        PostformData.append('PproductId', [{ productId: item.id }])
-        PostformData.append(`productId[${item.id}]`, `productId[${item.id}]`)
-        // PostformData.append(`items[${item.id}][price]`, item.price)
-        // PostformData.append(`items[${item.id}][qty]`, item.qty)
-        PostformData.append(`items[${item.id}][subtotal]`, item.subtotal)
+    if (items.length === 0 && courseCart.items.length === 0) {
+      Swal.fire({
+        icon: 'error',
+        title: '錯誤!',
+        text: '您沒有購買任何東西',
       })
-      const orderData = items.map((v) => ({
-        product_id: v.id,
-        product_image: v.paths,
-        product_name: v.product_name,
-        product_unitprice: v.price,
-        product_qty: v.qty,
-        product_totalprice: v.subtotal,
-      }))
-      const courseData = courseCart.items.map((v) => ({
-        course_id: v.id,
-        course_image: v.img1,
-        course_name: v.name,
-        course_unitprice: v.price,
-        course_quantity: v.qty,
-        course_totalprice: v.subtotal,
-      }))
-      console.log('1153看', orderData)
-      // console.log(cartItems)
-      PostformData.append('allProductId', JSON.stringify(orderData))
-      PostformData.append('allCourseId', JSON.stringify(courseData))
-      PostformData.append('state', formData.state)
+    }
+    if (items.length !== 0 || courseCart.items.length !== 0) {
+      // formRef.current.submit()
+      if (validateForm()) {
+        PostformData.append('username', formData.username)
+        PostformData.append('email', formData.email)
+        PostformData.append('phone', formData.phone)
+        PostformData.append('delivery', formData.delivery)
+        if (formData.delivery === '超商取貨') {
+          console.log('超商地址')
+          PostformData.append('address', store711.storeaddress)
+        }
+        if (formData.delivery === '宅配取貨') {
+          console.log('一般地址')
+          PostformData.append('address', formData.address)
+        }
 
-      for (const [key, value] of PostformData.entries()) {
-        console.log('123', (PostformData[key] = value))
-      }
-      // linepay測試
-      if (formData.payState === 'linepay') {
-        const url = 'http://localhost:3005/api/yamin_cart/linepay'
-        await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(PostformData),
+        PostformData.append('note', formData.note)
+        PostformData.append('payState', formData.payState)
+        PostformData.append('cardnumber', formData.cardnumber)
+        PostformData.append('cardholder', formData.cardholder)
+        PostformData.append('cardexpiry', formData.cardexpiry)
+        PostformData.append('cvc', formData.cvc)
+        PostformData.append('amount', formData.amount)
+        PostformData.append('totalPrice', formData.totalPrice)
+        PostformData.append('userId', formData.userId)
+        PostformData.append('cartItem', cart)
+        PostformData.append('selectedCouponId', formData.selectedCouponId)
+        PostformData.append('selectedValue', formData.selectedValue)
+        items.forEach((item) => {
+          console.log('我現在要看的', item)
+          PostformData.append(
+            `items[${item.id}][product_name]`,
+            item.product_name
+          )
+
+          PostformData.append('PproductId', [{ productId: item.id }])
+          PostformData.append(`productId[${item.id}]`, `productId[${item.id}]`)
+          // PostformData.append(`items[${item.id}][price]`, item.price)
+          // PostformData.append(`items[${item.id}][qty]`, item.qty)
+          PostformData.append(`items[${item.id}][subtotal]`, item.subtotal)
         })
-          .then((response) => response.json())
-          .then((result) => {
-            console.log('testurl', url)
-            console.log('success', result)
-            getorderId = result.goLineurl
-            // window.location.href = result.lineUrl
-          })
-          .catch((error) => {
-            console.error(error)
-          })
-        const sendUrl = new URL(
-          'http://localhost:3005/api/yamin_cart/linepay/send'
-        )
-        try {
-          const res = await fetch(sendUrl, {
+        const orderData = items.map((v) => ({
+          product_id: v.id,
+          product_image: v.paths,
+          product_name: v.product_name,
+          product_unitprice: v.price,
+          product_qty: v.qty,
+          product_totalprice: v.subtotal,
+        }))
+        const courseData = courseCart.items.map((v) => ({
+          course_id: v.id,
+          course_image: v.img1,
+          course_name: v.name,
+          course_unitprice: v.price,
+          course_quantity: v.qty,
+          course_totalprice: v.subtotal,
+        }))
+        console.log('1153看', orderData)
+        // console.log(cartItems)
+        PostformData.append('allProductId', JSON.stringify(orderData))
+        PostformData.append('allCourseId', JSON.stringify(courseData))
+        PostformData.append('state', formData.state)
+
+        for (const [key, value] of PostformData.entries()) {
+          console.log('123', (PostformData[key] = value))
+        }
+        // linepay測試
+        if (formData.payState === 'linepay') {
+          const url = 'http://localhost:3005/api/yamin_cart/linepay'
+          await fetch(url, {
             method: 'POST',
-            header: {
+            headers: {
               'Content-Type': 'application/json',
             },
-            body: PostformData,
+            body: JSON.stringify(PostformData),
           })
-          const data = await res.json()
-          console.log(data)
-        } catch (err) {
-          console.log(err)
+            .then((response) => response.json())
+            .then((result) => {
+              console.log('testurl', url)
+              console.log('success', result)
+              getorderId = result.goLineurl
+              // window.location.href = result.lineUrl
+            })
+            .catch((error) => {
+              console.error(error)
+            })
+          const sendUrl = new URL(
+            'http://localhost:3005/api/yamin_cart/linepay/send'
+          )
+          try {
+            const res = await fetch(sendUrl, {
+              method: 'POST',
+              header: {
+                'Content-Type': 'application/json',
+              },
+              body: PostformData,
+            })
+            const data = await res.json()
+            console.log(data)
+          } catch (err) {
+            console.log(err)
+          }
+          // const goLineUrl = result.goLineurl
+          goLinePay()
         }
-        // const goLineUrl = result.goLineurl
-        goLinePay()
-      }
 
-      // linepay測試內容結束
-      if (formData.payState === 'cardpay') {
-        const url = 'http://localhost:3005/api/yamin_cart'
-        await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(PostformData),
-        })
-          .then((response) => response.json())
-          .then((result) => {
-            console.log('testurl', url)
-            console.log('success', result)
-            setCardPayInsertId(result.insertId)
-            gocardPay(result.insertId)
-          })
-          .catch((error) => {
-            console.error(error)
-          })
-        const sendUrl = new URL('http://localhost:3005/api/yamin_cart/send')
-        try {
-          const res = await fetch(sendUrl, {
+        // linepay測試內容結束
+        if (formData.payState === 'cardpay') {
+          const url = 'http://localhost:3005/api/yamin_cart'
+          await fetch(url, {
             method: 'POST',
-            header: {
+            headers: {
               'Content-Type': 'application/json',
             },
-            body: PostformData,
+            body: JSON.stringify(PostformData),
           })
-          const data = await res.json()
-          console.log(data)
-        } catch (err) {
-          console.log(err)
+            .then((response) => response.json())
+            .then((result) => {
+              console.log('testurl', url)
+              console.log('success', result)
+              setCardPayInsertId(result.insertId)
+              gocardPay(result.insertId)
+            })
+            .catch((error) => {
+              console.error(error)
+            })
+          const sendUrl = new URL('http://localhost:3005/api/yamin_cart/send')
+          try {
+            const res = await fetch(sendUrl, {
+              method: 'POST',
+              header: {
+                'Content-Type': 'application/json',
+              },
+              body: PostformData,
+            })
+            const data = await res.json()
+            console.log(data)
+          } catch (err) {
+            console.log(err)
+          }
+          console.log('取得', PostformData.get('username'))
+          console.log('信用卡表單提交成功', formData)
         }
-        console.log('取得', PostformData.get('username'))
-        console.log('信用卡表單提交成功', formData)
-      }
 
-      // Perform form submission or additional actions here
-    } else {
-      console.log('表單提交失敗')
+        // Perform form submission or additional actions here
+      } else {
+        console.log('表單提交失敗')
+      }
     }
 
     // router.push('http://localhost:3000/cart/cartThree')

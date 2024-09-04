@@ -7,7 +7,7 @@ import { func } from 'prop-types'
 import { YaminUseCart } from '@/hooks/yamin-use-cart'
 import toast, { Toaster } from 'react-hot-toast'
 import { useAuth } from '@/hooks/my-use-auth'
-
+import Swal from 'sweetalert2'
 export default function SearchID() {
   const router = useRouter()
   const { addItem = () => {} } = YaminUseCart()
@@ -113,7 +113,13 @@ export default function SearchID() {
               { method: 'PUT' }
             )
               .then((res) => res.json())
-              .then((result) => console.log(result))
+              .then((result) => {
+                if (result.message === 'Favorite Product Insert successfully') {
+                  toast.success(<p className="m-0">成功加入收藏!</p>)
+                } else {
+                  toast.error(<p className="m-0">加入收藏失敗!</p>)
+                }
+              })
               .catch((error) => console.log(error))
           } else {
             fetch(
@@ -121,7 +127,15 @@ export default function SearchID() {
               { method: 'DELETE' }
             )
               .then((res) => res.json())
-              .then((result) => console.log(result))
+              .then((result) => {
+                if (
+                  result.message === 'Favorite Product deleted successfully'
+                ) {
+                  toast.success(<p className="m-0">移除收藏成功!</p>)
+                } else {
+                  toast.error(<p className="m-0">移除收藏失敗!</p>)
+                }
+              })
               .catch((error) => console.log(error))
           }
           return { ...v, fav: !v.fav }
@@ -132,9 +146,24 @@ export default function SearchID() {
       setProduct(nextProduct)
     } else {
       // 如果沒有登入，則導向至登入頁面
-      if (confirm('您尚未登入，請登入後再操作!')) {
-        router.push('/member/login')
-      }
+      // if (confirm('您尚未登入，請登入後再操作!')) {
+      //   router.push('/member/login')
+      // }
+      // 改Swal
+      Swal.fire({
+        title: '無法收藏',
+        text: '您尚未登入，請登入後再操作!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '登入',
+        cancelButtonText: '取消',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          router.push('/member/login')
+        }
+      })
     }
   }
   // 處理filter改變時的函式
