@@ -6,6 +6,7 @@ import useInterval from '@/hooks/use-interval'
 
 import { requestOtpToken, resetPassword } from '@/services/user'
 import toast, { Toaster } from 'react-hot-toast'
+import validator from 'validator'
 
 export default function ForgetPasswordForm() {
   const [email, setEmail] = useState('')
@@ -29,6 +30,24 @@ export default function ForgetPasswordForm() {
     }
   }, [count])
 
+  const [formData, setFormData] = useState({
+    email: '',
+    token: '',
+    password: '',
+  })
+
+  const [errors, setErrors] = useState({
+    email: '',
+    token: '',
+    password: '',
+  })
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+    // Clear error when user starts typing
+    setErrors((prev) => ({ ...prev, [name]: '' }))
+  }
+
   // 處理要求一次性驗証碼用
   const handleRequestOtpToken = async () => {
     if (delay !== null) {
@@ -36,10 +55,10 @@ export default function ForgetPasswordForm() {
       return
     }
 
-    const res = await requestOtpToken(email)
+    const res = await requestOtpToken(formData.email)
 
     // 除錯用
-    console.log(res.data)
+    // console.log(res.data)
 
     if (res.data.status === 'success') {
       toast.success('資訊 - 驗証碼已寄送到電子郵件中')
@@ -47,23 +66,72 @@ export default function ForgetPasswordForm() {
       setDelay(1000) // 每 1000ms = 1s 減1
       setDisableBtn(true)
     } else {
-      toast.error(`錯誤 - ${res.data.message}`)
+      // toast.error(`錯誤 - ${res.data.message}`)
+      setErrors((prev) => ({
+        ...prev,
+        email: `${res.data.message}`,
+      }))
     }
   }
 
   // 處理重設密碼用
   const handleResetPassword = async () => {
-    const res = await resetPassword(email, password, token)
-    // 除錯用
-    console.log(res.data)
+    // Reset all errors
+    setErrors({
+      email: '',
+      token: '',
+      password: '',
+    })
 
-    if (res.data.status === 'success') {
-      toast.success('資訊 - 密碼已成功修改')
-    } else {
-      toast.error(`錯誤 - ${res.data.message}`)
+    // Validate inputs
+    let newErrors = {}
+    if (!formData.email) newErrors.email = 'Email為必填'
+    if (!formData.token) newErrors.token = '驗證碼為必填'
+    if (!formData.password) newErrors.password = '密碼為必填'
+    // 強密碼驗證
+    if (
+      !validator.isStrongPassword(formData.password, {
+        minLength: 8,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 0,
+      })
+    ) {
+      newErrors.password = '密碼需為8到12個字元，必須包含大小寫英文字母和數字'
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      return
+    }
+
+    try {
+      // console.log(formData.email)
+      const res = await resetPassword(
+        formData.email,
+        formData.password,
+        formData.token
+      )
+      if (res.data.status === 'success') {
+        toast.success('密碼已成功修改')
+      } else {
+        // Handle specific API errors
+        if (res.data.message === 'OTP Token資料不存在') {
+          setErrors((prev) => ({
+            ...prev,
+            token: '電子郵件驗證碼不存在',
+          }))
+        } else if (res.data.message === 'OTP Token已到期') {
+          setErrors((prev) => ({ ...prev, token: '電子郵件驗證碼已過期' }))
+        } else {
+          toast.error('密碼重設失敗，請稍後再試')
+        }
+        // console.log(errors)
+      }
+    } catch (error) {
+      toast.error('發生錯誤，請稍後再試')
     }
   }
-
 
   return (
     <>
@@ -72,71 +140,97 @@ export default function ForgetPasswordForm() {
           <div
             className={['d-flex flex-column', styles['forgetpssec']].join(' ')}
           >
-            <div className='d-flex justify-content-center my-3'>
+            <div className="d-flex justify-content-center my-3">
               <img src="/images/mobile-password.png" alt="" width={180} />
             </div>
             <h2 className="text-center my-5">重設密碼</h2>
-            <p className="text-center my-3">輸入你的會員電子郵件地址，按下&quot;取得驗證碼&ldquo;按鈕後，我們會將密碼重設指示寄送給你。</p>
-            <div
-              className={`mb-3 ${styles['fp-form']}`}
+            <p className="text-center my-3">
+              輸入你的會員電子郵件地址，按下&quot;取得驗證碼&ldquo;按鈕後，我們會將密碼重設指示寄送給你。
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                handleResetPassword()
+              }}
             >
-              <label className="mt-3">
-                電子郵件*
-                <div className='d-flex'>
-                  <input
-                    type="email"
-                    placeholder="請輸入你的電子郵件"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <button
-                    className="btn btn-outline-secondary p-0"
-                    id="button-addon2"
-                    onClick={handleRequestOtpToken} disabled={disableBtn}
-                  >
-                    {delay ? count + '秒後可以再次取得驗証碼' : '取得驗証碼'}
-                  </button>
-                </div>
-              </label>
-              {/* <span className={`${styles['error']}`}>{errors.email}</span> */}
-              <label className="mt-3">
-                電子郵件驗證碼*
-                <input
-                  type="text"
-                  value={token}
-                  placeholder="請輸入你的電子郵件驗證碼"
-                  onChange={(e) => setToken(e.target.value)}
-                />
-              </label>
-              {/* <span className={`${styles['error']}`}>{errors.email}</span> */}
-              <label className="mt-3">
-                新密碼*
-                <div
-                  className={`${styles['inputarea']} "d-flex justify-between"`}
-                >
+              <div className={`mb-3 ${styles['fp-form']}`}>
+                <label className="mt-3">
+                  電子郵件*
+                  <div className="d-flex">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="請輸入電子郵件"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={
+                        errors.email && !email ? styles['hasError'] : ''
+                      }
+                    />
+                    <button
+                      type="button"
+                      className="btn btn-outline-secondary p-0"
+                      id="button-addon2"
+                      onClick={handleRequestOtpToken}
+                      disabled={disableBtn}
+                    >
+                      {delay ? count + '秒後可以再次取得驗證碼' : '取得驗證碼'}
+                    </button>
+                  </div>
+                </label>
+                {errors.email && (
+                  <span className={styles.error}>{errors.email}</span>
+                )}
+                <label className="mt-4">
+                  電子郵件驗證碼*
                   <input
                     type="text"
-                    placeholder="請輸入你的密碼"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    name="token"
+                    value={formData.token}
+                    placeholder="請輸入電子郵件驗證碼"
+                    onChange={handleChange}
+                    className={errors.token ? styles.hasError : ''}
                   />
-                </div>
-              </label>
-              {/* <span className={`${styles['error']}`}>{errors.password}</span> */}
-              <div
-                className={[
-                  styles['btn-div'],
-                  'm-2 d-flex justify-content-center',
-                ].join(' ')}
-              >
-                <button
-                  className={`${styles['btn-in']} mt-4`}
-                  onClick={handleResetPassword}
+                </label>
+                {errors.token && (
+                  <span className={styles.error}>{errors.token}</span>
+                )}
+                <label className="mt-4">
+                  新密碼*
+                  <div
+                    className={`${styles['inputarea']} "d-flex justify-between"`}
+                  >
+                    <input
+                      type="text"
+                      name="password"
+                      placeholder="請輸入密碼"
+                      value={formData.password}
+                      onChange={handleChange}
+                      className={
+                        errors.password && !password ? styles['hasError'] : ''
+                      }
+                    />
+                  </div>
+                </label>
+                {errors.password && (
+                  <span className={styles.error}>{errors.password}</span>
+                )}
+                <div
+                  className={[
+                    styles['btn-div'],
+                    'm-2 d-flex justify-content-center',
+                  ].join(' ')}
                 >
-                  重設密碼
-                </button>
+                  <button
+                    className={`${styles['btn-in']} mt-4`}
+                    // onClick={handleResetPassword}
+                    type="submit"
+                  >
+                    重設密碼
+                  </button>
+                </div>
               </div>
-            </div>
+            </form>
             <div
               className={`${styles['form-footer']} d-flex justify-content-center mb-5`}
             >
@@ -148,82 +242,5 @@ export default function ForgetPasswordForm() {
         </div>
       </main>
     </>
-    // <main className={`form-member w-100 m-auto text-center`}>
-    //   <h2 className="text-center mb-5">重設密碼</h2>
-    //   <p className={`text-center mb-3 ${styles['text-note']}`}>
-    //     輸入你的會員電子郵件地址，按下&quot;取得驗証碼&ldquo;按鈕後，我們會將密碼重設指示寄送給你。
-    //   </p>
-    //   <div className={`${styles['fp-form']}`}>
-    //     <div className="row mb-3">
-    //       <div className="col-sm-12">
-    //         <input
-    //           type="email"
-    //           className=''
-    //           placeholder="電子郵件地址"
-    //         />
-    //       </div>
-    //       <div className={`${styles['error']} my-2 text-start`}>
-    //         請輸入有效的註冊會員電子郵件地址。
-    //       </div>
-    //     </div>
-    //     <div className="row mb-3">
-    //       <div className="col-sm-12">
-    //         <div className="input-group">
-    //           <input
-    //             type="text"
-    //             className={`form-control ${styles['form-control']} ${styles['invalid']} `}
-    //             placeholder="電子郵件驗證碼"
-    //           />
-    //           <button
-    //             className="btn btn-outline-secondary"
-    //             type="button"
-    //             id="button-addon2"
-    //           >
-    //             取得驗証碼
-    //           </button>
-    //         </div>
-    //       </div>
-    //       <div className={`${styles['error']} my-2 text-start`}>
-    //         請輸入驗証碼。
-    //       </div>
-    //     </div>
-
-    //     <div className="row mb-3">
-    //       <div className="col-sm-12">
-    //         <input
-    //           type="password"
-    //           className={`form-control w-100 ${styles['form-control']} ${styles['invalid']} `}
-    //           placeholder="密碼"
-    //         />
-    //       </div>
-    //       <div className={`${styles['error']} my-2 text-start`}>
-    //         請輸入新密碼。
-    //       </div>
-    //     </div>
-    //     <div className="row mb-3">
-    //       <div className="col-sm-12">
-    //         <input
-    //           type="password"
-    //           className={`form-control w-100 ${styles['form-control']} ${styles['invalid']} `}
-    //           placeholder="確認密碼"
-    //         />
-    //       </div>
-    //       <div className={`${styles['error']} my-2 text-start`}>
-    //         請輸入確認密碼。
-    //       </div>
-    //     </div>
-
-    //     <button type="submit" className="btn btn-primary w-100">
-    //       確定
-    //     </button>
-
-    //     <div className="row mt-2">
-    //       <p className={`${styles['notice']}`}>
-    //         還不是會員？
-    //         <Link href="/member/register">加入我們</Link>。
-    //       </p>
-    //     </div>
-    //   </div>
-    // </main >
   )
 }
