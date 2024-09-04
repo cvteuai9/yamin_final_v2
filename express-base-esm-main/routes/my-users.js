@@ -182,7 +182,7 @@ router.post('/', async function (req, res) {
   if (rows.length > 0) {
     return res.json({
       status: 'error',
-      message: '建立會員失敗，有重覆的帳號或email',
+      message: 'email信箱已經註冊過',
     })
   }
 
@@ -333,7 +333,7 @@ router.put('/:id/profile', authenticate, async function (req, res) {
 
   // user為來自前端的會員資料(準備要修改的資料)
   const user = req.body
-  const { email, user_name, nick_name, phone, birthday, gender } = user
+  const { email, user_name, nick_name, phone, birthday, gender, address } = user
 
   // 檢查從前端瀏覽器來的資料，哪些為必要(name, ...)
   if (!id || !user.user_name) {
@@ -355,8 +355,8 @@ router.put('/:id/profile', authenticate, async function (req, res) {
 
   // 對資料庫執行update
   const [affectedRows] = await db.query(
-    'UPDATE users SET email = ?, user_name = ?,nick_name=?,phone=?,birthday=?,gender=? WHERE id = ?',
-    [email, user_name, nick_name, phone, birthday, gender, id]
+    'UPDATE users SET email = ?, user_name = ?,nick_name=?,phone=?,birthday=?,gender=?,address=? WHERE id = ?',
+    [email, user_name, nick_name, phone, birthday, gender, address, id]
   )
 
   // 沒有更新到任何資料 -> 失敗或沒有資料被更新
