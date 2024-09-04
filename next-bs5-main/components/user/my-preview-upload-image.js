@@ -15,6 +15,8 @@ export default function MyPreviewUploadImage({
   const [preview, setPreview] = useState('')
   const { userProfile, avatarVersion } = useUserProfile()
   const { auth } = useAuth()
+  console.log(userProfile)
+
   // 當選擇檔案更動時建立預覽圖
   useEffect(() => {
     if (!selectedFile) {
@@ -47,7 +49,7 @@ export default function MyPreviewUploadImage({
     }
 
     if (userProfile && userProfile.user_image && auth.isAuth) {
-      console.log(userProfile);
+      console.log(userProfile)
       return `${avatarBaseUrl}/${userProfile.user_image}?v=${avatarVersion}`
     }
 

@@ -4,7 +4,7 @@
 }
 
 .goldenf {
-  color: #D8B783;
+  color: #d8b783;
 }
 .whitef {
   color: var(--white);
@@ -37,7 +37,7 @@ a {
   width: fit-content;
   height: auto;
   background: var(--primary);
-  color: #D8B783;
+  color: #d8b783;
   border: var(--primary2) 1px solid;
   padding: 0;
   gap: 20px;
@@ -224,14 +224,17 @@ hr {
 input::placeholder,
 .inputtext::placeholder,
 .inputradio::placeholder {
-  color: #D8B783;
+  color: #d8b783;
   font-size: 1.6rem; /*25.6px;   */
   @media screen and (max-width: 576px) {
     font-size: 1.4rem; /* 22.4px */
   }
 }
-input[type=text], input[type=number], input[type=date], textarea{
-  color: #D8B783;
+input[type='text'],
+input[type='number'],
+input[type='date'],
+textarea {
+  color: #d8b783;
 }
 
 /* changeps */
@@ -267,6 +270,9 @@ input[type=text], input[type=number], input[type=date], textarea{
   &:focus {
     outline: none;
   }
+  &.hasError {
+    border: 1px solid #ff7a7d;
+  }
 }
 .changeps-inputradio {
   padding: 0;
@@ -292,7 +298,7 @@ input[type=text], input[type=number], input[type=date], textarea{
     padding: 12px;
     margin-bottom: 12px;
     &::placeholder {
-      color: rgb(178, 149, 100, 0.8);
+      color: #d8b783;
     }
   }
   .icon {
@@ -304,6 +310,13 @@ input[type=text], input[type=number], input[type=date], textarea{
     top: 50%;
     transform: translateY(-50%);
     /*自己本身高度往上調50%*/
+  }
+}
+.changeps-form {
+  .error {
+    font-size: 1.6rem;
+    color: #ff7a7d;
+    font-family: 'B2Hana-Regular';
   }
 }
 .left-nav-line {
@@ -639,8 +652,8 @@ input[type=text], input[type=number], input[type=date], textarea{
   height: 150px;
 }
 .profile-picleft {
-  p{
-    color: #D8B783;
+  p {
+    color: #d8b783;
   }
   .pc-text {
     margin-top: 30px;
@@ -674,13 +687,49 @@ input[type=text], input[type=number], input[type=date], textarea{
   padding: 12px;
   border: 1px solid var(--primary2);
   box-sizing: border-box;
+  &.hasError {
+    border: 1px solid #ff7a7d;
+  }
 }
+
 .profile-inputradio {
-  padding: 0;
-  margin: 0 10px 0 0;
-  width: auto;
   display: flex;
   align-items: center;
+}
+
+.profile-inputradio input[type='radio'] {
+  display: none; /* 隱藏原始的 radio 按鈕 */
+}
+
+.profile-inputradio label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.profile-inputradio label::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  border: 2px solid #d8b783; /* 使用金色邊框 */
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.profile-inputradio input[type='radio']:checked + label::before {
+  background-color: #d8b783; /* 選中時填充金色 */
+  box-shadow: inset 0 0 0 3px #003e52; /* 內部陰影創造一個圓環效果 */
+}
+
+.profile-inputradio label:hover::before {
+  border-color: #e0c79e; /* 懸停時的邊框顏色 */
+}
+
+.profile-inputradio p {
+  margin: 0;
+  color: #ffffff; /* 白色文字 */
 }
 .profile-btns {
   width: 100%;

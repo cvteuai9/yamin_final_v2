@@ -9,7 +9,7 @@ import {
   updateProfileAvatar,
 } from '@/services/my-user'
 import { useAuth } from '@/hooks/my-use-auth'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import MyPreviewUploadImage from '@/components/user/my-preview-upload-image'
 import { avatarBaseUrl } from '@/configs'
 import { useUserProfile } from '@/context/UserProfileContext'
@@ -29,6 +29,7 @@ export default function Profile() {
     birthday: null,
     user_image: '',
     email: '',
+    address: '',
   }
   // 錯誤訊息狀態
   const [errors, setErrors] = useState({
@@ -63,16 +64,7 @@ export default function Profile() {
 
       // 設定到狀態中
       // setUserProfile(dbUserProfile)
-
-      toast.success('會員資料載入成功', {
-        style: {
-          backgroundColor: '#4caf50', // 背景色
-          color: '#fff', // 文字顏色
-          borderRadius: '8px', // 圓角
-          padding: '16px', // 內邊距
-          fontSize: '16px', // 字體大小
-        },
-      })
+      // toast.success('會員資料載入成功!')
     } else {
       toast.error(`會員資料載入失敗`)
     }
@@ -114,14 +106,17 @@ export default function Profile() {
     if (!userProfile.user_name) {
       newErrors.user_name = '姓名為必填'
     }
-    if (!userProfile.nick_name) {
-      newErrors.nick_name = '暱稱為必填'
-    }
     if (!userProfile.gender) {
       newErrors.gender = '性別為必填'
     }
     if (!userProfile.phone) {
       newErrors.phone = '手機為必填'
+    }
+    if (userProfile.phone) {
+      const phoneRegex = /^09\d{8}$/
+      if (!phoneRegex.test(userProfile.phone)) {
+        newErrors.phone = '手機格式有誤'
+      }
     }
 
     // 呈現錯誤訊息
@@ -170,6 +165,7 @@ export default function Profile() {
       console.log(res.data)
     }
   }
+  // console.log(auth.userData.google_uid)
 
   if (!auth.isAuth) return <></>
 
@@ -193,19 +189,7 @@ export default function Profile() {
                 <Leftnav fromProfile="fromProfile" />
               </div>
               <div className="col-md-8 profile-content-right">
-                <h4 className="goldenf">
-                  <Link href="/member/profile" className="h5 goldenf">
-                    個人檔案
-                  </Link>
-                  &nbsp;/&nbsp;
-                  <Link href="/member/profile" className="h5 goldenf">
-                    已整合帳戶
-                  </Link>
-                  &nbsp;/&nbsp;
-                  <Link href="/member/profile" className="h5 goldenf">
-                    載具管理
-                  </Link>
-                </h4>
+                <h3 className="goldenf">個人檔案</h3>
                 <p className="p whitef mt-5">
                   請放心，你的電子郵件、檔案及相關購買資料，網站將依照個人資料保護法保障你的個人隱私！
                 </p>
@@ -246,7 +230,9 @@ export default function Profile() {
                   <div>
                     <p className="p whitef mt-5">真實姓名（必填）</p>
                     <input
-                      className="profile-inputtext goldenf"
+                      className={`profile-inputtext goldenf ${
+                        errors.user_name ? 'hasError' : ''
+                      }`}
                       type="text"
                       name="user_name"
                       placeholder="請輸入你的真實姓名"
@@ -258,7 +244,7 @@ export default function Profile() {
                     <span className="error">{errors.user_name}</span>
                   </div>
                   <div>
-                    <p className="p whitef mt-5">暱稱（必填）</p>
+                    <p className="p whitef mt-4">暱稱</p>
                     <input
                       className="profile-inputtext p2 goldenf"
                       type="text"
@@ -268,21 +254,20 @@ export default function Profile() {
                       onChange={handleFieldChange}
                     />
                   </div>
-                  <div className="">
-                    <span className="error">{errors.nick_name}</span>
-                  </div>
                   <div>
-                    <p className="p whitef mt-5">性別&nbsp;(必填)</p>
-                    <div className="profile-inputradio">
+                    <p className="p whitef mt-4">性別&nbsp;(必填)</p>
+                    <div className="profile-inputradio mb-3">
                       <input
                         type="radio"
-                        id="female"
+                        id="male"
                         name="gender"
                         value="男性"
                         checked={userProfile.gender === '男性'}
                         onChange={handleFieldChange}
                       />
-                      <p className="p whitef ms-3 mb-0">男</p>
+                      <label htmlFor="male">
+                        <p className="p whitef">男</p>
+                      </label>
                       <input
                         type="radio"
                         className="ms-3"
@@ -292,14 +277,16 @@ export default function Profile() {
                         checked={userProfile.gender === '女性'}
                         onChange={handleFieldChange}
                       />
-                      <p className="p whitef ms-3 mb-0">女</p>
+                      <label htmlFor="female">
+                        <p className="p whitef">女</p>
+                      </label>
                     </div>
                   </div>
                   <div className="">
                     <span className="error">{errors.gender}</span>
                   </div>
                   <div>
-                    <p className="p whitef mt-5">生日</p>
+                    <p className="p whitef mt-4">生日</p>
                     <input
                       className="profile-inputtext p2 goldenf"
                       type="date"
@@ -312,16 +299,18 @@ export default function Profile() {
                       max={new Date().toISOString().split('T')[0]} // 最大日期為今天
                     />
                   </div>
-                  <p2 className="p2 whitef">
+                  <p className="p2 goldenf">
                     * 請正確填寫，註冊成功後將無法修改
-                  </p2>
+                  </p>
                   <div>
-                    <p className="p whitef mt-5">手機（必填）</p>
+                    <p className="p whitef mt-4">手機（必填）</p>
                     <input
-                      className="profile-inputtext p2 goldenf"
+                      className={`profile-inputtext goldenf ${
+                        errors.phone ? 'hasError' : ''
+                      }`}
                       type="text"
                       placeholder="請輸入你的手機"
-                      // pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"
+                      // pattern="/^\+?[1-9]\d{1,14}$/"
                       name="phone"
                       value={userProfile.phone}
                       onChange={handleFieldChange}
@@ -331,7 +320,22 @@ export default function Profile() {
                     <span className="error">{errors.phone}</span>
                   </div>
                   <div>
-                    <p className="p whitef mt-5">
+                    <p className="p whitef mt-4">收貨地址</p>
+                    <input
+                      className="profile-inputtext p2 goldenf"
+                      type="text"
+                      placeholder="請輸入你的地址"
+                      // pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"
+                      name="address"
+                      value={userProfile.address}
+                      onChange={handleFieldChange}
+                    />
+                  </div>
+                  <div className="">
+                    <span className="error">{errors.address}</span>
+                  </div>
+                  <div>
+                    <p className="p whitef mt-4">
                       電子郵件（為登入帳號，不可修改）
                     </p>
                     <input
@@ -347,14 +351,15 @@ export default function Profile() {
                     <button type="submit" className="profile-checked  btn2 p">
                       確認
                     </button>
-                    {auth.userData.google_uid === null && (
+                    {(auth.userData.google_uid === null ||
+                      auth.userData.google_uid === '') && (
                       <div
                         type="button"
-                        className="profile-changepassword  btn1 p"
+                        className="profile-changepassword btn1 p"
                       >
                         <Link
                           href="/member/changeps"
-                          className=" goldenf text-decoration-none  color-inherit"
+                          className="goldenf text-decoration-none color-inherit"
                         >
                           修改密碼
                         </Link>
@@ -365,7 +370,7 @@ export default function Profile() {
               </div>
             </div>
             {/* 土司訊息視窗用 */}
-            <Toaster />
+            {/* <Toaster /> */}
           </div>
         </div>
       </main>
