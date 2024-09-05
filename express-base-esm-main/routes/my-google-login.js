@@ -43,13 +43,24 @@ router.post('/', async function (req, res, next) {
     user_name: '',
     google_uid: '',
   }
-
+  const [dbusersemail] = await db.query('SELECT * FROM users WHERE email = ?', [
+    email,
+  ])
+  // 如果google登入有一樣的google_uid，dbusers.length > 0，再返回使用者資訊
   if (dbusers.length > 0) {
     const dbuser = dbusers[0]
     returnUser = {
       id: dbuser.id,
       user_name: dbuser.user_name,
       google_uid: dbuser.google_uid,
+    }
+    // 如果沒有相同的google_uid，但有相同email
+  } else if (dbusersemail.length > 0) {
+    const dbuseremail = dbusersemail[0]
+    returnUser = {
+      id: dbuseremail.id,
+      user_name: dbuseremail.user_name,
+      google_uid: dbuseremail.google_uid,
     }
   } else {
     // const member_id = uuidv4()

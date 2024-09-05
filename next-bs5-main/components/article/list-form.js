@@ -14,6 +14,8 @@ import Link from 'next/link'
 import StarPage from '@/components/star/star-page'
 import { useAuth } from '@/hooks/my-use-auth'
 import next from 'next'
+import Swal from 'sweetalert2'
+import toast from 'react-hot-toast'
 
 export default function ListForm() {
   const router = useRouter()
@@ -68,6 +70,14 @@ export default function ListForm() {
                 method: 'PUT',
               }
             )
+              .then((res) => res.json())
+              .then((result) => {
+                if (result.message === 'Favorite Article Insert successfully') {
+                  toast.success(<p className="m-0">成功加入收藏!</p>)
+                } else {
+                  toast.error(<p className="m-0">加入收藏失敗!</p>)
+                }
+              })
           } else {
             fetch(
               `http://localhost:3005/api/my-articles/favorites?user_id=${userID}&article_id=${id}`,
@@ -75,6 +85,14 @@ export default function ListForm() {
                 method: 'DELETE',
               }
             )
+              .then((res) => res.json())
+              .then((result) => {
+                if (result.message === 'Favorite Article DELETE successfully') {
+                  toast.success(<p className="m-0">移除收藏成功!</p>)
+                } else {
+                  toast.error(<p className="m-0">移除收藏失敗!</p>)
+                }
+              })
           }
           return { ...v, fav: !v.fav }
         } else {
@@ -84,11 +102,25 @@ export default function ListForm() {
       setArticles(nextArticle)
     } else {
       // 如果沒有登入，則導向至登入頁面
-      if (confirm('您尚未登入，請登入後再操作!')) {
-        router.push('/member/login')
-      }
+      // if (confirm('您尚未登入，請登入後再操作!')) {
+      //   router.push('/member/login')
+      Swal.fire({
+        title: '無法收藏',
+        text: '您尚未登入，請登入後再操作!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '登入',
+        cancelButtonText: '取消',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          router.push('/member/login')
+        }
+      })
     }
   }
+
   useEffect(() => {
     setUserID(auth.userData.id)
     setIsAuth(auth.isAuth)
@@ -132,6 +164,8 @@ export default function ListForm() {
     return pathMap[categoryName] || '/images/article/articlelist/articledefault.jpg'
   }, [])
 
+  const [isChecked, setIsChecked] = useState(false);
+
   const handleSortChange = useCallback(async (event) => {
     event.preventDefault()
     const value = event.target.dataset.value
@@ -143,6 +177,7 @@ export default function ListForm() {
       }, undefined, { shallow: true })
       await getArticles(selectedCategoryId, value)
     }
+    setIsChecked(false); // 更新狀態
   }, [sortOrder, selectedCategoryId, router, getArticles])
 
   useEffect(() => {
@@ -190,7 +225,7 @@ export default function ListForm() {
     }, undefined, { shallow: true })
     await getArticles(selectedCategoryId, sortOrder)
   }, [selectedCategoryId, sortOrder, router, getArticles])
-
+  console.log(sortOrder);
 
 
   return (
@@ -203,7 +238,7 @@ export default function ListForm() {
           {categories.map((category) => (
             <a
               key={category.id}
-              className={styles['btn']}
+              className={`${styles['btn']} ${category.name === selectedCategory ? styles.hasSelected : ''}`}
               href="#"
               onClick={(event) => handleCategoryClick(event, category)}
             >
@@ -216,17 +251,25 @@ export default function ListForm() {
           <h4>{selectedCategory}</h4>
           <div className="d-flex justify-content-end">
             <div className={`d-flex align-items-center justify-content-between ${option['articlechoose']}`}>
-              <input type="checkbox" name="a1-1" id="a1-1" />
+              <input type="checkbox"
+                name="a1-1"
+                id="a1-1"
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.checked)} />
               <label htmlFor="a1-1" className="d-flex flex-column">
                 <p className="mb-0 align-items-center">
-                  文章排序
+                  {sortOrder === 'date_desc' && ('發布日期:由新到舊')}
+                  {sortOrder === 'date_asc' && ('發布日期:由舊到新')}
+                  {sortOrder === 'views_desc' && ('觀看次數:由高到低')}
+                  {sortOrder === 'views_asc' && ('觀看次數:由低到高')}
+                  {/* 文章排序 */}
                   <FaAngleDown className={option['icon']} />
                 </p>
                 <ul className="ul1">
                   <li><a href="#" data-value="date_desc" onClick={handleSortChange}>發布日期:由新到舊</a></li>
                   <li><a href="#" data-value="date_asc" onClick={handleSortChange}>發布日期:由舊到新 </a></li>
                   <li><a href="#" data-value="views_desc" onClick={handleSortChange}>觀看次數:由高到低</a></li>
-                  <li><a href="#" data-value="views_asc" onClick={handleSortChange}>觀看次數:由低到高 </a></li>
+                  <li><a href="#" data-value="views_asc" onClick={handleSortChange}>觀看次數:由低到高</a></li>
                 </ul>
               </label>
             </div>

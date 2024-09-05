@@ -81,11 +81,14 @@
     }
     .review-area {
       .avatar {
-        background-color: #fff;
+        background-color: var(--primary2);
         border-radius: 50%;
         width: 9rem;
         height: 9rem;
         overflow: hidden;
+        img {
+          height: 100%;
+        }
       }
       .review-star-group {
         img {
