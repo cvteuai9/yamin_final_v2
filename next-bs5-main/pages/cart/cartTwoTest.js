@@ -229,7 +229,7 @@ export default function CartTwo() {
 
     // Custom validation logic
     if (!formData.username) {
-      newErrors.username = '姓名是必填项'
+      newErrors.username = '姓名是必填項'
       valid = false
     }
     if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
