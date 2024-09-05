@@ -5,7 +5,7 @@
   height: 75vh; /* 使用視窗高度，讓容器充滿整個視窗高度 */
   max-width: 50vw; /* 設定最大寬度 */
   margin: 0 auto; /* 水平居中對齊容器 */
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 /* 調整 wrapper 的寬度和高度 */
@@ -37,7 +37,7 @@
   height: 100%;
   will-change: transform;
   box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5),
-              0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);
+    0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);
 }
 
 /* 課程名稱的樣式 */
@@ -77,9 +77,10 @@
   text-overflow: ellipsis;
   letter-spacing: 2px;
 }
-@media (max-width: 992px){
+@media (max-width: 992px) {
   .shane_test_container {
-    height: 80vh; /* 使用視窗高度，讓容器充滿整個視窗高度 */
-    max-width: 80vw; /* 設定最大寬度 */
+    height: 60vh; /* 使用視窗高度，讓容器充滿整個視窗高度 */
+    max-width: 75vw; /* 設定最大寬度 */
+    overflow: hidden;
   }
 }
