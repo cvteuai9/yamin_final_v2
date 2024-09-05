@@ -35,7 +35,7 @@
       & a {
         padding-left: 15px;
         text-decoration: none; /* 移除底線 */
-        color: inherit; /* 繼承父層的字體顏色 */
+        // color: inherit; /* 繼承父層的字體顏色 */
       }
       & :hover {
         border-left: var(--primary2) 5px solid;
@@ -89,11 +89,12 @@
 }
 
 @media (max-width: 768px) {
-  .left-nav{
+  .left-nav {
     width: 100%;
+    margin-left: 16px;
+
   }
   .left-nav.sidebar {
-    
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -123,11 +124,25 @@
   .left-nav a {
     padding: 5px 10px;
     /* 可以添加一些視覺效果，如背景色或邊框 */
-    background-color: #f0f0f0;
+    // background-color: #f0f0f0;
+    border: 1px var(--primary2) solid;
     // border-radius: 5px;
   }
 
   // .left-nav-line {
   //   display: none; /* 在移動版隱藏裝飾線 */
   // }
+   li {
+    & :hover {
+      background-color: var(--primary2);
+      color: white;
+    }
+    .fromProfile,
+    .fromOrder,
+    .fromCupon,
+    .fromFavorite {
+      color: #ffffff;
+      background-color: var(--primary2);
+    }
+  }
 }

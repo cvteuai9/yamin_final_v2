@@ -269,6 +269,7 @@ export default function RegisterForm() {
                   placeholder="請輸入姓名"
                   value={user.user_name}
                   onChange={handleFieldChange}
+                  className={errors.user_name ? styles.hasError : ''}
                 />
                 {errors.user_name && (
                   <span className={styles.error}>{errors.user_name}</span>
@@ -283,6 +284,7 @@ export default function RegisterForm() {
                   placeholder="請輸入電子郵件"
                   value={user.email}
                   onChange={handleFieldChange}
+                  className={errors.email ? styles.hasError : ''}
                 />
                 {errors.email && (
                   <span className={styles.error}>{errors.email}</span>
@@ -298,6 +300,7 @@ export default function RegisterForm() {
                     placeholder="8到12個字元，須包含大小寫英文字母和數字"
                     value={user.password}
                     onChange={handleFieldChange}
+                    className={errors.password ? styles.hasError : ''}
                   />
                   <button
                     type="button"
@@ -321,6 +324,7 @@ export default function RegisterForm() {
                     placeholder="請再一次輸入密碼"
                     value={user.confirmPassword}
                     onChange={handleFieldChange}
+                    className={errors.confirmPassword ? styles.hasError : ''}
                   />
                   <button
                     type="button"
