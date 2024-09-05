@@ -206,7 +206,7 @@ router.get('/:id/recommendations', async function (req, res) {
       .filter((product) => product.matchCount > 0) // 只保留有匹配的商品
       .sort((a, b) => b.matchCount - a.matchCount) // 根據匹配度排序
       .slice(0, 4) // 取前4個
-    console.log(topMatches)
+    // console.log(topMatches)
     if (topMatches.length > 0) {
       return res.json({ status: 'success', data: { topMatches } })
     } else {
