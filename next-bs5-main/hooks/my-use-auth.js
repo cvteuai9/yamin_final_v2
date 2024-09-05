@@ -2,6 +2,7 @@ import React, { useState, useContext, createContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import axiosInstance from '@/services/axios-instance'
 import { checkAuth, getFavs } from '@/services/my-user'
+import toast from 'react-hot-toast'
 
 const AuthContext = createContext({ auth: {}, setUser: {} })
 

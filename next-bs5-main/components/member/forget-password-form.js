@@ -7,7 +7,9 @@ import useInterval from '@/hooks/use-interval'
 import { requestOtpToken, resetPassword } from '@/services/user'
 import toast, { Toaster } from 'react-hot-toast'
 import validator from 'validator'
-
+import { RiEyeLine } from 'react-icons/ri'
+import { RiEyeOffLine } from 'react-icons/ri'
+import { useRouter } from 'next/router'
 export default function ForgetPasswordForm() {
   const [email, setEmail] = useState('')
   const [token, setToken] = useState('')
@@ -51,7 +53,7 @@ export default function ForgetPasswordForm() {
   // 處理要求一次性驗証碼用
   const handleRequestOtpToken = async () => {
     if (delay !== null) {
-      toast.error('錯誤 - 60s內無法重新獲得驗証碼')
+      toast.error('60s內無法重新獲得驗証碼')
       return
     }
 
@@ -61,7 +63,7 @@ export default function ForgetPasswordForm() {
     // console.log(res.data)
 
     if (res.data.status === 'success') {
-      toast.success('資訊 - 驗証碼已寄送到電子郵件中')
+      toast.success('驗證碼已寄送到電子郵件中')
       setCount(60) // 倒數 60秒
       setDelay(1000) // 每 1000ms = 1s 減1
       setDisableBtn(true)
@@ -73,7 +75,9 @@ export default function ForgetPasswordForm() {
       }))
     }
   }
-
+  const router = useRouter()
+  // checkbox 呈現密碼用
+  const [showPassword, setShowPassword] = useState(false)
   // 處理重設密碼用
   const handleResetPassword = async () => {
     // Reset all errors
@@ -113,7 +117,8 @@ export default function ForgetPasswordForm() {
         formData.token
       )
       if (res.data.status === 'success') {
-        toast.success('密碼已成功修改')
+        toast.success('密碼已成功修改，請重新登入')
+        router.push('/member/login')
       } else {
         // Handle specific API errors
         if (res.data.message === 'OTP Token資料不存在') {
@@ -169,7 +174,8 @@ export default function ForgetPasswordForm() {
                     />
                     <button
                       type="button"
-                      className="btn btn-outline-secondary p-0"
+                      className={`${styles['btn-token']} 
+                      "btn btn-outline-secondary p-0"`}
                       id="button-addon2"
                       onClick={handleRequestOtpToken}
                       disabled={disableBtn}
@@ -201,15 +207,22 @@ export default function ForgetPasswordForm() {
                     className={`${styles['inputarea']} "d-flex justify-between"`}
                   >
                     <input
-                      type="text"
+                      type={showPassword ? 'text' : 'password'}
                       name="password"
-                      placeholder="請輸入密碼"
+                      placeholder="請輸入新密碼"
                       value={formData.password}
                       onChange={handleChange}
                       className={
                         errors.password && !password ? styles['hasError'] : ''
                       }
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={styles.icon}
+                    >
+                      {showPassword ? <RiEyeLine /> : <RiEyeOffLine />}
+                    </button>
                   </div>
                 </label>
                 {errors.password && (
@@ -226,6 +239,7 @@ export default function ForgetPasswordForm() {
                     // onClick={handleResetPassword}
                     type="submit"
                   >
+                    {' '}
                     重設密碼
                   </button>
                 </div>
