@@ -537,13 +537,31 @@ export default function Course() {
                                 />
                               )}
                             </button>
-                            <img
+                            {/* <img
                               src="/images/yaming/course/Group 115.png"
                               alt=""
                               width={20}
                               height={18}
                               className="me-3"
-                            />
+                            /> */}
+                            <button
+                              type="button"
+                              className="btn like-btn"
+                              onClick={() => {
+                                const item = { ...v, qty: 1 }
+                                console.log(item)
+                                notify(v.name)
+                                addItem(item)
+                              }}
+                            >
+                              <img
+                                src="/images/yaming/course/Group 115.png"
+                                alt=""
+                                width={20}
+                                height={18}
+                                className="me-3"
+                              />
+                            </button>
                             <div className="ms-3">
                               <button
                                 type="button"
