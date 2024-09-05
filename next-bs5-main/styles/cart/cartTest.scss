@@ -158,6 +158,16 @@ body {
   /* border-left: 2px solid var(--primary2); */
   /* border-right: 2px solid var(--primary2); */
 }
+.cartSubTotalBorr {
+  padding-left: 81px;
+  padding-right: 81px;
+  padding-top: 41px;
+  padding-bottom: 21px;
+  border-top: 2px solid var(--primary2);
+  border-bottom: 2px solid var(--primary2);
+  /* border-left: 2px solid var(--primary2); */
+  /* border-right: 2px solid var(--primary2); */
+}
 .cartlistBorMd .btn {
   display: inline-block;
 }
@@ -285,5 +295,14 @@ body {
   }
   .cartGoBuyAllOption {
     padding-bottom: 50px;
+  }
+  .mdOrderDetail {
+    width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .testVV{
+    width: 200px;
   }
 }

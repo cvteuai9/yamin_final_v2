@@ -106,15 +106,16 @@ export default function FavoriteA() {
   return (
     <>
       {/* 標題 & 篩選 */}
-      <div className="container-fluid">
+      <div className="container-fluid mb-6">
+
         <div className="row">
-          <div className="titlenav mb-6">
-            <img src="/images/favorite/title.svg" alt="" />
-            <img
-              src="/images/favorite/group.svg"
-              alt=""
-              style={{ width: '100%' }}
-            />
+          <div className="titlenav">
+          <img src="/images/favorite/title.svg" alt="" className="my-3" />
+              <img
+                src="/images/favorite/group.svg"
+                alt=""
+                style={{ width: '100%' }}
+              />  
           </div>
           <div className="col-md-3">
             <Leftnav fromFavorite="fromFavorite" />

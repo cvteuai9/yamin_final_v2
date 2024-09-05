@@ -15,23 +15,17 @@
 .grayf {
   color: var(--bg-text-color);
 }
-.container {
-  max-width: 1440px;
-  height: auto;
-  padding: 0;
-  margin: 0;
+@media screen and (max-width: 319px) {
+  /* 319px 是因為我們設置的最小寬度是 320px 無法使用?? */
+  .container-fluid {
+    max-width: 390px;
+  }
 }
 
 a {
   text-decoration: none;
 }
-/* input::placeholder {
-  font-size: 1.4rem;
-  @media screen and (max-width: 576px) {
-    font-size: 1.4rem;
-  }
-} */
-/* profile-btn */
+
 .btn-profile {
   white-space: nowrap;
   width: fit-content;
@@ -199,28 +193,11 @@ hr {
 
 .titlenav {
   width: 100vw;
-  /* height: auto; */
   display: inline;
   justify-content: center;
   text-align: center;
-  /* margin-top: 70px;
-  margin-bottom: 20px; */
-  /* @media (max-width: 770px) {
-    margin: 0px;
-  } */
-  /* ===julia 08-30 test標題img固定位置 ↓
-  position: sticky;
-  top: 70px;
-  background-color: var(--primary); 
-  z-index: 100; */
 }
-/* ===julia 08-30 test標題img固定位置 ↓*/
-.couponchoose {
-  @media screen and (max-width: 576px) {
-    font-size: 1.4rem;
-  }
-}
-/* =================================== */
+
 input::placeholder,
 .inputtext::placeholder,
 .inputradio::placeholder {
@@ -747,9 +724,9 @@ textarea {
 .coupon-inputtext {
   display: flex;
   all: unset;
-
+  font-family: 'B2Hana-Regular', sans-serif;
   color: var(--white);
-  height: 15px;
+  height: 10px;
   margin: 0 20px 0 20px;
   padding: 0 0 0 10px;
   border: 1px solid var(--primary2);
@@ -766,7 +743,7 @@ textarea {
   margin: 0 0 0 10px;
 }
 .coupon-cinput {
-  height: 50px;
+  /* height: 50px; */
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -802,17 +779,18 @@ textarea {
     /* white-space: nowrap; */
     left: 570px;
     top: -35px;
-    @media (max-width: 770px) {
-      left: 459px;
-      top: -35px;
-    }
 
     /* 修改 */
-    /* @media screen and (max-width: 900px) {
-      left: 550px;
-      top: -40px;
-    } */
   }
+  /* @media screen and (max-width: 1200px) {
+    .tabchooes {
+      .choosebtn {
+        position: absolute;
+        left: 570px;
+        top: -35px;
+      }
+    }
+  } */
 }
 .coupon-p-14 {
   text-align: start;
@@ -890,3 +868,12 @@ textarea {
     transform: translateY(-10px);
   }
 }
+
+/* ===julia 08-30 test標題img固定位置 ↓*/
+
+@media screen and (max-width: 576px) {
+  .couponchoose {
+    font-size: 1.4rem;
+  }
+}
+/* =================================== */
