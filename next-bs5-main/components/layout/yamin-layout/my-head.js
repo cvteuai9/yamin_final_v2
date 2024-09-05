@@ -121,7 +121,9 @@ export default function MyHeader() {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-
+  function handleCloseDropMenu() {
+    toggleBtnIconRef.current.click()
+  }
   function handleToMyFav(isAuth) {
     if (isAuth) {
       router.push('/member/fav/favorite-p')
@@ -288,47 +290,60 @@ export default function MyHeader() {
               <div className={`${styles['svgDiv']}`}>
                 <Link href="/index">
                   <h5>首頁</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                  />
                 </Link>
-                <img
-                  src="/images/header/outer-frame.png"
-                  alt=""
-                  className={`${styles.svg}`}
-                />
               </div>
             </li>
             <li>
               <div className={`${styles['svgDiv']}`}>
-                <img
-                  src="/images/header/outer-frame.png"
-                  alt=""
-                  className={`${styles.svg}`}
-                />
                 <Link href="/product/list">
                   <h5>商品</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                  />
                 </Link>
               </div>
             </li>
             <li>
               <div className={`${styles['svgDiv']}`}>
-                <img
-                  src="/images/header/outer-frame.png"
-                  alt=""
-                  className={`${styles.svg}`}
-                />
                 <Link href="/course/courselist">
                   <h5>課程</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                  />
                 </Link>
               </div>
             </li>
             <li>
               <div className={`${styles['svgDiv']}`}>
-                <img
-                  src="/images/header/outer-frame.png"
-                  alt=""
-                  className={`${styles.svg}`}
-                />
                 <Link href="/article">
                   <h5>文章</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                  />
+                </Link>
+              </div>
+            </li>
+            <li>
+              <div className={`${styles['svgDiv']}`}>
+                <Link href="/teamap">
+                  <h5>茶地圖</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                    style={{ left: -10 }}
+                  />
                 </Link>
               </div>
             </li>
@@ -553,23 +568,32 @@ export default function MyHeader() {
             />
           </div>
           <li>
-            <Link href="/home">首頁</Link>
+            <Link href="/index" onClick={() => handleCloseDropMenu()}>
+              首頁
+            </Link>
           </li>
           <li>
-            <Link href="/product/list">商品</Link>
+            <Link href="/product/list" onClick={() => handleCloseDropMenu()}>
+              商品
+            </Link>
           </li>
           <li>
-            <Link href="/course/courselist">課程</Link>
-            <Link href="/course/courselist">課程</Link>
+            <Link
+              href="/course/courselist"
+              onClick={() => handleCloseDropMenu()}
+            >
+              課程
+            </Link>
           </li>
           <li>
-            <Link href="/article">文章</Link>
+            <Link href="/article" onClick={() => handleCloseDropMenu()}>
+              文章
+            </Link>
           </li>
           <li>
-            <Link href="/member/fav/favorite-p">收藏</Link>
-          </li>
-          <li>
-            <Link href="文章">個人資料</Link>
+            <Link href="/teamap" onClick={() => handleCloseDropMenu()}>
+              茶地圖
+            </Link>
           </li>
         </div>
       </header>
