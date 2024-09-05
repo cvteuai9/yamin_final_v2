@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Leftnav from '@/components/member/left-nav'
 import { useAuth } from '@/hooks/my-use-auth'
+import { Ellipsis } from 'lucide-react'
 export default function OrderOne() {
   const { auth } = useAuth()
   const [userID, setUserId] = useState(0)
@@ -95,9 +96,7 @@ export default function OrderOne() {
           </div>
           {/* 歷史訂單部分 */}
           <div className="orderCol orderColRight col-8">
-            <div className="orderColH3 orderTitleMd orderTitle w-100 mb-3">
-              <h3>首頁 / 會員 / 訂單</h3>
-            </div>
+            <div className="orderColH3 orderTitleMd orderTitle w-100 mb-3"></div>
             <div className="orderColH3 orderTitle mb-3 w-100">
               <h3>歷史訂單</h3>
             </div>
@@ -204,7 +203,7 @@ export default function OrderOne() {
                     <h5>{v.order_uuid}</h5>
                   </div>
                   <div className="orderListCol col-3">
-                    <h5>{v.created_at}</h5>
+                    <h5 className="mdOrderDetail">{v.created_at}</h5>
                   </div>
                   <div className="orderListCol col-2">
                     <h5>{v.total_price}</h5>

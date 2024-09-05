@@ -572,11 +572,19 @@ export default function Detail() {
                     >
                       <div className="d-flex flex-column gap-3">
                         <div className={`${styles.avatar}`}>
-                          <img
-                            className="img-fluid object-fit-cover"
-                            src="http://localhost:3005/avatar/1.png"
-                            alt=""
-                          />
+                          {v.user_image === null ? (
+                            <img
+                              className="img-fluid object-fit-cover"
+                              src="http://localhost:3005/avatar/default.png"
+                              alt=""
+                            />
+                          ) : (
+                            <img
+                              className="img-fluid object-fit-cover"
+                              src={`http://localhost:3005/avatar/${v.user_image}`}
+                              alt=""
+                            />
+                          )}
                         </div>
                         <h5 className="text-center fw-bold">{v.user_name}</h5>
                       </div>
@@ -665,11 +673,19 @@ export default function Detail() {
                             >
                               <div className="d-flex flex-column gap-3">
                                 <div className={`${styles.avatar}`}>
-                                  <img
-                                    className="img-fluid object-fit-cover"
-                                    src="/images/product/list1/boy3.png"
-                                    alt=""
-                                  />
+                                  {v.user_image === null ? (
+                                    <img
+                                      className="img-fluid object-fit-cover"
+                                      src="http://localhost:3005/avatar/default.png"
+                                      alt=""
+                                    />
+                                  ) : (
+                                    <img
+                                      className="img-fluid object-fit-cover"
+                                      src={`http://localhost:3005/avatar/${v.user_image}`}
+                                      alt=""
+                                    />
+                                  )}
                                 </div>
                                 <h5 className="text-center fw-bold">
                                   {v.user_name}
