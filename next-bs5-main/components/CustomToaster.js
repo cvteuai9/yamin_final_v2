@@ -8,26 +8,28 @@ const CustomToaster = () => {
       toastOptions={{
         success: {
           icon: '🍵',
-          style: {
-            fontSize: '24px', // 放大icon的大小
-            color: 'white', // 文字顏色
-            padding: '16px', // 內邊距
-            // fontSize: '16px', // 字體大小
-            fontFamily: 'B2Hana-Regular',
-            boxShadow: '0 0 0 4px #003E52, 0 0 0 5px #B29564',
-            border: '1px solid #B29564',
-            borderRadius: '0',
-            backgroundColor: '#004A62',
-          },
           // style: {
           //   fontSize: '24px', // 放大icon的大小
           //   color: 'white', // 文字顏色
           //   padding: '16px', // 內邊距
           //   // fontSize: '16px', // 字體大小
           //   fontFamily: 'B2Hana-Regular',
+          //   boxShadow: '0 0 0 4px #003E52, 0 0 0 5px #B29564',
+          //   border: '1px solid #B29564',
           //   borderRadius: '0',
-          //   backgroundColor: '#B29564',
+          //   backgroundColor: '#004A62',
           // },
+          style: {
+            fontSize: '24px', // 放大icon的大小
+            color: 'white', // 文字顏色
+            padding: '16px', // 內邊距
+            // fontSize: '16px', // 字體大小
+            fontFamily: 'B2Hana-Regular',
+            boxShadow: '0 0 0 2px #003E52, 0 0 0 5px #B29564',
+            border: '1px solid #003E52',
+            borderRadius: '0',
+            backgroundColor: '#B29564',
+          },
         },
         error: {
           style: {
