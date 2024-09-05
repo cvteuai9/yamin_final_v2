@@ -88,9 +88,9 @@ export default function ListForm() {
               .then((res) => res.json())
               .then((result) => {
                 if (result.message === 'Favorite Article DELETE successfully') {
-                  toast.success('移除收藏成功!')
+                  toast.success(<p className="m-0">移除收藏成功!</p>)
                 } else {
-                  toast.error('移除收藏失敗!')
+                  toast.error(<p className="m-0">移除收藏失敗!</p>)
                 }
               })
           }
