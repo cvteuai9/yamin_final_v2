@@ -19,7 +19,7 @@
     /* align-items: center; */
     .error {
       font-size: 1.6rem;
-      color: red;
+      color: var(--error-color);
     }
     .inputarea {
       position: relative;
@@ -149,7 +149,7 @@
     /* align-items: center; */
     .error {
       font-size: 1.6rem;
-      color: red;
+      color: var(--error-color);
     }
     .inputarea {
       position: relative;
@@ -243,7 +243,7 @@
     // align-items: center;
     .error {
       font-size: 1.6rem;
-      color: red;
+      color:  var(--error-color);
     }
     .inputarea {
       position: relative;
@@ -279,7 +279,7 @@
         outline: none;
       }
       &.hasError {
-        border: 1px solid red;
+        border: 1px solid  var(--error-color);
       }
     }
     .btn-token {
@@ -547,6 +547,9 @@
         border: 1px solid #ffe9b1;
         transition: border 0.2s ease;
       }
+      &.hasError {
+        border: 1px solid  var(--error-color);
+      }
     }
   }
 
@@ -606,7 +609,7 @@
 }
 
 .error {
-  color: #ff0000;
+  color:  var(--error-color);
   font-size: 16px;
   margin-top: 5px;
 }

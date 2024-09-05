@@ -327,9 +327,6 @@ export default function Profile() {
                       max={new Date().toISOString().split('T')[0]} // 最大日期為今天
                     />
                   </div>
-                  <p className="p2 goldenf">
-                    * 請正確填寫，註冊成功後將無法修改
-                  </p>
                   <div>
                     <p className="p whitef mt-4">手機（必填）</p>
                     <input

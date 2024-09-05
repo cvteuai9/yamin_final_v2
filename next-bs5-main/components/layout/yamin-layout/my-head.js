@@ -489,15 +489,7 @@ export default function MyHeader() {
                         <CgProfile className="icon" />
                       </div>
                       <Link href="/member/profile" className="user-link ms-3">
-                        個人資料管理
-                      </Link>
-                    </li>
-                    <li className="d-flex align-items-center">
-                      <div className="d-flex align-items-center">
-                        <TiClipboard className="icon" />
-                      </div>
-                      <Link href="/order" className="user-link ms-3">
-                        我的訂單
+                        個人檔案
                       </Link>
                     </li>
                     <li className="d-flex align-items-center">
@@ -506,6 +498,14 @@ export default function MyHeader() {
                       </div>
                       <Link href="/member/coupon" className="user-link ms-3">
                         優惠券
+                      </Link>
+                    </li>
+                    <li className="d-flex align-items-center">
+                      <div className="d-flex align-items-center">
+                        <TiClipboard className="icon" />
+                      </div>
+                      <Link href="/order" className="user-link ms-3">
+                        購買訂單
                       </Link>
                     </li>
                     <li className="d-flex align-items-center">
