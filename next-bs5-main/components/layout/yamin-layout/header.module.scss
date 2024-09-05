@@ -23,7 +23,7 @@
   }
 
   .navbar {
-    padding-left: 7.5vw;
+    padding: 0 7.5vw;
     width: 100%;
     height: 70px;
     display: flex;
@@ -166,7 +166,12 @@
 
   @media (max-width: 1600px) {
     .navbar {
-      padding-left: 5vw;
+      padding: 0 5vw;
+    }
+  }
+  @media (max-width: 1500px) {
+    .navbar {
+      padding: 0 2vw;
     }
   }
   @media (max-width: 1400px) {
