@@ -54,13 +54,29 @@ router.post('/', async function (req, res, next) {
       user_name: dbuser.user_name,
       google_uid: dbuser.google_uid,
     }
-    // 如果沒有相同的google_uid，但有相同email
+    // 如果沒有相同的google_uid，但有相同email，寫入google_uid
   } else if (dbusersemail.length > 0) {
-    const dbuseremail = dbusersemail[0]
-    returnUser = {
-      id: dbuseremail.id,
-      user_name: dbuseremail.user_name,
-      google_uid: dbuseremail.google_uid,
+    const [result] = await db.query(
+      'UPDATE users SET google_uid = ? WHERE email = ?',
+      [google_uid, email]
+    )
+    if (result.affectedRows === 1) {
+      const [gUsers] = await db.query(
+        'SELECT * FROM users WHERE google_uid = ?',
+        [google_uid]
+      )
+      if (gUsers.length > 0) {
+        const gUser = gUsers[0]
+        returnUser = {
+          id: gUser.id,
+          user_name: gUser.user_name,
+          google_uid: gUser.google_uid,
+        }
+      } else {
+        throw new Error('Failed to retrieve new user after insertion')
+      }
+    } else {
+      throw new Error('Failed to insert new user')
     }
   } else {
     // const member_id = uuidv4()
@@ -70,7 +86,7 @@ router.post('/', async function (req, res, next) {
       // [member_id, email, displayName, google_uid]
       [email, displayName, google_uid]
     )
-    console.log(result)
+    // console.log(result)
 
     if (result.affectedRows === 1) {
       const [newUsers] = await db.query(
