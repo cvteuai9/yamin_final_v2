@@ -291,7 +291,7 @@ export default function Course() {
                 <div className="shane-course-wood mb-4" />
                 <div className="h1 shane-course-store row text-center justify-content-center">
                   課程
-                  <div className="shane-course-store p text-center ">
+                  <div className="shane-course-store p text-center p-0">
                     Course
                   </div>
                 </div>
