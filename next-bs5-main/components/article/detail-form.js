@@ -181,9 +181,20 @@ export default function DetailForm() {
       <main className="articledetail">
         <div className="container-fluid mt-4">
           {/* <StarLarge /> */}
-          <div className="row d-flex">
+          <div className="d-flex">
             {/*-------------------- 左邊主要區 ---------------------*/}
-            <div className="col-lg-9 article-left pe-lg-3 mx-0 px-0">
+            <div className="article-left pe-lg-3 mx-0 px-0">
+              <div className="articles_group_mobile bgc-right mx-0">
+                {categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    className="btn"
+                    href={`/article/list?category_id=${category.id}`}
+                  >
+                    {category.name}
+                  </Link>
+                ))}
+              </div>
               <div className="article_content py-4 mx-4">
                 <div className="article_head bd-b1">
                   <h1 className="section-heading p-3">{article.title}</h1>
@@ -314,9 +325,9 @@ export default function DetailForm() {
               </div> */}
             </div>
             {/*----------------- 右邊 -----------------------*/}
-            <div className="col-lg-3 article_info ">
-              <div className="row mx-0 mt-3">
-                <div className="col-12 ">
+            <div className="article_info ">
+              <div className="mx-0 mt-3">
+                <div className="">
                   <div className="all_articles_title bgc-right">
                     <div className="article_right_title mx-0">
                       <h5 className="ps-3 py-3 mt-3">所有文章主題</h5>
@@ -432,7 +443,8 @@ export default function DetailForm() {
           </div>
         </div>
       </main>
-      <Toaster />
+      {/* <Toaster /> */}
     </>
   )
 }
+
