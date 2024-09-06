@@ -38,7 +38,7 @@ export default function MyHeader() {
   const searchFormCloseBtnRef = useRef(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isAuth, setIsAuth] = useState(false)
-  const { auth, setAuth } = useAuth()
+  const { auth, setAuth, setIsLoggingOut } = useAuth()
   // 購物車部分
   const { cart, items, increment, decrement, removeItem } = YaminUseCart()
   const { selectedValue, setSelectedValue, selectedId, setSelectedId } =
@@ -206,8 +206,7 @@ export default function MyHeader() {
 
     // 成功登出後，回復初始會員狀態
     if (res.data.status === 'success') {
-      toast.success('已成功登出')
-
+      setIsLoggingOut(true)
       setAuth({
         isAuth: false,
         userData: initUserData,
@@ -215,6 +214,7 @@ export default function MyHeader() {
       // 因為解除這些條件才能立刻讓圖片為初始圖片
       setSelectedFile(null)
       setUserProfile({})
+      toast.success('已成功登出')
     } else {
       toast.error(`登出失敗`)
     }

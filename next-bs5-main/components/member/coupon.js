@@ -5,6 +5,7 @@ import option from '@/components/article/option.module.sass'
 import { Modal, Button } from 'react-bootstrap'
 import { Gift } from 'lucide-react'
 import Link from 'next/link'
+import { useAuth } from '@/hooks/my-use-auth'
 // import e from 'express'
 
 // 狀態映射對象
@@ -17,6 +18,7 @@ const statusMapping = {
 // ========== 修改: 移除獨立的 FloatingCouponImage 組件 ==========
 
 export default function Coupon() {
+  const { auth } = useAuth()
   const [coupons, setCoupons] = useState([])
   const [annivCoupons, setAnnivCoupons] = useState([])
   const [activeTab, setActiveTab] = useState('all')
@@ -209,7 +211,7 @@ export default function Coupon() {
       setError(error.message || '提交優惠券時出錯')
     }
   }
-
+  if (!auth.isAuth) return <></>
   return (
     <>
       <div className="container-fluid mb-6">
@@ -309,7 +311,6 @@ export default function Coupon() {
               {isLoading ? (
                 <p>加載中...</p>
               ) : (
-                
                 <div className="tabchooes mt-3 table-responsive-xl">
                   <table className="coupon-cptable mt-3">
                     <thead>
@@ -387,7 +388,7 @@ export default function Coupon() {
                       <label
                         htmlFor="a1-1"
                         className="d-flex flex-column p-0"
-                         style={{ width: '100%', maxWidth: '150px' }}
+                        style={{ width: '100%', maxWidth: '150px' }}
                       >
                         <p className="m-0 ps-3 align-items-center">
                           篩選 ：{selectedLabel}

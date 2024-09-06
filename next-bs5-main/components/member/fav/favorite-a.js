@@ -106,10 +106,9 @@ export default function FavoriteA() {
   return (
     <>
       {/* 標題 & 篩選 */}
-      <div className="container-fluid mb-6">
-
+      <div className="container-fluid">
         <div className="row">
-          <div className="titlenav">
+          <div className="titlenav mb-6">
           <img src="/images/favorite/title.svg" alt="" className="my-3" />
               <img
                 src="/images/favorite/group.svg"
