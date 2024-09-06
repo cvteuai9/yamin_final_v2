@@ -94,7 +94,7 @@ export default function Coupon() {
       }
 
       const data = await response.json()
-      console.log('Fetched coupons:', data)
+      // console.log('Fetched coupons:', data)
       setCoupons(data)
       setFilteredCoupons(data)
       //unused可使用張數
@@ -142,7 +142,7 @@ export default function Coupon() {
 
       const data = await response.json()
 
-      console.log('Anniv coupons:', data.data)
+      // console.log('Anniv coupons:', data.data)
       setFloatingCoupon(data.data)
       setAnnivCoupons(data.data)
       // setIsOpen(true)
@@ -370,43 +370,48 @@ export default function Coupon() {
                     </thead>
                     <tbody>
                       {filteredCoupons.length > 0 ? (
-                        filteredCoupons.map((coupon) => (
-                          <tr
-                            key={coupon.id}
-                            style={{
-                              transition: 'background-color 0.3s ease',
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.backgroundColor =
-                                'rgba(0, 0, 0, 0.15)'
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.backgroundColor =
-                                'transparent'
-                            }}
-                          >
-                            <td
-                              className="coupon-cptd p"
-                              style={{ width: 116 }}
+                        filteredCoupons.map((coupon, index) => {
+                          {
+                            /* console.log('檢查', filteredCoupons) */
+                          }
+                          return (
+                            <tr
+                              key={`CUPPON_${index}`}
+                              style={{
+                                transition: 'background-color 0.3s ease',
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor =
+                                  'rgba(0, 0, 0, 0.15)'
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor =
+                                  'transparent'
+                              }}
                             >
-                              {coupon.name.split('：')[0]}
-                            </td>
-                            <td className="coupon-cptd p">{coupon.code}</td>
-                            <td
-                              className="coupon-p-14 p"
-                              style={{ width: 300 }}
-                            >
-                              {coupon.info}
-                            </td>
-                            <td className="coupon-cptd p">
-                              {new Date(coupon.end_time).toLocaleDateString()}
-                            </td>
-                            <td className="coupon-cptd p">
-                              {statusMapping[coupon.user_status] ||
-                                coupon.user_status}
-                            </td>
-                          </tr>
-                        ))
+                              <td
+                                className="coupon-cptd p"
+                                style={{ width: 116 }}
+                              >
+                                {coupon.name.split('：')[0]}
+                              </td>
+                              <td className="coupon-cptd p">{coupon.code}</td>
+                              <td
+                                className="coupon-p-14 p"
+                                style={{ width: 300 }}
+                              >
+                                {coupon.info}
+                              </td>
+                              <td className="coupon-cptd p">
+                                {new Date(coupon.end_time).toLocaleDateString()}
+                              </td>
+                              <td className="coupon-cptd p">
+                                {statusMapping[coupon.user_status] ||
+                                  coupon.user_status}
+                              </td>
+                            </tr>
+                          )
+                        })
                       ) : (
                         <tr className="">
                           <td
