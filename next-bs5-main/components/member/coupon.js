@@ -282,75 +282,76 @@ export default function Coupon() {
                   className="coupon-inputtext p2 my-0"
                   type="text"
                   placeholder="活動序號或通關密語"
-                  style={{ width: 380 }}
+                  style={{ width: 250 }}
                   value={couponCode}
                   onChange={(e) => setCouponCode(e.target.value)}
                 />
                 <button className="btn2 p checked" onClick={handleCouponSubmit}>
                   確認
                 </button>
-
-                {isLoading && (
-                  <p className="grayf ms-3 m-0 d-flex text-align-center">
-                    加載中...
-                  </p>
-                )}
-                {error && (
-                  <p className="grayf ms-3 m-0 d-flex text-align-center">
-                    錯誤: {error}
-                  </p>
-                )}
+                <div className="errortext">
+                  {isLoading && (
+                    <p className="grayf ms-3 m-0 d-flex text-align-center">
+                      加載中...
+                    </p>
+                  )}
+                  {error && (
+                    <p className="grayf ms-3 m-0 d-flex text-align-center">
+                      錯誤: {error}
+                    </p>
+                  )}
+                </div>
               </div>
-              <div className='d-flex justify-content-between'>
-              {unusedCouponCount > 0 && (
+              <div className="d-flex justify-content-between">
+                {/* {unusedCouponCount > 0 && ( */}
                 <p className="goldenf mt-3">
                   目前有 {unusedCouponCount} 張優惠券可使用
                 </p>
-              )}
-              <div
-                className="d-flex justify-content-end choosebtn text-nowrap align-items-center "
-                style={{ width: 150 }}
-              >
+                {/* )} */}
                 <div
-                  className={`d-flex align-items-center justify-content-between ${option['articlechoose']}`}
+                  className="d-flex justify-content-end choosebtn text-nowrap align-items-center "
+                  style={{ width: 150 }}
                 >
-                  <input type="checkbox" name="a1-1" id="a1-1" />
-                  <label
-                    htmlFor="a1-1"
-                    className="d-flex flex-column p-0"
-                    style={{ width: '100%', maxWidth: '150px' }}
+                  <div
+                    className={`d-flex align-items-center justify-content-between ${option['articlechoose']}`}
                   >
-                    <p className="m-0 ps-3 align-items-center">
-                      篩選 ：{selectedLabel}
-                      <FaAngleDown className={`${option.icon} ms-3`} />
-                    </p>
+                    <input type="checkbox" name="a1-1" id="a1-1" />
+                    <label
+                      htmlFor="a1-1"
+                      className="d-flex flex-column p-0"
+                      style={{ width: '100%', maxWidth: '150px' }}
+                    >
+                      <p className="m-0 ps-3 align-items-center">
+                        篩選 ：{selectedLabel}
+                        <FaAngleDown className={`${option.icon} ms-3`} />
+                      </p>
 
-                    <ul className="p2 grayf" style={{ width: 150 }}>
-                      {['all', ...Object.keys(statusMapping)].map((tab) => (
-                        <li
-                          key={tab}
-                          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-                          role="button"
-                          tabIndex={0}
-                          className="d-flex align-items-center justify-content-center p"
-                          onClick={() => handleTabChange(tab)}
-                          onKeyPress={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              handleTabChange(tab)
-                            }
-                          }}
-                          style={{
-                            cursor: 'pointer',
-                            fontWeight: activeTab === tab ? 'bold' : 'normal',
-                          }}
-                        >
-                          {tab === 'all' ? '全部' : statusMapping[tab]}
-                        </li>
-                      ))}
-                    </ul>
-                  </label>
+                      <ul className="p2 grayf" style={{ width: 150 }}>
+                        {['all', ...Object.keys(statusMapping)].map((tab) => (
+                          <li
+                            key={tab}
+                            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                            role="button"
+                            tabIndex={0}
+                            className="d-flex align-items-center justify-content-center p"
+                            onClick={() => handleTabChange(tab)}
+                            onKeyPress={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                handleTabChange(tab)
+                              }
+                            }}
+                            style={{
+                              cursor: 'pointer',
+                              fontWeight: activeTab === tab ? 'bold' : 'normal',
+                            }}
+                          >
+                            {tab === 'all' ? '全部' : statusMapping[tab]}
+                          </li>
+                        ))}
+                      </ul>
+                    </label>
+                  </div>
                 </div>
-              </div>
               </div>
 
               {isLoading ? (
@@ -420,6 +421,7 @@ export default function Coupon() {
                       )}
                     </tbody>
                   </table>
+
                   {/*  優惠券下拉式選單 */}
                 </div>
               )}

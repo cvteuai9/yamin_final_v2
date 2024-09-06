@@ -414,7 +414,12 @@
     {"id":"622","user_id":"55","coupon_id":"8","assigned_at":"2024-08-23 09:59:44","redeemed_at":null,"status":"unused"},
     {"id":"623","user_id":"55","coupon_id":"6","assigned_at":"2024-08-23 14:35:48","redeemed_at":null,"status":"unused"},
     {"id":"624","user_id":"55","coupon_id":"16","assigned_at":"2024-08-23 14:36:58","redeemed_at":null,"status":"unused"},
-    {"id":"625","user_id":"49","coupon_id":"18","assigned_at":"2024-08-23 14:52:53","redeemed_at":null,"status":"unused"}
+    {"id":"625","user_id":"49","coupon_id":"18","assigned_at":"2024-08-23 14:52:53","redeemed_at":null,"status":"unused"},
+    {"id":"626","user_id":"60","coupon_id":"30","assigned_at":"2024-06-15 23:59:00","redeemed_at":null,"status":"expired"},
+    {"id":"627","user_id":"60","coupon_id":"26","assigned_at":"2024-06-15 23:59:00","redeemed_at":null,"status":"expired"},
+    {"id":"628","user_id":"60","coupon_id":"30","assigned_at":"2024-06-15 23:59:00","redeemed_at":null,"status":"expired"},
+    {"id":"629","user_id":"60","coupon_id":"30","assigned_at":"2024-06-15 23:59:00","redeemed_at":null,"status":"expired"},
+    {"id":"630","user_id":"60","coupon_id":"2","assigned_at":"2024-06-15 23:59:00","redeemed_at":null,"status":"unused"}
   
     ]
     
