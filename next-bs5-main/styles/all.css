@@ -248,7 +248,7 @@ textarea {
     outline: none;
   }
   &.hasError {
-    border: 1px solid #ff7a7d;
+    border: 1px solid red;
   }
 }
 .changeps-inputradio {
@@ -292,7 +292,7 @@ textarea {
 .changeps-form {
   .error {
     font-size: 1.6rem;
-    color: #ff7a7d;
+    color: red;
     font-family: 'B2Hana-Regular';
   }
 }
@@ -665,7 +665,7 @@ textarea {
   border: 1px solid var(--primary2);
   box-sizing: border-box;
   &.hasError {
-    border: 1px solid #ff7a7d;
+    border: 1px solid red;
   }
 }
 

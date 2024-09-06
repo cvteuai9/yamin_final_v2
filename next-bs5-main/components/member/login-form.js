@@ -196,10 +196,15 @@ export default function LoginForm() {
       <div className={styles.formSection}>
         <div className={styles.formContainer}>
           <div className={styles.logoContainer}>
-            <Image src="/images/main-title/login.svg" alt="login" width={200} height={100} />
+            <Image
+              src="/images/main-title/login.svg"
+              alt="login"
+              width={200}
+              height={100}
+            />
           </div>
-          <button 
-            className={styles.googleButton} 
+          <button
+            className={styles.googleButton}
             onClick={() => loginGoogle(callbackGoogleLoginPopup)}
           >
             <GoogleLogo className={styles.googleIcon} />
@@ -218,8 +223,11 @@ export default function LoginForm() {
                 value={user.email}
                 onChange={handleFieldChange}
                 placeholder="請輸入電子郵件"
+                className={errors.email ? styles.hasError : ''}
               />
-              {errors.email && <span className={styles.error}>{errors.email}</span>}
+              {errors.email && (
+                <span className={styles.error}>{errors.email}</span>
+              )}
             </div>
             <div className={styles.inputGroup}>
               <label htmlFor="password">密碼</label>
@@ -231,16 +239,19 @@ export default function LoginForm() {
                   value={user.password}
                   onChange={handleFieldChange}
                   placeholder="請輸入密碼"
+                  className={errors.password ? styles.hasError : ''}
                 />
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className={styles.eyeIcon}
                 >
                   {showPassword ? <RiEyeLine /> : <RiEyeOffLine />}
                 </button>
               </div>
-              {errors.password && <span className={styles.error}>{errors.password}</span>}
+              {errors.password && (
+                <span className={styles.error}>{errors.password}</span>
+              )}
             </div>
             <button type="submit" className={styles.submitButton}>
               登入
@@ -254,8 +265,6 @@ export default function LoginForm() {
       </div>
       {/* <Toaster /> */}
     </main>
-  
-
 
     // <main className={`form-member w-100 m-auto text-center`}>
     //   <h2 className="text-center mb-5">會員登入</h2>
