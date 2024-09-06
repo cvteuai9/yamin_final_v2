@@ -16,6 +16,7 @@ import styles from '@/components/member/fav/favorite.module.scss'
 import { useAuth } from '@/hooks/my-use-auth'
 import Swal from 'sweetalert2'
 import { func } from 'prop-types'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function FavoriteA() {
   const router = useRouter()
@@ -71,6 +72,11 @@ export default function FavoriteA() {
             if (result.message) {
               getFavArticle(page, order, userID)
             }
+            if (result.message === 'Favorite Article DELETE successfully') {
+              toast.success(<p className="m-0">移除收藏成功!</p>)
+            } else {
+              toast.error(<p className="m-0">移除收藏失敗!</p>)
+            }
           })
           .catch((error) => console.log(error))
       }
@@ -106,15 +112,15 @@ export default function FavoriteA() {
   return (
     <>
       {/* 標題 & 篩選 */}
-      <div className="container-fluid">
+      <div className="container-fluid mb-6">
         <div className="row">
           <div className="titlenav mb-6">
-          <img src="/images/favorite/title.svg" alt="" className="my-3" />
-              <img
-                src="/images/favorite/group.svg"
-                alt=""
-                style={{ width: '100%' }}
-              />  
+            <img src="/images/favorite/title.svg" alt="" />
+            <img
+              src="/images/favorite/group.svg"
+              alt=""
+              style={{ width: '100%' }}
+            />
           </div>
           <div className="col-md-3">
             <Leftnav fromFavorite="fromFavorite" />

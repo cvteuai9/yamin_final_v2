@@ -73,7 +73,7 @@ export default function TeaMapComponent({
     >
       {position.lat && (
         <Map
-          defaultZoom={12}
+          defaultZoom={13}
           defaultCenter={position}
           mapId="aef5b35a6884a3be"
           gestureHandling="greedy"

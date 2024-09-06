@@ -883,5 +883,20 @@
     "google_uid": "100143755989632136244",
     "created_at": null,
     "valid": "1"
+  },
+  {
+    "id":60,
+    "user_name": "ju_test",
+    "nick_name": null,
+    "gender": "女性",
+    "birthday": null,
+    "password": "12345asdA",
+    "phone": "0912345679",
+    "email": "ju_test@yahoo.com.tw",
+    "user_image": "59.png",
+    "address": "新竹市",
+    "google_uid": null,
+    "created_at": null,
+    "valid": "1"
   }
 ]
