@@ -15,6 +15,7 @@ import Leftnav from '@/components/member/left-nav'
 import styles from '@/components/member/fav/favorite.module.scss'
 import { useAuth } from '@/hooks/my-use-auth'
 import Swal from 'sweetalert2'
+import toast, { Toaster } from 'react-hot-toast'
 export default function FavoriteC() {
   const filterArray = ['金額由小到大', '金額由大到小']
   const router = useRouter()
@@ -70,6 +71,11 @@ export default function FavoriteC() {
           .then((result) => {
             if (result.message) {
               getFavCourse(order, page, userID)
+            }
+            if (result.message === 'Favorite Course deleted successfully') {
+              toast.success(<p className="m-0">移除收藏成功!</p>)
+            } else {
+              toast.error(<p className="m-0">移除收藏失敗!</p>)
             }
           })
           .catch((error) => console.log(error))
