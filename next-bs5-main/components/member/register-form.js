@@ -182,6 +182,10 @@ export default function RegisterForm() {
     if (!user.email) {
       newErrors.email = 'email為必填'
     }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailPattern.test(user.email)) {
+      newErrors.email = 'email格式不正確'
+    }
     // 強密碼驗證
     if (
       !validator.isStrongPassword(user.password, {

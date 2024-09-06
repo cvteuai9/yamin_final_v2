@@ -1,7 +1,7 @@
 .article-list {
   h4,
   a {
-    color: #D8B783;
+    color: #d8b783;
     font-family: 'B2Hana-Regular', sans-serif;
     font-weight: 100;
   }
@@ -28,11 +28,10 @@
 
     .btn {
       text-decoration: none;
-      &.hasSelected{
-        color: #D8B783;
+      &.hasSelected {
+        color: #d8b783;
       }
     }
-    
   }
 
   @media (max-width: 768px) {
@@ -45,7 +44,7 @@
     }
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 389px) {
     .typetitle_group {
       display: none;
     }
