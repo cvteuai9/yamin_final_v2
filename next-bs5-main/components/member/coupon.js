@@ -94,7 +94,7 @@ export default function Coupon() {
       }
 
       const data = await response.json()
-      console.log('Fetched coupons:', data)
+      // console.log('Fetched coupons:', data)
       setCoupons(data)
       setFilteredCoupons(data)
       //unused可使用張數
@@ -142,7 +142,7 @@ export default function Coupon() {
 
       const data = await response.json()
 
-      console.log('Anniv coupons:', data.data)
+      // console.log('Anniv coupons:', data.data)
       setFloatingCoupon(data.data)
       setAnnivCoupons(data.data)
       // setIsOpen(true)
@@ -289,27 +289,74 @@ export default function Coupon() {
                 <button className="btn2 p checked" onClick={handleCouponSubmit}>
                   確認
                 </button>
-
-                {isLoading && (
-                  <p className="grayf ms-3 m-0 d-flex text-align-center">
-                    加載中...
-                  </p>
-                )}
-                {error && (
-                  <p className="grayf ms-3 m-0 d-flex text-align-center">
-                    錯誤: {error}
-                  </p>
-                )}
+                <div className="errortext">
+                  {isLoading && (
+                    <p className="grayf ms-3 m-0 d-flex text-align-center">
+                      加載中...
+                    </p>
+                  )}
+                  {error && (
+                    <p className="grayf ms-3 m-0 d-flex text-align-center">
+                      錯誤: {error}
+                    </p>
+                  )}
+                </div>
               </div>
-              {unusedCouponCount > 0 && (
+              <div className="d-flex justify-content-between">
+                {/* {unusedCouponCount > 0 && ( */}
                 <p className="goldenf mt-3">
                   目前有 {unusedCouponCount} 張優惠券可使用
                 </p>
-              )}
+                {/* )} */}
+                <div
+                  className="d-flex justify-content-end choosebtn text-nowrap align-items-center "
+                  style={{ width: 150 }}
+                >
+                  <div
+                    className={`d-flex align-items-center justify-content-between ${option['articlechoose']}`}
+                  >
+                    <input type="checkbox" name="a1-1" id="a1-1" />
+                    <label
+                      htmlFor="a1-1"
+                      className="d-flex flex-column p-0"
+                      style={{ width: '100%', maxWidth: '150px' }}
+                    >
+                      <p className="m-0 ps-3 align-items-center">
+                        篩選 ：{selectedLabel}
+                        <FaAngleDown className={`${option.icon} ms-3`} />
+                      </p>
+
+                      <ul className="p2 grayf" style={{ width: 150 }}>
+                        {['all', ...Object.keys(statusMapping)].map((tab) => (
+                          <li
+                            key={tab}
+                            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                            role="button"
+                            tabIndex={0}
+                            className="d-flex align-items-center justify-content-center p"
+                            onClick={() => handleTabChange(tab)}
+                            onKeyPress={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                handleTabChange(tab)
+                              }
+                            }}
+                            style={{
+                              cursor: 'pointer',
+                              fontWeight: activeTab === tab ? 'bold' : 'normal',
+                            }}
+                          >
+                            {tab === 'all' ? '全部' : statusMapping[tab]}
+                          </li>
+                        ))}
+                      </ul>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
               {isLoading ? (
                 <p>加載中...</p>
               ) : (
-                
                 <div className="tabchooes mt-3 table-responsive-xl">
                   <table className="coupon-cptable mt-3">
                     <thead>
@@ -323,43 +370,48 @@ export default function Coupon() {
                     </thead>
                     <tbody>
                       {filteredCoupons.length > 0 ? (
-                        filteredCoupons.map((coupon) => (
-                          <tr
-                            key={coupon.id}
-                            style={{
-                              transition: 'background-color 0.3s ease',
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.backgroundColor =
-                                'rgba(0, 0, 0, 0.15)'
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.backgroundColor =
-                                'transparent'
-                            }}
-                          >
-                            <td
-                              className="coupon-cptd p"
-                              style={{ width: 116 }}
+                        filteredCoupons.map((coupon, index) => {
+                          {
+                            /* console.log('檢查', filteredCoupons) */
+                          }
+                          return (
+                            <tr
+                              key={`CUPPON_${index}`}
+                              style={{
+                                transition: 'background-color 0.3s ease',
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor =
+                                  'rgba(0, 0, 0, 0.15)'
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor =
+                                  'transparent'
+                              }}
                             >
-                              {coupon.name.split('：')[0]}
-                            </td>
-                            <td className="coupon-cptd p">{coupon.code}</td>
-                            <td
-                              className="coupon-p-14 p"
-                              style={{ width: 300 }}
-                            >
-                              {coupon.info}
-                            </td>
-                            <td className="coupon-cptd p">
-                              {new Date(coupon.end_time).toLocaleDateString()}
-                            </td>
-                            <td className="coupon-cptd p">
-                              {statusMapping[coupon.user_status] ||
-                                coupon.user_status}
-                            </td>
-                          </tr>
-                        ))
+                              <td
+                                className="coupon-cptd p"
+                                style={{ width: 116 }}
+                              >
+                                {coupon.name.split('：')[0]}
+                              </td>
+                              <td className="coupon-cptd p">{coupon.code}</td>
+                              <td
+                                className="coupon-p-14 p"
+                                style={{ width: 300 }}
+                              >
+                                {coupon.info}
+                              </td>
+                              <td className="coupon-cptd p">
+                                {new Date(coupon.end_time).toLocaleDateString()}
+                              </td>
+                              <td className="coupon-cptd p">
+                                {statusMapping[coupon.user_status] ||
+                                  coupon.user_status}
+                              </td>
+                            </tr>
+                          )
+                        })
                       ) : (
                         <tr className="">
                           <td
@@ -374,53 +426,8 @@ export default function Coupon() {
                       )}
                     </tbody>
                   </table>
+
                   {/*  優惠券下拉式選單 */}
-
-                  <div
-                    className="d-flex justify-content-end choosebtn text-nowrap align-items-center "
-                    style={{ width: 150 }}
-                  >
-                    <div
-                      className={`d-flex align-items-center justify-content-between ${option['articlechoose']}`}
-                    >
-                      <input type="checkbox" name="a1-1" id="a1-1" />
-                      <label
-                        htmlFor="a1-1"
-                        className="d-flex flex-column p-0"
-                         style={{ width: '100%', maxWidth: '150px' }}
-                      >
-                        <p className="m-0 ps-3 align-items-center">
-                          篩選 ：{selectedLabel}
-                          <FaAngleDown className={`${option.icon} ms-3`} />
-                        </p>
-
-                        <ul className="p2 grayf" style={{ width: 150 }}>
-                          {['all', ...Object.keys(statusMapping)].map((tab) => (
-                            <li
-                              key={tab}
-                              // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-                              role="button"
-                              tabIndex={0}
-                              className="d-flex align-items-center justify-content-center p"
-                              onClick={() => handleTabChange(tab)}
-                              onKeyPress={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                  handleTabChange(tab)
-                                }
-                              }}
-                              style={{
-                                cursor: 'pointer',
-                                fontWeight:
-                                  activeTab === tab ? 'bold' : 'normal',
-                              }}
-                            >
-                              {tab === 'all' ? '全部' : statusMapping[tab]}
-                            </li>
-                          ))}
-                        </ul>
-                      </label>
-                    </div>
-                  </div>
                 </div>
               )}
               <div className="coupon-btns">

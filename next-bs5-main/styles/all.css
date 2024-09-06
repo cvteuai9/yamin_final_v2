@@ -773,24 +773,9 @@ textarea {
   white-space: nowrap;
   width: auto;
   /* ====julia08-22新增 */
-  .choosebtn {
-    position: absolute;
-    background-color: var(--primary);
-    /* white-space: nowrap; */
-    left: 570px;
-    top: -35px;
-
-    /* 修改 */
-  }
-  /* @media screen and (max-width: 1200px) {
-    .tabchooes {
-      .choosebtn {
-        position: absolute;
-        left: 570px;
-        top: -35px;
-      }
-    }
-  } */
+}
+.choosebtn {
+  background-color: var(--primary);
 }
 .coupon-p-14 {
   text-align: start;
