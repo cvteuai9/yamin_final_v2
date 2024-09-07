@@ -85,6 +85,7 @@
         .icon {
           font-size: 1.8rem;
         }
+
         width: 100%;
       }
     }
@@ -114,6 +115,7 @@
       border-bottom: 1px solid var(--primary2);
     }
     .header-dropdownMenu-li {
+      display: flex;
       color: var(--bg-text-color);
       padding: 15px 0px 10px 15px;
     }
@@ -132,6 +134,9 @@
       &:hover {
         background-color: var(--primary);
       }
+    }
+    .logout{
+      margin-right: 8px;
     }
   }
 }
