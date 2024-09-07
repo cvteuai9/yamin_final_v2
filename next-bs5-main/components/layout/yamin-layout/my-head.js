@@ -461,7 +461,7 @@ export default function MyHeader() {
                       <>
                         <div className="d-flex align-items-center header-userdiv">
                           <div className="header-dropdownMenu-li">
-                            <div className="header-personimgdiv-inside">
+                            <div className="header-personimgdiv-inside ms-4">
                               <MyPreviewUploadImage
                                 key={avatarVersion}
                                 avatarImg={`${userProfile.user_image}?v=${avatarVersion}`}
@@ -472,11 +472,12 @@ export default function MyHeader() {
                                 selectedFile={selectedFile}
                               />
                             </div>
-                          </div>
-                          <div className="header-dropdownMenu-li">
+                          <div className="ms-2">
                             {auth.userData.user_name}
                             <p className="p-0 m-0">hello！</p>
                           </div>
+                          </div>
+
                         </div>
                       </>
                     )}
