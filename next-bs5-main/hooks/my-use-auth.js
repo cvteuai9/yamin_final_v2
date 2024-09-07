@@ -106,7 +106,7 @@ export const AuthProvider = ({ children }) => {
         }
         setAuth({ isAuth: true, userData })
       } else {
-        console.warn(res.data)
+        // console.warn(res.data)
         if (protectedRoutes.includes(router.pathname)) {
           router.push(loginRoute)
         }
@@ -126,9 +126,9 @@ export const AuthProvider = ({ children }) => {
     // 等到登入驗證流程完成後，才會跑下列程式
     if (!loading) {
       if (typeof window !== 'undefined') {
-        console.log('Checking auth and pathname:', auth.isAuth, router.pathname)
+        // console.log('Checking auth and pathname:', auth.isAuth, router.pathname)
         if (!auth.isAuth && protectedRoutes.includes(router.pathname)) {
-          console.log('Not authenticated, redirecting to login...')
+          // console.log('Not authenticated, redirecting to login...')
           localStorage.setItem('userIntention', router.pathname)
           if (!isLoggingOut) {
             toast.error('繼續操作前請註冊或登入')
@@ -139,7 +139,7 @@ export const AuthProvider = ({ children }) => {
           (router.pathname === '/member/register' ||
             router.pathname === '/member/login')
         ) {
-          console.log('Authenticated, redirecting to intention or profile...')
+          // console.log('Authenticated, redirecting to intention or profile...')
           const storedIntention = localStorage.getItem('userIntention')
           if (storedIntention) {
             router.push(storedIntention)
