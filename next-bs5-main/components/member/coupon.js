@@ -18,7 +18,6 @@ const statusMapping = {
 // ========== 修改: 移除獨立的 FloatingCouponImage 組件 ==========
 
 export default function Coupon() {
-  const { auth } = useAuth()
   const [coupons, setCoupons] = useState([])
   const [annivCoupons, setAnnivCoupons] = useState([])
   const [activeTab, setActiveTab] = useState('all')
@@ -211,6 +210,7 @@ export default function Coupon() {
       setError(error.message || '提交優惠券時出錯')
     }
   }
+  const { auth } = useAuth()
   if (!auth.isAuth) return <></>
   return (
     <>

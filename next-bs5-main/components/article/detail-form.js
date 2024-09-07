@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import StarLarge from '@/components/star/star-large'
 import { IoEyeSharp } from 'react-icons/io5'
 import { useAuth } from '@/hooks/my-use-auth'
@@ -49,7 +49,7 @@ export default function DetailForm() {
     setArticle(articleThis)
   }
   // console.log(article)
-  console.log(auth.userData)
+  // console.log(auth.userData)
   async function handleFavToggle(article, userID, isAuth) {
     if (isAuth) {
       if (article.fav === false) {
@@ -132,6 +132,7 @@ export default function DetailForm() {
     const data = await res.json()
     setCategories(data.data.articles_category)
   }
+  // console.log(categories);
   const getTopArticles = async () => {
     const apiUrl = 'http://localhost:3005/api/my-articles/top-views' // 獲取熱門文章 API
     const res = await fetch(apiUrl)
@@ -144,6 +145,18 @@ export default function DetailForm() {
     const data = await res.json()
     setNewArticles(data.data.new_articles)
   }
+  // 為了顯示圖片正確路徑-文章種類對應名稱
+  const getImagePathPrefix = useCallback((categoryId) => {
+    const pathMap = {
+      1: '/images/article/articlelist/teaknow/',
+      2: '/images/article/articlelist/teanew/',
+      3: '/images/article/articlelist/teastory/',
+      4: '/images/article/articlelist/tealife/',
+    }
+    return (
+      pathMap[categoryId] || '/images/article/articlelist/articledefault.jpg'
+    )
+  }, [])
   useEffect(() => {
     setUserID(auth.userData.id)
     setIsAuth(auth.isAuth)
@@ -247,7 +260,14 @@ export default function DetailForm() {
                   </div>
                 </div>
               </div>
-              <div className="article-text bd-b1 p-3 mt-3 mx-4">
+              <div className="article-text bd-b1 mt-3 ">
+                <img
+                  src={`${getImagePathPrefix(
+                    article.category_id
+                  )}${article.article_images}`}
+                  alt=""
+                  className='mb-3'
+                />
                 <p>{article.content}</p>
               </div>
               {recommend.length > 0 && (
@@ -447,4 +467,3 @@ export default function DetailForm() {
     </>
   )
 }
-
