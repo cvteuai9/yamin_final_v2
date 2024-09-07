@@ -85,6 +85,7 @@
         .icon {
           font-size: 1.8rem;
         }
+
         width: 100%;
       }
     }
@@ -133,6 +134,9 @@
       &:hover {
         background-color: var(--primary);
       }
+    }
+    .logout{
+      margin-right: 8px;
     }
   }
 }

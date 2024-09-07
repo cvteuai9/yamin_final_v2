@@ -472,12 +472,11 @@ export default function MyHeader() {
                                 selectedFile={selectedFile}
                               />
                             </div>
-                          <div className="ms-2">
-                            {auth.userData.user_name}
-                            <p className="p-0 m-0">hello！</p>
+                            <div className="ms-2">
+                              {auth.userData.user_name}
+                              <p className="p-0 m-0">hello！</p>
+                            </div>
                           </div>
-                          </div>
-
                         </div>
                       </>
                     )}
@@ -514,16 +513,18 @@ export default function MyHeader() {
                       </li>
                     </Link>
                     {auth.isAuth && (
-                      <li className="d-flex align-items-center">
-                        <IoLogOutOutline className="icon ms-1" />
-                        <Link
-                          href="#"
-                          className="user-link ms-3"
-                          onClick={handleLogout}
-                        >
+                      <Link
+                        href="#"
+                        className="user-link"
+                        onClick={handleLogout}
+                      >
+                        <li className="d-flex align-items-center ">
+                          <div className="d-flex align-items-center logout">
+                            <IoLogOutOutline className="icon ms-1 " />
+                          </div>
                           登出
-                        </Link>
-                      </li>
+                        </li>
+                      </Link>
                     )}
                   </ul>
                 </div>
