@@ -404,6 +404,12 @@
   font-family: 'B2Hana-Regular', sans-serif;
   background-color: #003e52;
 }
+.registerPage{
+  .links{
+    display: flex;
+    justify-content: center;
+  }
+}
 
 .imageSectionLog {
   flex: 0 0 40%;
