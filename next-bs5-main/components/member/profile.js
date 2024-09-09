@@ -1,5 +1,5 @@
 // NE為了測試修改過，如果有衝突麻煩再跟我說一下，感恩～
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Leftnav from '@/components/member/left-nav'
 import Link from 'next/link'
@@ -165,6 +165,32 @@ export default function Profile() {
       console.log(res.data)
     }
   }
+  const errorRefs = {
+    user_name: useRef(null),
+    nick_name: useRef(null),
+    gender: useRef(null),
+    phone: useRef(null),
+    address: useRef(null),
+  }
+  // Function to scroll to the first error
+  const scrollToError = useCallback(() => {
+    const errorKeys = Object.keys(errors)
+    for (let key of errorKeys) {
+      if (errors[key] && errorRefs[key].current) {
+        errorRefs[key].current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        })
+        break // Stop after scrolling to the first error
+      }
+    }
+  }, [errors])
+
+  // Use effect to trigger scroll when errors change
+  useEffect(() => {
+    scrollToError()
+  }, [errors, scrollToError])
+
   // console.log(auth.userData.google_uid)
 
   if (!auth.isAuth) return <></>
@@ -241,7 +267,9 @@ export default function Profile() {
                     />
                   </div>
                   <div className="">
-                    <span className="error">{errors.user_name}</span>
+                    <span ref={errorRefs.user_name} className="error">
+                      {errors.user_name}
+                    </span>
                   </div>
                   <div>
                     <p className="p whitef mt-4">暱稱</p>
@@ -282,7 +310,7 @@ export default function Profile() {
                       </label>
                     </div>
                   </div>
-                  <div className="">
+                  <div ref={errorRefs.gender} className="">
                     <span className="error">{errors.gender}</span>
                   </div>
                   <div>
@@ -299,9 +327,6 @@ export default function Profile() {
                       max={new Date().toISOString().split('T')[0]} // 最大日期為今天
                     />
                   </div>
-                  <p className="p2 goldenf">
-                    * 請正確填寫，註冊成功後將無法修改
-                  </p>
                   <div>
                     <p className="p whitef mt-4">手機（必填）</p>
                     <input
@@ -317,7 +342,9 @@ export default function Profile() {
                     />
                   </div>
                   <div className="">
-                    <span className="error">{errors.phone}</span>
+                    <span ref={errorRefs.phone} className="error">
+                      {errors.phone}
+                    </span>
                   </div>
                   <div>
                     <p className="p whitef mt-4">收貨地址</p>

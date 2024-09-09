@@ -225,7 +225,7 @@ export default function ListForm() {
     }, undefined, { shallow: true })
     await getArticles(selectedCategoryId, sortOrder)
   }, [selectedCategoryId, sortOrder, router, getArticles])
-  console.log(sortOrder);
+  // console.log(sortOrder);
 
 
   return (

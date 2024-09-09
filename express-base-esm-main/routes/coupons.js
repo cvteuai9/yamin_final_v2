@@ -53,7 +53,7 @@ export async function getUnClaimedAnnivCouponListById(userId) {
           LEFT JOIN users_coupons AS uc 
           ON c.id = uc.coupon_id AND uc.user_id = ?
         WHERE 1=1
-          AND name LIKE "全館%"
+          AND name LIKE "週年%"
           AND c.status = "available"
           AND uc.user_id IS NULL
       `,
@@ -88,7 +88,7 @@ router.post(
     const userId = Number(req.user.id)
     var annivCoupons = []
     try {
-      // 獲取全館優惠列表
+      // 獲取週年優惠列表_0904調整
       annivCoupons = await getUnClaimedAnnivCouponListById(userId)
 
       // 全部都領過為0，返回不可重複領取

@@ -3,27 +3,27 @@
   > p {
     color: var(--bg-text-color);
   }
-  >label{
+  > label {
     color: var(--bg-text-color);
     font-size: 2rem;
   }
 }
 
 //user頭像
-.header-right{
+.header-right {
   display: flex;
   justify-content: flex-end;
-   // 移除可能的右側 margin
-   > * {
+  // 移除可能的右側 margin
+  > * {
     margin-right: 0;
   }
-  
+
   // 為最後一個元素添加右側間距
   > *:last-child {
     margin-right: 1rem;
   }
 }
-.header-userimg{
+.header-userimg {
   padding: 0.5rem 2rem;
 }
 .header-personimgdiv {
@@ -71,65 +71,42 @@
     .header-login {
       border: none;
       width: 100%;
-      color: var(--primary2);
+      color: var(--bg-text-color);
       padding: 10px 25px;
       cursor: pointer;
       text-wrap: nowrap;
+      font-size: 1.8rem;
       // display: flex;
       // justify-content: center;
       &:hover {
         background-color: var(--primary2);
       }
       .user-link-login {
-        .icon{
+        .icon {
           font-size: 1.8rem;
         }
-        // padding: 7px;
+
         width: 100%;
-        // border: 1px solid var(--primary2);
-        // background-color: var(--primary2);
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
-        a {
-          font-size: 1.8rem;
-          display: block;
-          width: 100%;
-          color: var(--bg-text-color);
-        }
-        // &:hover {
-        //   background-color: var(--primary);
-        // }
       }
     }
     .header-register {
+      font-size: 1.8rem;
       width: 100%;
+      color: var(--bg-text-color);
       padding: 10px 25px;
       display: flex;
       border: none;
-      // justify-content: center;
       &:hover {
         background-color: var(--primary2);
       }
       .user-link-register {
-        width: 100%;
-        // background-color: var(--primary2);
-        // padding: 7px;
-        text-align: center;
-        // width: 220px;
-        // border: 1px solid var(--primary2);
-        a {
+        .icon {
           font-size: 1.8rem;
-          color: var(--bg-text-color);
-          display: block;
-          width: 100%;
         }
-        // &:hover {
-        //   background-color: var(--primary);
-        // }
+        width: 100%;
       }
     }
-    .header-border{
+    .header-border {
       border-bottom: 1px solid var(--primary2);
     }
     //登入成功後使用者圖像及使用者姓名
@@ -138,28 +115,28 @@
       border-bottom: 1px solid var(--primary2);
     }
     .header-dropdownMenu-li {
+      display: flex;
       color: var(--bg-text-color);
       padding: 15px 0px 10px 15px;
     }
+
     li {
+      font-size: 1.8rem;
       width: 100%;
       color: var(--primary2);
       padding: 10px 25px;
       cursor: pointer;
       text-wrap: nowrap;
-      .user-link {
-        font-size: 1.8rem;
-      }
+
       .icon {
         font-size: 1.8rem;
-      }
-      a {
-        display: block;
-        width: 100%;
       }
       &:hover {
         background-color: var(--primary);
       }
+    }
+    .logout{
+      margin-right: 8px;
     }
   }
 }
@@ -171,5 +148,10 @@
     left: 0;
     top: 60px;
     position: fixed;
+    display: none;
+  }
+  .header-userimg,
+  .header-personimgdiv {
+    display: none;
   }
 }

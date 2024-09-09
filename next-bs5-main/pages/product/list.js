@@ -20,9 +20,7 @@ export default function List1() {
           {productName + '已成功加入購物車!'}
           <br />
           <div className="mt-3">
-            <Link style={{ color: 'white' }} href="/cart/cartOne">
-              前往購物車
-            </Link>
+            <Link href="/cart/cartOne">前往購物車</Link>
           </div>
         </p>
       </>

@@ -19,7 +19,7 @@
     /* align-items: center; */
     .error {
       font-size: 1.6rem;
-      color: red;
+      color: var(--error-color);
     }
     .inputarea {
       position: relative;
@@ -149,7 +149,7 @@
     /* align-items: center; */
     .error {
       font-size: 1.6rem;
-      color: red;
+      color: var(--error-color);
     }
     .inputarea {
       position: relative;
@@ -240,31 +240,35 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
+    // align-items: center;
     .error {
       font-size: 1.6rem;
-      color: red;
+      color: var(--error-color);
     }
     .inputarea {
       position: relative;
       .icon {
-        padding: 0px;
         position: absolute;
-        right: 20px;
+        right: 5px;
         top: 50%;
         transform: translateY(-50%);
-        /*自己本身高度往上調50%*/
+        background: none;
+        border: none;
+        color: #b29564;
+        cursor: pointer;
+        font-size: 2rem;
+        height: 100%;
       }
     }
 
     input {
-      margin: 12px 0px 12px 0px;
+      margin: 12px 0px 5px 0px;
       height: 50px;
       width: 100%;
       padding: 1.2rem;
-      color: var(--bg-text-color);
+      color: #d8b783;
       background-color: var(--background);
-      border: var(--primary2) solid 1px;
+      border: #d8b783 solid 1px;
       font-size: 1.6rem;
       /* 懸停指示 */
       caret-color: var(--bg-text-color);
@@ -274,12 +278,15 @@
       &:focus {
         outline: none;
       }
+      &.hasError {
+        border: 1px solid var(--error-color);
+      }
     }
-    button {
-      margin: 12px 0px 12px 0px;
+    .btn-token {
+      margin: 12px 0px 5px 0px;
       // height: 50px;
       width: 25%;
-      padding: 12px;
+      // padding: 12px;
       color: var(--bg-text-color);
       background-color: var(--background);
       border: var(--primary2) solid 1px;
@@ -288,6 +295,17 @@
       border-radius: 0%;
       &:hover {
         background-color: var(--primary-deep);
+      }
+      &:hover:not(:disabled) {
+        background-color: var(--primary-deep);
+      }
+
+      &:disabled {
+        background-color: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+        width: 30%;
+        padding: 0 10px;
       }
     }
 
@@ -320,7 +338,7 @@
     font-size: 1.6rem;
 
     a {
-      color: rgb(178, 149, 100);
+      color: #d8b783;
       font-family: 'B2Hana-Regular', sans-serif;
       font-size: 1.6rem;
 
@@ -366,6 +384,13 @@
         font-size: 1.4rem;
         background-color: var(--primary2);
         border-radius: 0%;
+        &:disabled {
+          background-color: #cccccc;
+          color: #666666;
+          cursor: not-allowed;
+          font-size: 1.4rem;
+          padding: 0 10px;
+        }
       }
     }
   }
@@ -378,6 +403,12 @@
   display: flex;
   font-family: 'B2Hana-Regular', sans-serif;
   background-color: #003e52;
+}
+.registerPage{
+  .links{
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .imageSectionLog {
@@ -515,9 +546,9 @@
     input {
       width: 100%;
       padding: 12px;
-      border: 1px solid #D8B783;
+      border: 1px solid #d8b783;
       background-color: #003e52;
-      color: #D8B783;
+      color: #d8b783;
       font-size: 16px;
       margin-bottom: 5px;
 
@@ -528,6 +559,9 @@
         outline: none;
         border: 1px solid #ffe9b1;
         transition: border 0.2s ease;
+      }
+      &.hasError {
+        border: 1px solid var(--error-color);
       }
     }
   }
@@ -573,7 +607,7 @@
   margin-top: 25px;
 
   a {
-    color: #D8B783;
+    color: #d8b783;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
@@ -588,14 +622,15 @@
 }
 
 .error {
-  color: #ff0000;
+  color: var(--error-color);
   font-size: 16px;
   margin-top: 5px;
 }
 
 // 響應式設計
 @media (max-width: 992px) {
-  .loginPage {
+  .loginPage,
+  .registerPage {
     flex-direction: column;
   }
 
@@ -638,7 +673,6 @@
   }
 
   .links {
-    flex-direction: column;
     align-items: center;
 
     a {

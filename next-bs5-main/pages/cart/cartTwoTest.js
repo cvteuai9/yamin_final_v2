@@ -229,7 +229,7 @@ export default function CartTwo() {
 
     // Custom validation logic
     if (!formData.username) {
-      newErrors.username = '姓名是必填项'
+      newErrors.username = '姓名是必填項'
       valid = false
     }
     if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
@@ -871,7 +871,10 @@ export default function CartTwo() {
                 className="cartBuyInput cartBuy-card"
                 onChange={handleCardPayChange}
               />
-              <label htmlFor="">信用卡支付</label>
+              <label htmlFor="cartBuy-card" className="fw-bold">
+                <img src="/images/cart/visaMasterCard.png" alt="" />
+                信用卡支付
+              </label>
             </div>
             <div className="cartGoBuyOption mb-5">
               <input
@@ -883,7 +886,7 @@ export default function CartTwo() {
                 onChange={handleLinePayChange}
               />
 
-              <label htmlFor="">
+              <label htmlFor="cartBuy-linepay">
                 <img
                   src="/images/cart/Line-Pay-Logo.png"
                   alt=""

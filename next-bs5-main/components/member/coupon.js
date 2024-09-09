@@ -5,6 +5,7 @@ import option from '@/components/article/option.module.sass'
 import { Modal, Button } from 'react-bootstrap'
 import { Gift } from 'lucide-react'
 import Link from 'next/link'
+import { useAuth } from '@/hooks/my-use-auth'
 // import e from 'express'
 
 // 狀態映射對象
@@ -94,7 +95,7 @@ export default function Coupon() {
       }
 
       const data = await response.json()
-      console.log('Fetched coupons:', data)
+      // console.log('Fetched coupons:', data)
       setCoupons(data)
       setFilteredCoupons(data)
       //unused可使用張數
@@ -142,7 +143,7 @@ export default function Coupon() {
 
       const data = await response.json()
 
-      console.log('Anniv coupons:', data.data)
+      // console.log('Anniv coupons:', data.data)
       setFloatingCoupon(data.data)
       setAnnivCoupons(data.data)
       // setIsOpen(true)
@@ -209,7 +210,8 @@ export default function Coupon() {
       setError(error.message || '提交優惠券時出錯')
     }
   }
-
+  const { auth } = useAuth()
+  if (!auth.isAuth) return <></>
   return (
     <>
       <div className="container-fluid mb-6">
@@ -229,7 +231,7 @@ export default function Coupon() {
               <Leftnav fromCupon="fromCupon" />
             </div>
             <div className="col-md-8 profile-content-right">
-              <h3 className="goldenf">優惠券</h3>
+              <h5 className="goldenf">優惠券</h5>
               <p className="grayf">注意事項：</p>
               <p className="grayf">
                 單筆訂單限使用一張，且已成立訂單不能以未使用優惠券為由取消訂單。
@@ -254,7 +256,7 @@ export default function Coupon() {
                 </Modal.Header>
                 <Modal.Body>
                   {/* <h5>優惠券使用說明:</h5> */}
-                  <ul className="p2">
+                  <ul className="p">
                     <li>每張優惠券只能使用一次。</li>
                     <li>優惠券不能與其他優惠同時使用。</li>
                     {/* <li>優惠券有效期為發放日起 30 天內。</li>
@@ -289,27 +291,75 @@ export default function Coupon() {
                 <button className="btn2 p checked" onClick={handleCouponSubmit}>
                   確認
                 </button>
-
-                {isLoading && (
-                  <p className="grayf ms-3 m-0 d-flex text-align-center">
-                    加載中...
-                  </p>
-                )}
-                {error && (
-                  <p className="grayf ms-3 m-0 d-flex text-align-center">
-                    錯誤: {error}
-                  </p>
-                )}
+                <div className="errortext">
+                  {isLoading && (
+                    <p className="grayf ms-3 m-0 d-flex text-align-center">
+                      加載中...
+                    </p>
+                  )}
+                  {error && (
+                    <p className="grayf ms-3 m-0 d-flex text-align-center">
+                      錯誤: {error}
+                    </p>
+                  )}
+                </div>
               </div>
-              {unusedCouponCount > 0 && (
-                <p className="goldenf">
+              <div className="d-flex justify-content-between">
+                {/* {unusedCouponCount > 0 && ( */}
+                <p className="goldenf mt-3">
                   目前有 {unusedCouponCount} 張優惠券可使用
                 </p>
-              )}
+                {/* )} */}
+                <div
+                  className="d-flex justify-content-end choosebtn text-nowrap align-items-center "
+                  style={{ width: 150 }}
+                >
+                  <div
+                    className={`d-flex align-items-center justify-content-between ${option['articlechoose']}`}
+                  >
+                    <input type="checkbox" name="a1-1" id="a1-1" />
+                    <label
+                      htmlFor="a1-1"
+                      className="d-flex flex-column p-0"
+                      style={{ width: '100%', maxWidth: '150px' }}
+                    >
+                      <p className="m-0 ps-3 align-items-center">
+                        篩選 ：{selectedLabel}
+                        <FaAngleDown className={`${option.icon} ms-3`} />
+                      </p>
+
+                      <ul className="p2 grayf" style={{ width: 150 }}>
+                        {['all', ...Object.keys(statusMapping)].map((tab) => (
+                          <li
+                            key={tab}
+                            // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                            role="button"
+                            tabIndex={0}
+                            className="d-flex align-items-center justify-content-center p"
+                            onClick={() => handleTabChange(tab)}
+                            onKeyPress={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                handleTabChange(tab)
+                              }
+                            }}
+                            style={{
+                              cursor: 'pointer',
+                              fontWeight: activeTab === tab ? 'bold' : 'normal',
+                            }}
+                          >
+                            {tab === 'all' ? '全部' : statusMapping[tab]}
+                          </li>
+                        ))}
+                      </ul>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
               {isLoading ? (
                 <p>加載中...</p>
               ) : (
-                <div className="tabchooes mt-3">
+                <div className="tabchooes mt-3 table-responsive-xl">
                   <table className="coupon-cptable mt-3">
                     <thead>
                       <tr className="p">
@@ -322,43 +372,48 @@ export default function Coupon() {
                     </thead>
                     <tbody>
                       {filteredCoupons.length > 0 ? (
-                        filteredCoupons.map((coupon) => (
-                          <tr
-                            key={coupon.id}
-                            style={{
-                              transition: 'background-color 0.3s ease',
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.backgroundColor =
-                                'rgba(0, 0, 0, 0.15)'
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.backgroundColor =
-                                'transparent'
-                            }}
-                          >
-                            <td
-                              className="coupon-cptd p"
-                              style={{ width: 116 }}
+                        filteredCoupons.map((coupon, index) => {
+                          {
+                            /* console.log('檢查', filteredCoupons) */
+                          }
+                          return (
+                            <tr
+                              key={`CUPPON_${index}`}
+                              style={{
+                                transition: 'background-color 0.3s ease',
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor =
+                                  'rgba(0, 0, 0, 0.15)'
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor =
+                                  'transparent'
+                              }}
                             >
-                              {coupon.name}
-                            </td>
-                            <td className="coupon-cptd p">{coupon.code}</td>
-                            <td
-                              className="coupon-p-14 p"
-                              style={{ width: 300 }}
-                            >
-                              {coupon.info}
-                            </td>
-                            <td className="coupon-cptd p">
-                              {new Date(coupon.end_time).toLocaleDateString()}
-                            </td>
-                            <td className="coupon-cptd p">
-                              {statusMapping[coupon.user_status] ||
-                                coupon.user_status}
-                            </td>
-                          </tr>
-                        ))
+                              <td
+                                className="coupon-cptd p"
+                                style={{ width: 116 }}
+                              >
+                                {coupon.name.split('：')[0]}
+                              </td>
+                              <td className="coupon-cptd p">{coupon.code}</td>
+                              <td
+                                className="coupon-p-14 p"
+                                style={{ width: 300 }}
+                              >
+                                {coupon.info}
+                              </td>
+                              <td className="coupon-cptd p">
+                                {new Date(coupon.end_time).toLocaleDateString()}
+                              </td>
+                              <td className="coupon-cptd p">
+                                {statusMapping[coupon.user_status] ||
+                                  coupon.user_status}
+                              </td>
+                            </tr>
+                          )
+                        })
                       ) : (
                         <tr className="">
                           <td
@@ -373,53 +428,8 @@ export default function Coupon() {
                       )}
                     </tbody>
                   </table>
+
                   {/*  優惠券下拉式選單 */}
-
-                  <div
-                    className="d-flex justify-content-end choosebtn text-nowrap align-items-center "
-                    style={{ width: 150 }}
-                  >
-                    <div
-                      className={`d-flex align-items-center justify-content-between ${option['articlechoose']}`}
-                    >
-                      <input type="checkbox" name="a1-1" id="a1-1" />
-                      <label
-                        htmlFor="a1-1"
-                        className="d-flex flex-column p-0"
-                        style={{ width: 150 }}
-                      >
-                        <p className="m-0 ps-3 align-items-center">
-                          篩選 ：{selectedLabel}
-                          <FaAngleDown className={`${option.icon} ms-3`} />
-                        </p>
-
-                        <ul className="p2 grayf" style={{ width: 150 }}>
-                          {['all', ...Object.keys(statusMapping)].map((tab) => (
-                            <li
-                              key={tab}
-                              // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-                              role="button"
-                              tabIndex={0}
-                              className="d-flex align-items-center justify-content-center p"
-                              onClick={() => handleTabChange(tab)}
-                              onKeyPress={(e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                  handleTabChange(tab)
-                                }
-                              }}
-                              style={{
-                                cursor: 'pointer',
-                                fontWeight:
-                                  activeTab === tab ? 'bold' : 'normal',
-                              }}
-                            >
-                              {tab === 'all' ? '全部' : statusMapping[tab]}
-                            </li>
-                          ))}
-                        </ul>
-                      </label>
-                    </div>
-                  </div>
                 </div>
               )}
               <div className="coupon-btns">
@@ -462,7 +472,7 @@ export default function Coupon() {
                           {annivCoupons.map((coupon, index) => (
                             <tr key={index} className="p2">
                               {/* <td>優惠券名稱: {coupon.name}</td> */}
-                              <td>優惠碼: {coupon.code}</td>
+                              <td>優惠券代碼: {coupon.code}</td>
                               {/* <td>折扣: {coupon.discount}</td> */}
                               <td className="ps-3">
                                 使用方式: {coupon.info}。
@@ -473,7 +483,7 @@ export default function Coupon() {
                       </table>
                       <hr />
                       <p className="p2 d-flex justify-content-end">
-                        成功嶺取，活動優惠券共{annivCoupons.length}張！
+                        成功領取，活動優惠券共{annivCoupons.length}張！
                       </p>
                     </div>
                   ) : (

@@ -38,7 +38,7 @@ export default function MyHeader() {
   const searchFormCloseBtnRef = useRef(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isAuth, setIsAuth] = useState(false)
-  const { auth, setAuth } = useAuth()
+  const { auth, setAuth, setIsLoggingOut } = useAuth()
   // 購物車部分
   const { cart, items, increment, decrement, removeItem } = YaminUseCart()
   const { selectedValue, setSelectedValue, selectedId, setSelectedId } =
@@ -121,7 +121,9 @@ export default function MyHeader() {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-
+  function handleCloseDropMenu() {
+    toggleBtnIconRef.current.click()
+  }
   function handleToMyFav(isAuth) {
     if (isAuth) {
       router.push('/member/fav/favorite-p')
@@ -204,8 +206,7 @@ export default function MyHeader() {
 
     // 成功登出後，回復初始會員狀態
     if (res.data.status === 'success') {
-      toast.success('已成功登出')
-
+      setIsLoggingOut(true)
       setAuth({
         isAuth: false,
         userData: initUserData,
@@ -213,6 +214,7 @@ export default function MyHeader() {
       // 因為解除這些條件才能立刻讓圖片為初始圖片
       setSelectedFile(null)
       setUserProfile({})
+      toast.success('已成功登出')
     } else {
       toast.error(`登出失敗`)
     }
@@ -288,47 +290,60 @@ export default function MyHeader() {
               <div className={`${styles['svgDiv']}`}>
                 <Link href="/index">
                   <h5>首頁</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                  />
                 </Link>
-                <img
-                  src="/images/header/outer-frame.png"
-                  alt=""
-                  className={`${styles.svg}`}
-                />
               </div>
             </li>
             <li>
               <div className={`${styles['svgDiv']}`}>
-                <img
-                  src="/images/header/outer-frame.png"
-                  alt=""
-                  className={`${styles.svg}`}
-                />
                 <Link href="/product/list">
                   <h5>商品</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                  />
                 </Link>
               </div>
             </li>
             <li>
               <div className={`${styles['svgDiv']}`}>
-                <img
-                  src="/images/header/outer-frame.png"
-                  alt=""
-                  className={`${styles.svg}`}
-                />
                 <Link href="/course/courselist">
                   <h5>課程</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                  />
                 </Link>
               </div>
             </li>
             <li>
               <div className={`${styles['svgDiv']}`}>
-                <img
-                  src="/images/header/outer-frame.png"
-                  alt=""
-                  className={`${styles.svg}`}
-                />
                 <Link href="/article">
                   <h5>文章</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                  />
+                </Link>
+              </div>
+            </li>
+            <li>
+              <div className={`${styles['svgDiv']}`}>
+                <Link href="/teamap">
+                  <h5>茶地圖</h5>
+                  <img
+                    src="/images/header/outer-frame.png"
+                    alt=""
+                    className={`${styles.svg}`}
+                    style={{ left: -10 }}
+                  />
                 </Link>
               </div>
             </li>
@@ -417,32 +432,28 @@ export default function MyHeader() {
                   <ul className="header-dropdownMenu-ul">
                     {!auth.isAuth && (
                       <>
-                        <div className="d-flex">
-                          <div className="header-login btn btn-reset">
+                        <Link
+                          href="/member/login"
+                          className="d-flex align-items-center"
+                        >
+                          <div className="d-flex header-login">
                             <div className="user-link-login">
-                              <Link
-                                href="/member/login"
-                                className="d-flex align-items-center"
-                              >
-                                <FiUser className="icon me-3" />
-                                會員登入
-                              </Link>
+                              <FiUser className="icon me-3" />
+                              會員登入
                             </div>
                           </div>
-                        </div>
-                        <div className="d-flex mb-4">
-                          <div className="header-register btn btn-reset">
+                        </Link>
+                        <Link
+                          href="/member/register"
+                          className="d-flex align-items-center"
+                        >
+                          <div className="d-flex mb-4 header-register">
                             <div className="user-link-register">
-                              <Link
-                                href="/member/register"
-                                className="d-flex align-items-center"
-                              >
-                                <FiUserPlus className="icon me-3" />
-                                註冊新會員
-                              </Link>
+                              <FiUserPlus className="icon me-3" />
+                              註冊新會員
                             </div>
                           </div>
-                        </div>
+                        </Link>
                         <div className="header-border"></div>
                       </>
                     )}
@@ -450,7 +461,7 @@ export default function MyHeader() {
                       <>
                         <div className="d-flex align-items-center header-userdiv">
                           <div className="header-dropdownMenu-li">
-                            <div className="header-personimgdiv-inside">
+                            <div className="header-personimgdiv-inside ms-4">
                               <MyPreviewUploadImage
                                 key={avatarVersion}
                                 avatarImg={`${userProfile.user_image}?v=${avatarVersion}`}
@@ -461,57 +472,59 @@ export default function MyHeader() {
                                 selectedFile={selectedFile}
                               />
                             </div>
-                          </div>
-                          <div className="header-dropdownMenu-li">
-                            {auth.userData.user_name}
-                            <p className="p-0 m-0">hello！</p>
+                            <div className="ms-2">
+                              {auth.userData.user_name}
+                              <p className="p-0 m-0">hello！</p>
+                            </div>
                           </div>
                         </div>
                       </>
                     )}
-                    <li className="mt-4 d-flex align-items-center">
-                      <div className="d-flex align-items-center">
-                        <CgProfile className="icon" />
-                      </div>
-                      <Link href="/member/profile" className="user-link ms-3">
-                        個人資料管理
-                      </Link>
-                    </li>
-                    <li className="d-flex align-items-center">
-                      <div className="d-flex align-items-center">
-                        <TiClipboard className="icon" />
-                      </div>
-                      <Link href="/order" className="user-link ms-3">
-                        我的訂單
-                      </Link>
-                    </li>
-                    <li className="d-flex align-items-center">
-                      <div className="d-flex align-items-center">
-                        <RiCoupon2Line className="icon" />
-                      </div>
-                      <Link href="/member/coupon" className="user-link ms-3">
-                        優惠券
-                      </Link>
-                    </li>
-                    <li className="d-flex align-items-center">
-                      <div className="d-flex align-items-center">
-                        <CiHeart className="icon" />
-                      </div>
-                      <Link href="/member/fav" className="user-link ms-3">
-                        我的收藏
-                      </Link>
-                    </li>
-                    {auth.isAuth && (
-                      <li className="d-flex align-items-center">
-                        <IoLogOutOutline className="icon ms-1" />
-                        <Link
-                          href="#"
-                          className="user-link ms-3"
-                          onClick={handleLogout}
-                        >
-                          登出
-                        </Link>
+                    <Link href="/member/profile" className="user-link">
+                      <li className="mt-4 d-flex align-items-center">
+                        <div className="d-flex align-items-center me-3">
+                          <CgProfile className="icon" />
+                        </div>
+                        個人檔案
                       </li>
+                    </Link>
+                    <Link href="/member/coupon" className="user-link ">
+                      <li className="d-flex align-items-center">
+                        <div className="d-flex align-items-center me-3">
+                          <RiCoupon2Line className="icon" />
+                        </div>
+                        優惠券
+                      </li>
+                    </Link>
+                    <Link href="/order" className="user-link ">
+                      <li className="d-flex align-items-center">
+                        <div className="d-flex align-items-center me-3">
+                          <TiClipboard className="icon" />
+                        </div>
+                        購買訂單
+                      </li>
+                    </Link>
+                    <Link href="/member/fav" className="user-link ">
+                      <li className="d-flex align-items-center">
+                        <div className="d-flex align-items-center me-3">
+                          <CiHeart className="icon" />
+                        </div>
+                        我的收藏
+                      </li>
+                    </Link>
+                    {auth.isAuth && (
+                      <Link
+                        href="#"
+                        className="user-link"
+                        onClick={handleLogout}
+                      >
+                        <li className="d-flex align-items-center ">
+                          <div className="d-flex align-items-center logout">
+                            <IoLogOutOutline className="icon ms-1 " />
+                          </div>
+                          登出
+                        </li>
+                      </Link>
                     )}
                   </ul>
                 </div>
@@ -553,23 +566,32 @@ export default function MyHeader() {
             />
           </div>
           <li>
-            <Link href="/home">首頁</Link>
+            <Link href="/index" onClick={() => handleCloseDropMenu()}>
+              首頁
+            </Link>
           </li>
           <li>
-            <Link href="/product/list">商品</Link>
+            <Link href="/product/list" onClick={() => handleCloseDropMenu()}>
+              商品
+            </Link>
           </li>
           <li>
-            <Link href="/course/courselist">課程</Link>
-            <Link href="/course/courselist">課程</Link>
+            <Link
+              href="/course/courselist"
+              onClick={() => handleCloseDropMenu()}
+            >
+              課程
+            </Link>
           </li>
           <li>
-            <Link href="/article">文章</Link>
+            <Link href="/article" onClick={() => handleCloseDropMenu()}>
+              文章
+            </Link>
           </li>
           <li>
-            <Link href="/member/fav/favorite-p">收藏</Link>
-          </li>
-          <li>
-            <Link href="文章">個人資料</Link>
+            <Link href="/teamap" onClick={() => handleCloseDropMenu()}>
+              茶地圖
+            </Link>
           </li>
         </div>
       </header>

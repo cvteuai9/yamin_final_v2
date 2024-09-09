@@ -11,7 +11,7 @@ export default function CategoryForm() {
       const sections = sectionsRef.current.querySelectorAll(
         `.${styles['category-section']}`
       )
-      console.log('Sections found:', sections)
+      // console.log('Sections found:', sections)
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -19,7 +19,7 @@ export default function CategoryForm() {
             const scribe = entry.target.querySelector(
               `.${styles['category-scribe']}`
             )
-            console.log('Scribe found:', scribe)
+            // console.log('Scribe found:', scribe)
             if (entry.isIntersecting) {
               scribe.classList.add(`${styles['visible']}`)
             } else {
