@@ -1,0 +1,135 @@
+/* styles.css */
+
+.liao-chat-container {
+  position: fixed;
+  right: 120px;
+  bottom: 0vh;
+  width: 60%;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--primary2);
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+.ChatOneUserimg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #d4a373; /* 金色邊框 */
+}
+.OneChatBox {
+  // height: 21px;
+    width: 160px;
+  background-color: #c1a6a62e;
+  padding-top: 15px;
+  //   overflow-y: auto;
+  padding-bottom: 10px;
+  padding-left: 11px;
+  padding-right: 11px;
+  border-radius: 10%;
+  margin-right: 10px;
+  white-space: normal;
+  word-break: break-word;
+}
+.liao-chat-ChatBoxHeader {
+  background-color: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.liao-chat-box {
+  /* flex: 1; */
+  background-color: var(--primary);
+  height: 40vh;
+  max-height: 40vh;
+  padding: 20px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ccc;
+}
+
+.liao-chat-message {
+  font-size: 14px;
+  width: 40%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.liao-chat-bot-message {
+  background-color: #e0e0e0;
+  text-align: left;
+}
+
+.liao-chat-user-message {
+  background-color: var(--primary);
+  color: #fff;
+  text-align: right;
+}
+
+.liao-chat-input-area {
+  display: flex;
+  //   border-top: 1px solid #ccc;
+}
+
+.liao-chat-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-bottom-left-radius: 8px;
+}
+
+.liao-chat-button {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-bottom-right-radius: 8px;
+  cursor: pointer;
+}
+
+.liao-chat-button:hover {
+  background-color: var(--primary2);
+}
+.liaoChatBoxModal {
+  position: fixed;
+  right: 10px;
+  bottom: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  //   border: 2px solid var(--primary2);
+  background-color: var(--primary2);
+}
+.liaoChatBoxModal :hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  //   border: 2px solid #5e704d67;
+  background-color: #5e704d67;
+}
+.liaoChatBoxModalImg {
+  font-size: 41px;
+  //   border-radius: 50%;
+  //   width: 200px;
+  //   height: 200px;
+  //   background-color: var(--primary2);
+  //   color: var(--primary);
+}
