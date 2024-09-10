@@ -24,9 +24,9 @@ export default function Register() {
     console.log(res.data)
 
     if (res.data.status === 'success') {
-      toast.success('資訊 - 會員註冊成功')
+      toast.success('會員註冊成功')
     } else {
-      toast.error(`錯誤 - 會員註冊失敗`)
+      toast.error(`會員註冊失敗`)
     }
   }
 

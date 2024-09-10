@@ -16,6 +16,7 @@ import styles from '@/components/member/fav/favorite.module.scss'
 import { func } from 'prop-types'
 import { FaProductHunt } from 'react-icons/fa6'
 import Swal from 'sweetalert2'
+import toast, { Toaster } from 'react-hot-toast'
 export default function FavoriteP() {
   // !!拿取會員資料
   const { auth } = useAuth()
@@ -56,6 +57,11 @@ export default function FavoriteP() {
           .then((result) => {
             if (result.message) {
               getFavProduct()
+            }
+            if (result.message === 'Favorite Product deleted successfully') {
+              toast.success(<p className="m-0">移除收藏成功!</p>)
+            } else {
+              toast.error(<p className="m-0">移除收藏失敗!</p>)
             }
           })
           .catch((error) => console.log(error))

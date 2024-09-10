@@ -5,6 +5,7 @@ import option from '@/components/article/option.module.sass'
 import { Modal, Button } from 'react-bootstrap'
 import { Gift } from 'lucide-react'
 import Link from 'next/link'
+import { useAuth } from '@/hooks/my-use-auth'
 // import e from 'express'
 
 // 狀態映射對象
@@ -209,7 +210,8 @@ export default function Coupon() {
       setError(error.message || '提交優惠券時出錯')
     }
   }
-
+  const { auth } = useAuth()
+  if (!auth.isAuth) return <></>
   return (
     <>
       <div className="container-fluid mb-6">
