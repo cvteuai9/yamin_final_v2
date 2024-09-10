@@ -10,6 +10,8 @@ import db from '#configs/mysql.js'
 
 import { v4 as uuidv4 } from 'uuid'
 
+import { getAutoSentCouponList } from '../routes/coupons.js'
+
 // 定義安全的私鑰字串
 const secretKey = process.env.ACCESS_TOKEN_SECRET
 
@@ -99,6 +101,44 @@ router.post('/', async function (req, res, next) {
           id: newUser.id,
           user_name: newUser.user_name,
           google_uid: newUser.google_uid,
+        }
+
+        // auto sent coupons
+        try {
+          // 獲取自動發送的優惠券列表
+          const autoSentCoupons = await getAutoSentCouponList()
+          // 為新用戶添加自動發送的優惠券
+          for (const couponCode of autoSentCoupons) {
+            try {
+              const [result] = await db.query(
+                `
+                INSERT INTO users_coupons (user_id, coupon_id)
+                SELECT u.id, c.id
+                FROM users u
+                JOIN coupons c ON c.code = ?
+                WHERE u.id = ?
+                `,
+                [couponCode, newUser.id]
+              )
+              if (result.affectedRows === 0) {
+                console.warn(
+                  `Failed to assign coupon ${couponCode} to new user`
+                )
+              } else {
+                console.log(
+                  `Successfully assigned coupon ${couponCode} to new user`
+                )
+              }
+            } catch (couponError) {
+              console.error(
+                `Error assigning coupon ${couponCode}:`,
+                couponError
+              )
+            }
+          }
+        } catch (error) {
+          // 自動發送優惠券時出現錯誤，但暫時不做處理
+          console.error('Error in auto-sending coupons:', error)
         }
       } else {
         throw new Error('Failed to retrieve new user after insertion')
