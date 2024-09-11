@@ -255,7 +255,10 @@ export default function Coupon() {
                     </p>
                   )}
                   {error && (
-                    <p className="grayf ms-3 m-0 d-flex text-align-center">
+                    <p
+                      className="grayf ms-3 m-0 d-flex text-align-center"
+                      style={{ color: 'var(--error-color)' }}
+                    >
                       錯誤: {error}
                     </p>
                   )}
@@ -327,7 +330,10 @@ export default function Coupon() {
                     </p>
                   )}
                   {error && (
-                    <p className="grayf ms-3 m-0 d-flex text-align-center">
+                    <p
+                      className="grayf ms-3 m-0 d-flex text-align-center"
+                      style={{ color: 'var(--error-color)' }}
+                    >
                       錯誤: {error}
                     </p>
                   )}
@@ -466,8 +472,18 @@ export default function Coupon() {
                         )}
                       </tbody>
                     </table>
-
                     {/*  優惠券下拉式選單 */}
+                    <div className="coupon-btns p-0 mt-3 d-flex  justify-content-center">
+                      <Link
+                        href="http://localhost:3000/product/list"
+                        className={`btn2 p changepassword`}
+                        style={{
+                          boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.3)',
+                        }}
+                      >
+                        開始購物
+                      </Link>
+                    </div>
                   </div>
                   {/* ============= */}
                   <div className="tabchooes mt-3 table-responsive-xl mobileContent">

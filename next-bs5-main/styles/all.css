@@ -248,7 +248,7 @@ textarea {
     outline: none;
   }
   &.hasError {
-    border: 1px solid red;
+    border: 1px solid var(--error-color);
   }
 }
 .changeps-inputradio {
@@ -292,7 +292,7 @@ textarea {
 .changeps-form {
   .error {
     font-size: 1.6rem;
-    color: red;
+    color: var(--error-color);
     font-family: 'B2Hana-Regular';
   }
 }
@@ -622,6 +622,9 @@ textarea {
     font-family: 'B2Hana-Regular', sans-serif;
     font-weight: 100;
   }
+  .error{
+    color: var(--error-color);
+  }
 }
 .profile-pic {
   display: flex;
@@ -665,7 +668,7 @@ textarea {
   border: 1px solid var(--primary2);
   box-sizing: border-box;
   &.hasError {
-    border: 1px solid red;
+    border: 1px solid var(--error-color);
   }
 }
 
