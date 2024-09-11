@@ -161,7 +161,7 @@ export default function Chat() {
       }
     }
   }, [auth, userID, userName, userImage])
-  useEffect(() => {}, [testGet, clientList])
+  useEffect(() => {}, [testGet, clientList, targetUserId])
   const handleInputChange = (e) => {
     setMessage(e.target.value)
   }
@@ -347,7 +347,10 @@ export default function Chat() {
                         </div>
                       ) : (
                         <div className="d-flex h2 justify-content-start mb-3 user-font">
-                          <img className="ChatUserimg" src={targetUser.userImage} />
+                          <img
+                            className="ChatUserimg"
+                            src={targetUser.userImage}
+                          />
                           <div className="chatBox">{v}</div>
                         </div>
                       )
@@ -361,7 +364,7 @@ export default function Chat() {
               ))}
           </div>
           {/* 聊天訊息會顯示在這裡 */}
-          <div className="chat-input">
+          <div className="h3 chat-input">
             <input
               type="text"
               name="msg"
