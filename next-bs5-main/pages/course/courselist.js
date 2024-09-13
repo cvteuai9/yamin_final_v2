@@ -111,22 +111,26 @@ export default function Course() {
 
     // !! 收藏部分，後續要處理user_id部分
     // 先將每個課程加上 fav屬性，並設為false
-    let tmp = data.courses.map((v) => {
-      return { ...v, fav: false }
-    })
-    let favoritesData = []
-    if (isAuth) {
-      const favoritesURL = `http://localhost:3005/api/course/favorites?user_id=${userID}`
-      const favoritesRes = await fetch(favoritesURL)
-      favoritesData = await favoritesRes.json()
-    }
-    let courseList = tmp.map((v, i) => {
-      if (favoritesData.includes(v.id)) {
-        return { ...v, fav: true }
-      } else {
-        return v
+    let courseList = []
+    if (data.courses) {
+      let tmp = data.courses.map((v) => {
+        return { ...v, fav: false }
+      })
+      let favoritesData = []
+      if (isAuth) {
+        const favoritesURL = `http://localhost:3005/api/course/favorites?user_id=${userID}`
+        const favoritesRes = await fetch(favoritesURL)
+        favoritesData = await favoritesRes.json()
       }
-    })
+      courseList = tmp.map((v, i) => {
+        if (favoritesData.includes(v.id)) {
+          return { ...v, fav: true }
+        } else {
+          return v
+        }
+      })
+    }
+
     if (res.ok) {
       // 如果伺服器回應狀態為 OK，則更新課程數據、總頁數和總筆數的狀態。
       setCourses(courseList)
@@ -134,7 +138,8 @@ export default function Course() {
       setTotalCourses(data.totalCourses)
     } else {
       // 如果伺服器回應失敗，則在控制台中輸出錯誤訊息。
-      console.error('Failed to fetch courses:', data.message)
+      setCourses([])
+      // console.error('Failed to fetch courses:', data.message)
     }
   }
   // !!處理收藏或取消收藏的函式
