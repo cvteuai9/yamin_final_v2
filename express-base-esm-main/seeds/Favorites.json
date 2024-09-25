@@ -2,50 +2,325 @@
   {
     "id": 1,
     "user_id": 1,
-    "article_id": null,
+    "article_id": "NULL",
     "product_id": 235,
-    "course_id": null
+    "course_id": "NULL",
+    "created_at": "2024-09-11 10:23:32",
+    "updated_at": "2024-09-11 10:23:32"
   },
   {
     "id": 2,
     "user_id": 1,
-    "article_id": null,
+    "article_id": "NULL",
     "product_id": 205,
-    "course_id": null
+    "course_id": "NULL",
+    "created_at": "2024-09-11 10:23:32",
+    "updated_at": "2024-09-11 10:23:32"
   },
   {
     "id": 3,
     "user_id": 1,
-    "article_id": null,
+    "article_id": "NULL",
     "product_id": 192,
-    "course_id": null
+    "course_id": "NULL",
+    "created_at": "2024-09-11 10:23:32",
+    "updated_at": "2024-09-11 10:23:32"
   },
   {
     "id": 4,
     "user_id": 1,
-    "article_id": null,
+    "article_id": "NULL",
     "product_id": 120,
-    "course_id": null
+    "course_id": "NULL",
+    "created_at": "2024-09-11 10:23:32",
+    "updated_at": "2024-09-11 10:23:32"
   },
   {
     "id": 5,
     "user_id": 1,
-    "article_id": null,
-    "product_id": null,
-    "course_id": 1
+    "article_id": "NULL",
+    "product_id": "NULL",
+    "course_id": 1,
+    "created_at": "2024-09-11 10:23:32",
+    "updated_at": "2024-09-11 10:23:32"
   },
   {
     "id": 6,
     "user_id": 1,
     "article_id": 1,
-    "product_id": null,
-    "course_id": null
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "2024-09-11 10:23:32",
+    "updated_at": "2024-09-11 10:23:32"
   },
   {
     "id": 7,
     "user_id": 1,
-    "article_id": null,
+    "article_id": "NULL",
     "product_id": 24,
-    "course_id": null
+    "course_id": "NULL",
+    "created_at": "2024-09-11 10:23:32",
+    "updated_at": "2024-09-11 10:23:32"
+  },
+  {
+    "id": 10,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": "NULL",
+    "course_id": 1,
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 11,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": "NULL",
+    "course_id": 2,
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 12,
+    "user_id": 61,
+    "article_id": 64,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 13,
+    "user_id": 61,
+    "article_id": 83,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 14,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 126,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 15,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 158,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 16,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 3,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 17,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 5,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 18,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 1,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 19,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 243,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 20,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 180,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 21,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 235,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 22,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 245,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 23,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 228,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 24,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 71,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 25,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": 75,
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 26,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": "NULL",
+    "course_id": 3,
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 27,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": "NULL",
+    "course_id": 4,
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 28,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": "NULL",
+    "course_id": 5,
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 29,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": "NULL",
+    "course_id": 6,
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 30,
+    "user_id": 61,
+    "article_id": "NULL",
+    "product_id": "NULL",
+    "course_id": 16,
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 31,
+    "user_id": 61,
+    "article_id": 53,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 32,
+    "user_id": 61,
+    "article_id": 50,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 33,
+    "user_id": 61,
+    "article_id": 51,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 34,
+    "user_id": 61,
+    "article_id": 62,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 35,
+    "user_id": 61,
+    "article_id": 68,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 36,
+    "user_id": 61,
+    "article_id": 60,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 37,
+    "user_id": 61,
+    "article_id": 59,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
+  },
+  {
+    "id": 38,
+    "user_id": 61,
+    "article_id": 75,
+    "product_id": "NULL",
+    "course_id": "NULL",
+    "created_at": "0000-00-00 00:00:00",
+    "updated_at": "0000-00-00 00:00:00"
   }
 ]

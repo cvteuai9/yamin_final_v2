@@ -1,4 +1,4 @@
-// 第三版
+// 原始版，可demo
 import React, { useState, useEffect } from 'react'
 import Leftnav from './left-nav'
 import { FaAngleDown } from 'react-icons/fa6'
@@ -215,8 +215,7 @@ export default function Coupon() {
   if (!auth.isAuth) return <></>
   return (
     <>
-      <div className="container-fluid mb-6 ">
-        {/* ===========ju0909test */}
+      <div className="container-fluid mb-6">
         <div className="d-flex">
           <div className="titlenav">
             <img src="/images/favorite/title.svg" alt="" className="my-3" />
@@ -233,38 +232,8 @@ export default function Coupon() {
               <Leftnav fromCupon="fromCupon" />
             </div>
             <div className="col-md-8 profile-content-right">
-              <h5 className="goldenf desktopContent">優惠券</h5>
-              <div className="coupon-cinput mobileContent">
-                <p className="grayf m-0">優惠券歸戶</p>
-                <input
-                  className="coupon-inputtext p2 my-0"
-                  type="text"
-                  placeholder="活動序號或通關密語"
-                  style={{ width: 150 }}
-                  value={couponCode}
-                  onChange={(e) => setCouponCode(e.target.value)}
-                />
-                <button className="btn2 p checked" onClick={handleCouponSubmit}>
-                  確認
-                </button>
-                <br />
-                <div className="errortext">
-                  {isLoading && (
-                    <p className="grayf ms-3 m-0 d-flex text-align-center">
-                      加載中...
-                    </p>
-                  )}
-                  {error && (
-                    <p
-                      className="grayf ms-3 m-0 d-flex text-align-center"
-                      style={{ color: 'var(--error-color)' }}
-                    >
-                      錯誤: {error}
-                    </p>
-                  )}
-                </div>
-              </div>
-              <p className="grayf mt-3">注意事項：</p>
+              <h5 className="goldenf">優惠券</h5>
+              <p className="grayf">注意事項：</p>
               <p className="grayf">
                 單筆訂單限使用一張，且已成立訂單不能以未使用優惠券為由取消訂單。
               </p>
@@ -310,8 +279,8 @@ export default function Coupon() {
               {/* ... */}
               {/*  優惠券使用說明視窗 */}
               <p className="grayf"> 雅茗保留活動修改、變更及終止之權利。 </p>
-              <div className="coupon-cinput desktopContent">
-                <p className="grayf m-0 ">優惠券歸戶</p>
+              <div className="coupon-cinput">
+                <p className="grayf m-0">優惠券歸戶</p>
                 <input
                   className="coupon-inputtext p2 my-0"
                   type="text"
@@ -330,18 +299,15 @@ export default function Coupon() {
                     </p>
                   )}
                   {error && (
-                    <p
-                      className="grayf ms-3 m-0 d-flex text-align-center"
-                      style={{ color: 'var(--error-color)' }}
-                    >
+                    <p className="grayf ms-3 m-0 d-flex text-align-center">
                       錯誤: {error}
                     </p>
                   )}
                 </div>
               </div>
-              <div className="d-flex justify-content-between ">
+              <div className="d-flex justify-content-between">
                 {/* {unusedCouponCount > 0 && ( */}
-                <p className="goldenf mt-3 desktopContent">
+                <p className="goldenf mt-3">
                   目前有 {unusedCouponCount} 張優惠券可使用
                 </p>
                 {/* )} */}
@@ -394,177 +360,88 @@ export default function Coupon() {
               {isLoading ? (
                 <p>加載中...</p>
               ) : (
-                <>
-                  <div className="tabchooes mt-3 table-responsive-xl desktopContent">
-                    {/* <h2>桌面版表格 (≥1440px)</h2> */}
-                    <table className="coupon-cptable mt-3">
-                      <thead>
-                        <tr className="p">
-                          <th className="coupon-cpth p" style={{ width: 116 }}>
-                            優惠券項目
-                          </th>
-                          <th className="coupon-cpth p" style={{ width: 100 }}>
-                            優惠券代碼
-                          </th>
-                          <th
-                            className="coupon-cpth coupon-cpth1 p"
-                            style={{ width: 300 }}
-                          >
-                            內容
-                          </th>
-                          <th className="coupon-cpth p" style={{ width: 100 }}>
-                            到期日
-                          </th>
-                          <th className="coupon-cpth p" style={{ width: 100 }}>
-                            優惠券狀態
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredCoupons.length > 0 ? (
-                          filteredCoupons.map((coupon, index) => {
-                            {
-                              /* console.log('檢查', filteredCoupons) */
-                            }
-                            return (
-                              <tr
-                                key={`CUPPON_${index}`}
-                                style={{
-                                  transition: 'background-color 0.3s ease',
-                                }}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.backgroundColor =
-                                    'rgba(0, 0, 0, 0.15)'
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.backgroundColor =
-                                    'transparent'
-                                }}
-                              >
-                                <td className="coupon-cptd p">
-                                  {coupon.name.split('：')[0]}
-                                </td>
-                                <td className="coupon-cptd p">{coupon.code}</td>
-                                <td className="coupon-p-14 p">{coupon.info}</td>
-                                <td className="coupon-cptd p">
-                                  {new Date(
-                                    coupon.end_time
-                                  ).toLocaleDateString()}
-                                </td>
-                                <td className="coupon-cptd p">
-                                  {statusMapping[coupon.user_status] ||
-                                    coupon.user_status}
-                                </td>
-                              </tr>
-                            )
-                          })
-                        ) : (
-                          <tr className="">
-                            <td
-                              colSpan="5"
-                              className="text-center p pt-3 goldenf"
-                            >
-                              {activeTab === 'all'
-                                ? '沒有任何優惠券'
-                                : `沒有${statusMapping[activeTab] || ''}優惠券`}
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
-                    {/*  優惠券下拉式選單 */}
-                    <div className="coupon-btns p-0 mt-3 d-flex  justify-content-center">
-                      <Link
-                        href="http://localhost:3000/product/list"
-                        className={`btn2 p changepassword`}
-                        style={{
-                          boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.3)',
-                        }}
-                      >
-                        開始購物
-                      </Link>
-                    </div>
-                  </div>
-                  {/* ============= */}
-                  <div className="tabchooes mt-3 table-responsive-xl mobileContent">
-                    {/* <h2>手機版(768px)</h2> */}
-                    <h5 className="goldenf golden-title d-flex justify-content-between">
-                      優惠券列表
-                      <span className="grayf mt-3 p2">
-                        目前有 {unusedCouponCount} 張優惠券可使用
-                      </span>
-                    </h5>
-                    {filteredCoupons.length > 0 ? (
-                      filteredCoupons.map((coupon, index) => {
-                        return (
-                          <div
-                            className="d-flex justify-content-center mt-1"
-                            key={`CUPPON_${index}`}
-                          >
-                            <div
+                <div className="tabchooes mt-3 table-responsive-xl">
+                  <table className="coupon-cptable mt-3">
+                    <thead>
+                      <tr className="p">
+                        <th className="coupon-cpth p">優惠券項目</th>
+                        <th className="coupon-cpth p">優惠券代碼</th>
+                        <th className="coupon-cpth coupon-cpth1 p">內容</th>
+                        <th className="coupon-cpth p">到期日</th>
+                        <th className="coupon-cpth p">優惠券狀態</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredCoupons.length > 0 ? (
+                        filteredCoupons.map((coupon, index) => {
+                          {
+                            /* console.log('檢查', filteredCoupons) */
+                          }
+                          return (
+                            <tr
+                              key={`CUPPON_${index}`}
                               style={{
                                 transition: 'background-color 0.3s ease',
-                                height: 'auto',
-                                width: 520,
                               }}
                               onMouseEnter={(e) => {
                                 e.currentTarget.style.backgroundColor =
-                                  'rgba(0, 0, 0, 0.3)'
+                                  'rgba(0, 0, 0, 0.15)'
                               }}
                               onMouseLeave={(e) => {
                                 e.currentTarget.style.backgroundColor =
                                   'transparent'
                               }}
                             >
-                              <p className="  line-height-none couponscard ">
-                                <span className="grayf p d-flex mb-1 ">
-                                  <img
-                                    src="/images/envira.svg"
-                                    alt="icon"
-                                    style={{ width: 15 }}
-                                  />
-                                  {coupon.name.split('：')[0]}{' '}
-                                </span>
-                                {coupon.info}，每個帳號限使用1次，
-                                <br />
-                                使用期限
+                              <td
+                                className="coupon-cptd p"
+                                style={{ width: 116 }}
+                              >
+                                {coupon.name.split('：')[0]}
+                              </td>
+                              <td className="coupon-cptd p">{coupon.code}</td>
+                              <td
+                                className="coupon-p-14 p"
+                                style={{ width: 300 }}
+                              >
+                                {coupon.info}
+                              </td>
+                              <td className="coupon-cptd p">
                                 {new Date(coupon.end_time).toLocaleDateString()}
-                                <br />
-                                優惠券代碼: {coupon.code} <br />
-                                <div className=" goshop p2 changepassword ">
-                                  狀態：
-                                  {statusMapping[coupon.user_status] ||
-                                    coupon.user_status}
-                                </div>
-                              </p>
-                            </div>
-                          </div>
-                        )
-                      })
-                    ) : (
-                      <div>
-                        <p className="text-start p pt-3 goldenf">
-                          {activeTab === 'all'
-                            ? '沒有任何優惠券'
-                            : `沒有${statusMapping[activeTab] || ''}優惠券`}
-                        </p>
-                      </div>
-                    )}
+                              </td>
+                              <td className="coupon-cptd p">
+                                {statusMapping[coupon.user_status] ||
+                                  coupon.user_status}
+                              </td>
+                            </tr>
+                          )
+                        })
+                      ) : (
+                        <tr className="">
+                          <td
+                            colSpan="5"
+                            className="text-center p pt-3 goldenf"
+                          >
+                            {activeTab === 'all'
+                              ? '沒有任何優惠券'
+                              : `沒有${statusMapping[activeTab] || ''}優惠券`}
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
 
-                    <div className="coupon-btns p-0 mt-3 d-flex  justify-content-center">
-                      <Link
-                        href="http://localhost:3000/product/list"
-                        className={`btn2 p changepassword`}
-                        style={{
-                          boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.3)',
-                        }}
-                      >
-                        開始購物
-                      </Link>
-                    </div>
-                  </div>
-                </>
+                  {/*  優惠券下拉式選單 */}
+                </div>
               )}
+              <div className="coupon-btns">
+                {/* <button className="btn2 p changepassword">開始購物</button> */}
+                <Link
+                  href="http://localhost:3000/product/list"
+                  className={`btn2 p changepassword`}
+                >
+                  開始購物
+                </Link>
+              </div>
             </div>
           </div>
           {/*  優惠券領取視窗 */}
