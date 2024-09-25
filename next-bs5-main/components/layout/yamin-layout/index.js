@@ -3,7 +3,7 @@ import MyFooter from './my-footer'
 import MyHeader from './my-head'
 import { useLoader } from '@/hooks/use-loader'
 import styles from '@/components/layout/yamin-layout/yaminLayout.module.scss'
-
+import UserChatBox from '@/components/chat/UserChatBox'
 export default function YaminLayout({ children }) {
   const { loader } = useLoader()
 
@@ -19,6 +19,7 @@ export default function YaminLayout({ children }) {
         {/* 全域的載入動畫指示器 */}
         {loader()}
       </main>
+      <UserChatBox />
       <MyFooter />
     </>
   )

@@ -248,7 +248,7 @@ textarea {
     outline: none;
   }
   &.hasError {
-    border: 1px solid red;
+    border: 1px solid var(--error-color);
   }
 }
 .changeps-inputradio {
@@ -292,7 +292,7 @@ textarea {
 .changeps-form {
   .error {
     font-size: 1.6rem;
-    color: red;
+    color: var(--error-color);
     font-family: 'B2Hana-Regular';
   }
 }
@@ -622,6 +622,9 @@ textarea {
     font-family: 'B2Hana-Regular', sans-serif;
     font-weight: 100;
   }
+  .error{
+    color: var(--error-color);
+  }
 }
 .profile-pic {
   display: flex;
@@ -665,7 +668,7 @@ textarea {
   border: 1px solid var(--primary2);
   box-sizing: border-box;
   &.hasError {
-    border: 1px solid red;
+    border: 1px solid var(--error-color);
   }
 }
 
@@ -776,6 +779,10 @@ textarea {
 }
 .choosebtn {
   background-color: var(--primary);
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: end;
+  }
 }
 .coupon-p-14 {
   text-align: start;
@@ -807,6 +814,7 @@ textarea {
 /* ==========08-30 微調 優惠券領取視窗  */
 .floating-coupon-container {
   position: fixed;
+
   right: 5vw;
   top: 250px;
   margin-bottom: 1rem;
@@ -816,6 +824,7 @@ textarea {
 .floating-coupon-button {
   width: 5rem;
   height: 15rem;
+
   /* background: linear-gradient(to right, #b29564, #d4b690); */
   background-color: #7d2226;
   border: none;
@@ -836,6 +845,7 @@ textarea {
 .floating-coupon-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+
   background: var(--error-color);
 }
 
@@ -861,4 +871,45 @@ textarea {
     font-size: 1.4rem;
   }
 }
-/* =================================== */
+
+/* ==========================090jutest========= */
+
+.golden-title {
+  width: 100%;
+  padding-bottom: 10px;
+  margin: 10px 0 16px 0;
+  border-bottom: 1px solid #d8b783;
+}
+.couponscard {
+  width: 100%;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  background-color: #ffffff50;
+  font-weight: bold;
+  overflow: hidden;
+  position: relative;
+  .goshop {
+    /* color: #d8b783; */
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid ;
+    width: 100px;
+    height: 30px;
+    right: 20px;
+    bottom: 15px;
+    background-color: transparent;
+  }
+
+}
+@media (max-width: 768px) {
+  .desktopContent {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .mobileContent {
+    display: none;
+  }
+}

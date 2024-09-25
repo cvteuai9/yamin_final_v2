@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import '@/styles/globals.scss'
 import '@/styles/product.scss'
 import '@/styles/cart.scss'
+import '@/styles/chat/chatAll.scss'
+import '@/styles/chat/UserChatBox.scss'
 import '@/styles/loader.scss'
 import '@/styles/order/leftNav.scss'
 import '@/styles/cart/cartTest.scss'
@@ -73,7 +75,7 @@ export default function MyApp({ Component, pageProps }) {
               <YaminCartProvider>
                 {getLayout(<Component {...pageProps} />)}
                 <CustomToaster />
-                </YaminCartProvider>
+              </YaminCartProvider>
             </YaminCourseCartProvider>
           </CartProvider>
         </LoaderProvider>
